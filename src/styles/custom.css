@@ -1,0 +1,7 @@
+/* Original Collectarr styling. No licensed CLZ fonts or assets. */
+:root { --sl-color-accent-low: #442815; --sl-color-accent: #e98630; --sl-color-accent-high: #ffd5b3; --sl-font: "Segoe UI", system-ui, sans-serif; --sl-content-width: 50rem; }
+:root[data-theme="light"] { --sl-color-accent-low: #fff0df; --sl-color-accent: #a14808; --sl-color-accent-high: #713208; }
+.site-title { font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
+.sl-markdown-content img { border-radius: .6rem; border: 1px solid var(--sl-color-hairline-light); }
+.sl-markdown-content table { font-size: .9rem; }
+@media print { header, .sidebar, .right-sidebar, starlight-menu-button, .pagination-links { display: none !important; } .main-pane { padding: 0 !important; } .sl-markdown-content { color: #111; } }
