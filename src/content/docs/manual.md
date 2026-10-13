@@ -7,7 +7,7 @@ One guide for all your collections. Read the common chapters, then open the kind
 
 Collectarr is a **local-first collection manager**. Your entries live in a local database. Core supplies shared catalog metadata; optional personal sync is a separate service. Adding a Core item creates an independently editable entry in your own library.
 
-This guide describes the current beta application and uses English interface labels. Screenshots show fictional demonstration data. Controls can differ with the active kind, deployment and window width.
+This guide describes the Music v1 application and uses English interface labels. Screenshots show fictional demonstration data. Controls can differ with the active kind, deployment and window width.
 
 ## Start here
 
@@ -19,7 +19,7 @@ This guide describes the current beta application and uses English interface lab
 
 ## By kind
 
-[Music](./kinds/music/) · [Books](./kinds/book/) · [Comics](./kinds/comic/) · [Manga](./kinds/manga/) · [Movies](./kinds/movie/) · [TV](./kinds/tv/) · [Anime](./kinds/anime/) · [Games](./kinds/game/) · [Board Games](./kinds/boardgame/)
+[Music](./kinds/music/) is the only kind included in the first release. Other kinds are planned for later releases.
 
 The active kind changes the accent, catalog fields, groupings and editor. The common library navigation remains familiar.
 

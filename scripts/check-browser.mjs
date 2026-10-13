@@ -22,7 +22,7 @@ try {
   await page.locator('.pagefind-ui__result-link').first().waitFor();
   assert.match(await page.locator('dialog').innerText(), /Music/);
   await page.keyboard.press('Escape');
-  for (const kind of ['music', 'book', 'comic', 'manga', 'movie', 'tv', 'anime', 'game', 'boardgame']) {
+  for (const kind of ['music']) {
     await page.goto(`${base}manual/kinds/${kind}/`);
     assert.equal(await page.getByRole('heading', { level: 1 }).count(), 1);
   }
@@ -38,7 +38,7 @@ try {
     }
   }
   assert.deepEqual(errors, []);
-  console.log('Manual navigation, search, nine kind chapters and responsive layouts passed.');
+  console.log('Manual navigation, search, the released Music chapter and responsive layouts passed.');
 } finally {
   await browser.close();
 }

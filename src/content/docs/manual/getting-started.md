@@ -5,7 +5,7 @@ description: "Getting started — Collectarr user manual"
 
 ## Choose your kind
 
-Open the navigation menu and select **Libraries**. Choose Music, Book, Comic, Manga, Movie, TV, Anime, Game or Board Game. The top bar names the active kind and uses its accent.
+Open the navigation menu and select **Libraries**. The first release opens Music. The top bar names the active kind and uses its accent.
 
 ## Add your first entry
 

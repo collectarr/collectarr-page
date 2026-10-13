@@ -2,15 +2,15 @@
 import { Image } from 'astro:assets';
 import workspace from '../assets/screenshots/library.png';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
-const kinds = ['Music', 'Books', 'Comics', 'Manga', 'Movies', 'TV', 'Anime', 'Games', 'Board Games'];
-const kindPaths = ['music', 'book', 'comic', 'manga', 'movie', 'tv', 'anime', 'game', 'boardgame'];
+const kinds = ['Music'];
+const kindPaths = ['music'];
 ---
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Collectarr is a local-first collection manager for music, books, comics, games and more. Explore the app and its shared user manual." />
+    <meta name="description" content="Collectarr is a local-first collection manager for music albums and editions. Explore the app and its shared user manual." />
     <title>Collectarr — A home for your collections</title>
     <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
   </head>
@@ -24,9 +24,9 @@ const kindPaths = ['music', 'book', 'comic', 'manga', 'movie', 'tv', 'anime', 'g
       <section class="hero">
         <p class="eyebrow">FOR THE THINGS YOU LOVE TO COLLECT</p>
         <h1>Every collection.<br /><span>One place to call home.</span></h1>
-        <p class="intro">Music, books, comics, games and more. Keep track of what you own, find the details that matter, and make your library yours.</p>
+        <p class="intro">Music albums, discs and tracks. Keep track of what you own, find the details that matter, and make your library yours.</p>
         <div class="actions"><a class="primary" href="https://github.com/collectarr/collectarr-app/releases">Explore releases ↗</a><a class="secondary" href={`${base}manual/getting-started/`}>Get started with the manual →</a></div>
-        <p class="note">Local-first · Open source · Currently in beta</p>
+        <p class="note">Local-first · Open source · Music v1 baseline</p>
         <figure class="workspace"><Image src={workspace} alt="The Collectarr Music workspace showing fictional demo albums, collection folders and the details inspector" loading="eager" /><figcaption>The Music workspace. Demonstration data; your library stays yours.</figcaption></figure>
       </section>
       <section class="features" aria-label="What Collectarr does">
@@ -34,8 +34,8 @@ const kindPaths = ['music', 'book', 'comic', 'manga', 'movie', 'tv', 'anime', 'g
         <article><span class="number">02</span><h2>Details worth keeping</h2><p>Track editions, condition, locations and purchases. Add covers, personal images and custom fields for what matters to you.</p><a href={`${base}manual/editing/`}>Editing your entries →</a></article>
         <article><span class="number">03</span><h2>A library that fits you</h2><p>Choose views, columns and sorting. Organize named collections and browse folders derived from your actual field values.</p><a href={`${base}manual/browsing/`}>Explore your library →</a></article>
       </section>
-      <section id="collections" class="collections"><div><p class="eyebrow">NINE KINDS. ONE FAMILIAR WORKSPACE.</p><h2>Different collections.<br />The details they deserve.</h2><p>Shared controls where the workflow is the same. Kind-specific fields and editors where it isn't.</p></div><div class="kinds">{kinds.map((kind, i) => <a href={`${base}manual/kinds/${kindPaths[i]}/`}><span>{kind}</span><span aria-hidden="true">↗</span></a>)}</div></section>
-      <section class="guide"><p class="eyebrow">A LITTLE HELP, WHEN YOU NEED IT</p><h2>From your first entry<br />to your next thousand.</h2><p>One searchable manual, with common workflows and a chapter for each kind. No need to learn everything nine times.</p><a class="primary" href={`${base}manual/`}>Open the user manual →</a></section>
+      <section id="collections" class="collections"><div><p class="eyebrow">MUSIC FIRST. YOUR COLLECTION, YOUR WAY.</p><h2>Different collections.<br />The details they deserve.</h2><p>Shared controls where the workflow is the same. Kind-specific fields and editors where it isn't.</p></div><div class="kinds">{kinds.map((kind, i) => <a href={`${base}manual/kinds/${kindPaths[i]}/`}><span>{kind}</span><span aria-hidden="true">↗</span></a>)}</div></section>
+      <section class="guide"><p class="eyebrow">A LITTLE HELP, WHEN YOU NEED IT</p><h2>From your first entry<br />to your next thousand.</h2><p>One searchable manual for your Music library, with common workflows and a dedicated Music chapter. Future kinds will extend this guide.</p><a class="primary" href={`${base}manual/`}>Open the user manual →</a></section>
     </main>
     <footer><a class="brand" href={base}>COLLECTARR</a><p>An open-source collection manager. Independent of CLZ.</p><a href="https://github.com/collectarr/collectarr-app/issues">Feedback & issues ↗</a></footer>
   </body>
