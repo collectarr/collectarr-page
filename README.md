@@ -1,45 +1,52 @@
-# Collectarr website and user manual
+# ?? Collectarr website & Music manual
 
-A separate static product site and shared English manual. Kind chapters describe differences without duplicating the common guide. Screenshots use an isolated, fictional demo database.
+A welcoming introduction to Collectarr and a searchable guide to your Music
+collection. Version 1 presents Music only, with shared guides ready to grow
+when other kinds are actually released.
 
-## Run locally
+## ? Learn by doing
 
-Node 22.19+ (Node 24 recommended) and npm are required.
+- Discover library views, collections, folders and everyday Music workflows.
+- Learn the album editor, disc/track structure and scoped Credits.
+- Find guidance for custom fields, images, import/export, loans and statistics.
+- Understand backups, optional sync and explicit sharing choices.
+- Search the manual and read it comfortably on desktop or mobile.
+
+## ?? Preview
+
+> **Screenshot placeholder ? Product page:** Music library overview.
+>
+> **Screenshot placeholder ? Manual:** search and a Music editing walkthrough.
+
+Only sanitized fictional data is used in screenshots. No private credentials,
+account details or copyrighted CLZ screenshots are published.
+
+## ?? Familiar, independently written
+
+Collectarr is an independent **clean-room implementation inspired by CLZ Music
+workflows**, with its own code, assets and documentation. It is not affiliated
+with or endorsed by CLZ; the guide is written for Collectarr's actual behavior.
+
+## ?? Read and contribute
+
+The site is static and does not need a database, account or API server. Creating
+this repository does not publish a hosting address; publication is a separate
+step to an authorized host.
+
+<details>
+<summary>Local preview and editing</summary>
+
+Use Node 22.19+ (Node 24 recommended):
 
 ```sh
 npm ci
 npm run dev
-```
-
-Open the URL printed by Astro (by default http://127.0.0.1:4321/collectarr-site/).
-
-```sh
 npm run build
 npm run check:links
-npm run preview
 ```
 
-## Hosting
+See [AGENTS.md](AGENTS.md) and [screenshot provenance](docs/screenshot-provenance.md).
+Write only about supported Music features and use clear placeholders until
+real, sanitized Collectarr captures are available.
 
-The default configuration prepares https://collectarr.github.io/collectarr-site/. Creating this local repository does not publish that address. On GitHub, use Settings → Pages → GitHub Actions, then run the Publish workflow. Publishing is deliberately manual.
-
-For a server or custom domain, build with SITE_URL=https://your-domain.example and SITE_BASE=/ and serve dist/ as static files. Preserve directory index handling and the 404 page. No API server, account or database is needed for the manual.
-
-The app uses COLLECTARR_MANUAL_URL to select the manual root. Its expected Pages URL is https://collectarr.github.io/collectarr-site/manual/. A different host needs a corresponding app build define.
-
-## Editing the guide
-
-Write articles in src/content/docs/manual/. Put common workflows in common chapters and kind differences under kinds/. Keep screenshots under src/assets/screenshots/; retain their capture provenance in docs/screenshot-provenance.md. Run the build and local link check after changes. Do not copy CLZ text, screenshots or font files into the site.
-
-The manual describes the beta app, not a compatibility or migration layer. Do not document planned functionality as available. Before changing instructions, inspect the related Collectarr controls and repository implementation.
-
-## Browser checks
-
-With the preview server running:
-
-```sh
-npx playwright install chromium
-npm run check:browser
-```
-
-Set BROWSER_CHANNEL=chrome to use an installed Chrome, or PREVIEW_URL to test another base URL. The check uses an isolated profile and verifies manual navigation, search, all nine kinds, responsive widths and browser errors.
+</details>
