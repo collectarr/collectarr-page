@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 export default defineConfig({
   site: process.env.SITE_URL || 'https://collectarr.github.io',
-  base: process.env.SITE_BASE ?? '/collectarr-site',
+  base: process.env.SITE_BASE ?? '/collectarr-page',
   integrations: [starlight({
     title: 'Collectarr',
     description: 'The Collectarr user manual: one guide for all your collections.',

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { chromium } from 'playwright';
 
 // Run against `npm run preview` after a build. Uses an isolated browser profile.
-const base = process.env.PREVIEW_URL || 'http://127.0.0.1:4321/collectarr-site/';
+const base = process.env.PREVIEW_URL || 'http://127.0.0.1:4321/collectarr-page/';
 const browser = await chromium.launch({
   headless: true,
   ...(process.env.BROWSER_CHANNEL ? { channel: process.env.BROWSER_CHANNEL } : {}),

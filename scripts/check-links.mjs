@@ -2,7 +2,7 @@ import { readdir, readFile, stat } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 
 const root = resolve('dist');
-const base = (process.env.SITE_BASE ?? '/collectarr-site').replace(/\/$/, '');
+const base = (process.env.SITE_BASE ?? '/collectarr-page').replace(/\/$/, '');
 const files = [];
 async function walk(dir) {
   for (const entry of await readdir(dir, { withFileTypes: true })) {

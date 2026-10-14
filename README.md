@@ -29,9 +29,10 @@ with or endorsed by CLZ; the guide is written for Collectarr's actual behavior.
 
 ## 📖 Read and contribute
 
-The site is static and does not need a database, account or API server. Creating
-this repository does not publish a hosting address; publication is a separate
-step to an authorized host.
+The site is static and does not need a database, account or API server.
+Source: [collectarr/collectarr-page](https://github.com/collectarr/collectarr-page).
+The included publishing workflow targets GitHub Pages at
+`https://collectarr.github.io/collectarr-page/`.
 
 <details>
 <summary>Local preview and editing</summary>
