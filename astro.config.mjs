@@ -21,6 +21,7 @@ export default defineConfig({
         { label: 'Transfer field data', slug: 'manual/transfer-field-data' }, { label: 'Import, export & print', slug: 'manual/import-export' },
         { label: 'Backup, sync & sharing', slug: 'manual/backup-sync' }, { label: 'Settings & shortcuts', slug: 'manual/settings' },
         { label: 'Troubleshooting', slug: 'manual/troubleshooting' },
+        { label: 'Contact Support', slug: 'support' },
       ] },
       { label: 'By kind', items: [{ autogenerate: { directory: 'manual/kinds' } }] },
     ],
