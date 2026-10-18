@@ -3,20 +3,60 @@ title: Pick lists and folders
 description: "Pick lists and folders — Collectarr user manual"
 ---
 
-## Consistent vocabulary
+Pick lists maintain controlled, reusable vocabularies across your collection—including **Artists**, **Record Labels**, **Genres**, **Storage Locations**, **Formats**, **Contributor Roles**, and **Instruments**.
 
-Pick lists reuse values such as genre, location and kind-specific vocabularies. Reusing a spelling avoids splitting related items across similar folders.
+## 1. Why Vocabulary Consistency Matters
 
-Open **Manage Pick Lists**, choose a list and inspect values and usage. Use the offered add, rename, merge or delete actions and read the affected-entry information before applying. Available actions vary with the list.
+When browsing your collection by folder or filtering by genre, subtle inconsistencies in naming will split your albums across separate groups:
+* If five albums are tagged with `Pink Floyd` and one is accidentally entered as `Pink Floyd ` (with a trailing space), Collectarr will create two distinct artist folders.
+* Similarly, `Demo Records` and `Demo Records Ltd.` would be filed as two separate labels.
 
-Where a field has a manage-list button, it opens the relevant maintenance flow. The picker chooses a value; the manage button changes the list.
+Collectarr's **Manage Pick Lists** tool provides centralized maintenance to keep your vocabularies unified and clean.
 
-## Group folders
+## 2. The Pick List Manager
 
-**Group By** derives folders from actual values. The alphabetical/count controls change folder order. The folder-management action, where available, maintains underlying buckets. Favorites keep useful group choices easy to find without changing stored values.
+To inspect and manage your vocabularies:
 
-## Multiple values
+1. Open the main navigation menu and select **Manage Pick Lists** (or click the manage icon next to any pick list field in the editor).
+2. Use the **Select a list...** dropdown at the top right to choose the vocabulary you want to maintain:
+   * *Artists / Credited Artists*
+   * *Record Labels*
+   * *Genres*
+   * *Storage Locations*
+   * *Formats*
+   * *Roles & Instruments*
+3. The table displays every unique value currently in your database, alongside its:
+   * **Name**: The display name shown in your library and inspector.
+   * **Sort Name**: The normalized name used for alphabetical ordering (e.g. `Bowie, David`).
+   * **Item Count**: The total number of albums, tracks, or credits currently using that value.
 
-One entry can match several folders. Two CD discs still give one album membership in CD; a Vinyl disc adds membership in Vinyl. Counts describe entries in the bucket rather than number of discs.
+![Manage Pick Lists dialog in Collectarr](../../../assets/screenshots/pick-list-manager.png)
 
-Fixed choices are different from editable vocabulary: they are defined when a custom field is created. See [Custom fields](../custom-fields/).
+## 3. Maintenance Actions: Add, Rename, Merge, and Delete
+
+The Pick List Manager provides four essential operations:
+
+### Adding New Values
+* Click **Add Value** to define an entry in advance. You can specify both its display name and custom sort name.
+
+### Renaming Values Across Your Library
+* If you want to correct a typo or standardize casing (e.g. changing `Demo recs` to `Demo Records`):
+  1. Click the edit icon on the target row.
+  2. Update the name.
+  3. Click **Save**. Collectarr updates every single album and track referencing that value throughout your entire database in a single atomic transaction.
+
+### Merging Duplicate Values (Merge Mode)
+When albums have been imported or entered with slight name variations, use **Merge Mode** to combine them:
+
+1. In the Pick List Manager toolbar, click **Merge Mode**.
+2. Select the duplicate values you want to consolidate (for example, check both `The Paper Moons` and `Paper Moons, The`).
+3. Select which of the two spellings should be retained as the canonical target name.
+4. Click **Merge**. Collectarr reassigns all albums and tracks to the chosen target name and permanently deletes the duplicate entry from your vocabulary.
+
+### Deleting Unused Values
+* Values with a count of `0` (no longer associated with any albums or tracks) can be safely deleted to keep your dropdown choices concise. Click the trash icon to remove an unused value.
+
+## 4. Pick Lists vs. Custom Field Fixed Choices
+
+* **Pick Lists**: Dynamic vocabularies shared across catalog and personal fields. They automatically grow as you add albums and can be maintained and merged at any time.
+* **Fixed Lists**: Configured strictly when defining a custom field. They restrict input to an explicit set of choices (e.g. *Audio Quality: Flac / MP3 / Wav*) that does not change dynamically with new entries. See [Custom fields](../custom-fields/).
