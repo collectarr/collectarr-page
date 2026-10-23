@@ -1,15 +1,9 @@
 ---
 import ThemeHead from '../../../components/ThemeHead.astro';
 import Header from '../../../components/Header.astro';
-import ReleaseArchive from '../../../components/ReleaseArchive.astro';
+import ReleaseTimeline from '../../../components/ReleaseTimeline.astro';
 import Footer from '../../../components/Footer.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
-const entries = [
-  { id: 'update-1', title: "Regular Expression Search (matches:)", category: "Version 1.2.0", date: "October 18, 2026" },
-  { id: 'update-2', title: "Automated Daily Database Backups", category: "Data Safety", date: "October 18, 2026" },
-  { id: 'update-3', title: "Smart Sort Name Auto-Generation", category: "Pick Lists", date: "October 18, 2026" },
-  { id: 'update-4', title: "Catalog Number Search & Update from Core Settings", category: "Cataloging", date: "October 18, 2026" },
-];
 ---
 
 <!doctype html>
@@ -19,7 +13,7 @@ const entries = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="What's new in Collectarr Music: release notes, automated backups, regex search, and Discogs catalog updates."
+      content="What's new in Collectarr Music: release notes for every stable version, from v1.0.0 to the latest."
     />
     <title>What's New in Collectarr Music — Updates & Release Notes</title>
     <ThemeHead />
@@ -34,87 +28,16 @@ const entries = [
         <p class="eyebrow">COLLECTARR MUSIC UPDATES</p>
         <h1>What's new in Collectarr Music?</h1>
         <p class="intro">
-          Explore recent features, format additions, and database improvements shipped in Collectarr Music.
+          Release notes for every stable version of Collectarr Music, newest first.
         </p>
       </section>
 
-      <div class="whatsnew-layout">
-      <ReleaseArchive entries={entries} />
-      <div class="updates-container">
-        <!-- Update 1: v1.2.0 Search & Regex -->
-        <article class="update-card" id="update-1" data-category="Version 1.2.0">
-          <div class="update-meta">
-            <span class="version-badge">Version 1.2.0</span>
-            <span class="date">October 18, 2026</span>
-          </div>
-          <h2>Regular Expression Search (`matches:`)</h2>
-          <p class="summary">
-            Crate diggers and large library owners can now run complex pattern matching locally without sending queries to external servers.
-          </p>
-          <ul class="update-points">
-            <li><strong>Regex Syntax:</strong> Type <code>matches: ^the\s</code> or any valid regular expression to filter tracks and album titles with immediate live highlighting.</li>
-            <li><strong>Syntax Feedback:</strong> Invalid regular expressions cleanly outline the search bar in red with inline error explanations.</li>
-            <li><strong>Fast & Local:</strong> Evaluated entirely on your local SQLite instance in milliseconds.</li>
-          </ul>
-        </article>
-
-        <!-- Update 2: Automated Backups -->
-        <article class="update-card" id="update-2" data-category="Data Safety">
-          <div class="update-meta">
-            <span class="version-badge">Data Safety</span>
-            <span class="date">October 18, 2026</span>
-          </div>
-          <h2>Automated Daily Database Backups</h2>
-          <p class="summary">
-            Peace of mind for your precious music catalog with automated background backups.
-          </p>
-          <ul class="update-points">
-            <li><strong>Daily Snapshot:</strong> The desktop and mobile apps create a full database snapshot once a day at startup and before every restore.</li>
-            <li><strong>Custom Retention:</strong> Configure retention periods from one week up to forever in <strong>Settings → Data</strong>.</li>
-            <li><strong>Safe Restore:</strong> Restoring an older snapshot automatically keeps a pre-restore backup first so actions can be cleanly reversed.</li>
-          </ul>
-        </article>
-
-        <!-- Update 3: Sort Names -->
-        <article class="update-card" id="update-3" data-category="Pick Lists">
-          <div class="update-meta">
-            <span class="version-badge">Pick Lists</span>
-            <span class="date">October 18, 2026</span>
-          </div>
-          <h2>Smart Sort Name Auto-Generation</h2>
-          <p class="summary">
-            Artist, label, and box set folders are now alphabetized correctly without manual bookkeeping.
-          </p>
-          <ul class="update-points">
-            <li><strong>Automatic Articles:</strong> Typing <em>The End Records</em> automatically populates the Sort Name as <em>End Records, The</em>.</li>
-            <li><strong>Folder Consistency:</strong> Every pick list folder is sorted strictly by Sort Name while displaying the natural artist or label name.</li>
-            <li><strong>Custom Overrides:</strong> Edit individual Sort Names anytime in <strong>Manage Pick Lists</strong>.</li>
-          </ul>
-        </article>
-
-        <!-- Update 4: Core & Discogs Lookups -->
-        <article class="update-card" id="update-4" data-category="Cataloging">
-          <div class="update-meta">
-            <span class="version-badge">Cataloging</span>
-            <span class="date">October 18, 2026</span>
-          </div>
-          <h2>Catalog Number Search & Update from Core Settings</h2>
-          <p class="summary">
-            Granular controls over how online metadata interacts with your curated library.
-          </p>
-          <ul class="update-points">
-            <li><strong>Catalog No. Tab:</strong> Dedicated search tab in Add Albums for searching directly by matrix or label catalog numbers.</li>
-            <li><strong>Update from Core Dialog:</strong> Choose per field whether updating from Core skips, fills missing values, or replaces existing data.</li>
-            <li><strong>Personal Data Shield:</strong> Personal ratings, purchase prices, locations, and custom fields are always protected from overwrite.</li>
-          </ul>
-        </article>
-      </div>
-      </div>
+      <ReleaseTimeline />
 
       <section class="updates-cta">
         <p class="eyebrow">DOWNLOAD THE LATEST VERSION</p>
         <h2>Keep your music library up to date</h2>
-        <p>Available on Windows, macOS, Linux, Android, and iOS.</p>
+        <p>Available for Windows, macOS, Linux and Android, with a web bundle and Docker image.</p>
         <div class="actions">
           <a class="primary" href="https://github.com/collectarr/collectarr-app/releases" target="_blank" rel="noopener">
             View Releases on GitHub ↗
@@ -177,96 +100,6 @@ const entries = [
     color: var(--text-2);
     max-width: 650px;
     margin: 0 auto;
-  }
-
-  .whatsnew-layout {
-    display: grid;
-    grid-template-columns: 280px minmax(0, 1fr);
-    gap: 32px;
-    align-items: start;
-  }
-  @media (max-width: 860px) {
-    .whatsnew-layout { grid-template-columns: 1fr; }
-  }
-  .update-card[hidden] { display: none; }
-  .updates-container {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-    padding-bottom: 64px;
-  }
-  .update-card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 32px 28px;
-    transition: border-color 0.2s ease;
-  }
-  .update-card:hover {
-    border-color: #f2932f;
-  }
-  .update-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-  .version-badge {
-    font-size: 10.5px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 3px 8px;
-    border-radius: 4px;
-    background: rgba(242, 147, 47, 0.15);
-    color: #fca74e;
-  }
-  .date {
-    font-size: 12.5px;
-    color: var(--text-4);
-  }
-  .update-card h2 {
-    font-size: 22px;
-    margin: 0 0 10px;
-    color: var(--text);
-  }
-  .summary {
-    color: var(--text-3);
-    font-size: 15px;
-    margin: 0 0 18px;
-  }
-  .update-points {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .update-points li {
-    font-size: 14px;
-    color: var(--text-2);
-    position: relative;
-    padding-left: 20px;
-  }
-  .update-points li::before {
-    content: '•';
-    position: absolute;
-    left: 4px;
-    color: var(--music-text);
-    font-size: 18px;
-    line-height: 1.2;
-  }
-  .update-points strong {
-    color: var(--text);
-  }
-  code {
-    background: var(--surface-2);
-    padding: 2px 6px;
-    border-radius: 4px;
-    color: var(--music-text);
-    font-family: Consolas, monospace;
-    font-size: 12.5px;
   }
 
   .updates-cta {

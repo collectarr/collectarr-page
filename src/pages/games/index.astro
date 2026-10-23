@@ -27,7 +27,7 @@ const faqItems = [
   },
   {
     "q": "Which platforms are supported?",
-    "a": "iOS and Android, Windows, macOS and Linux, plus Web and Docker for self-hosting."
+    "a": "Windows, macOS, Linux and Android, plus a web bundle and Docker image for self-hosting."
   }
 ];
 ---
@@ -344,32 +344,6 @@ const faqItems = [
       </section>
 
       <!-- Community Reviews -->
-      <section class="reviews-section">
-        <div class="section-heading">
-          <p class="eyebrow">REVIEWS FROM COLLECTORS</p>
-          <h2>Loved by retro gamers & archivists</h2>
-          <p>What fellow collectors say about managing their libraries with Collectarr.</p>
-        </div>
-
-        <div class="reviews-grid">
-          <div class="review-card">
-            <div class="stars">★★★★★</div>
-            <p>"Having separate hardware and toys-to-life tracking without paying an annual subscription fee is exactly what the video game collecting community needed."</p>
-            <span class="reviewer">— Retro Gaming Archivist</span>
-          </div>
-          <div class="review-card">
-            <div class="stars">★★★★★</div>
-            <p>"The completeness states (Loose, CIB, Box only) actually match how physical collectors organize cartridges. And knowing my serial numbers stay private is huge."</p>
-            <span class="reviewer">— Console & Cartridge Collector</span>
-          </div>
-          <div class="review-card">
-            <div class="stars">★★★★★</div>
-            <p>"Imported my old CLZ export in seconds. Everything—from purchase dates to YouTube trailers—worked seamlessly offline."</p>
-            <span class="reviewer">— Multi-Platform Collector</span>
-          </div>
-        </div>
-      </section>
-
       <Faq title="Questions about Collectarr Games" items={faqItems} />
 
       <!-- Callout / Support CTA -->
@@ -867,43 +841,6 @@ const faqItems = [
     font-weight: 750;
   }
 
-  /* Reviews Section */
-  .reviews-section {
-    padding: 64px 0;
-    border-top: 1px solid var(--line);
-  }
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  .review-card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 24px 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  .stars {
-    color: var(--games-text);
-    font-size: 14px;
-    margin-bottom: 12px;
-  }
-  .review-card p {
-    font-size: 14px;
-    color: var(--text-2);
-    line-height: 1.55;
-    margin: 0 0 16px;
-    flex-grow: 1;
-    font-style: italic;
-  }
-  .reviewer {
-    font-size: 12.5px;
-    color: var(--text-4);
-    font-weight: 700;
-  }
-
   /* Callout section */
   .callout-section {
     padding: 48px 0 80px;
@@ -930,7 +867,7 @@ const faqItems = [
   }
 
   @media (max-width: 900px) {
-    .methods-grid, .features, .reviews-grid {
+    .methods-grid, .features {
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
@@ -951,7 +888,7 @@ const faqItems = [
     .intro {
       font-size: 16px;
     }
-    .methods-grid, .features, .reviews-grid {
+    .methods-grid, .features {
       grid-template-columns: 1fr;
     }
     .actions {

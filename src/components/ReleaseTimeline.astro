@@ -1,0 +1,186 @@
+---
+import { releases, releaseUrl, releasesUrl } from '../data/releases';
+---
+
+<div class="timeline-layout">
+  <aside class="archive" aria-label="Release archive">
+    <h2>Release archive</h2>
+    <div class="chips" role="group" aria-label="Show">
+      <button type="button" class="chip active" data-filter="all">All</button>
+      <button type="button" class="chip" data-filter="features">Features</button>
+      <button type="button" class="chip" data-filter="fixes">Fixes</button>
+    </div>
+    <ol class="archive-list">
+      {releases.map((r) => (
+        <li>
+          <a href={`#v${r.version}`}>
+            <span class="a-title">Version {r.version}</span>
+            <span class="a-date">{r.date}</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+    <p class="archive-note">
+      Earlier 0.x builds were prototypes and are not listed. Every download is on{' '}
+      <a href={releasesUrl} target="_blank" rel="noopener">GitHub Releases ↗</a>.
+    </p>
+  </aside>
+
+  <div class="releases">
+    {releases.map((r, i) => (
+      <article class="release" id={`v${r.version}`}>
+        <div class="release-meta">
+          <span class="version-badge">Version {r.version}</span>
+          {i === 0 && <span class="latest-badge">Latest</span>}
+          <span class="date">{r.date}</span>
+        </div>
+        <h2>{r.summary}</h2>
+        {r.notice && (
+          <p class="notice"><strong>Good to know:</strong> {r.notice}</p>
+        )}
+        <section data-section="features">
+          <h3>Features</h3>
+          <ul>{r.features.map((f) => <li>{f}</li>)}</ul>
+        </section>
+        <section data-section="fixes">
+          <h3>Highlighted fixes</h3>
+          <ul>{r.fixes.map((f) => <li>{f}</li>)}</ul>
+        </section>
+        <p class="release-links">
+          <a href={releaseUrl(r.version)} target="_blank" rel="noopener">Full release notes & downloads ↗</a>
+          <span class="platforms">Windows, Linux, macOS, Android and a web bundle{r.docker ? ' · Docker image' : ''}</span>
+        </p>
+      </article>
+    ))}
+  </div>
+</div>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>('.archive .chip');
+  chips.forEach((chip) =>
+    chip.addEventListener('click', () => {
+      const filter = chip.dataset.filter;
+      chips.forEach((c) => c.classList.toggle('active', c === chip));
+      document.querySelectorAll<HTMLElement>('[data-section]').forEach((el) => {
+        el.hidden = filter !== 'all' && el.dataset.section !== filter;
+      });
+    }),
+  );
+</script>
+
+<style>
+  .timeline-layout {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+    padding-bottom: 64px;
+  }
+  .archive {
+    position: sticky;
+    top: 20px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .archive h2 {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin: 0 0 14px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .chip {
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--line-2);
+    background: transparent;
+    color: var(--text-2);
+    cursor: pointer;
+  }
+  .chip.active { background: var(--music-text); border-color: var(--music-text); color: var(--bg); }
+  .archive-list { list-style: none; margin: 0; padding: 0; }
+  .archive-list a { display: block; padding: 9px 0; border-top: 1px solid var(--line); }
+  .archive-list a:hover .a-title { color: var(--music-text); }
+  .a-title { display: block; font-size: 14px; font-weight: 700; }
+  .a-date { display: block; font-size: 12px; color: var(--text-4); }
+  .archive-note { font-size: 12.5px; color: var(--text-4); margin: 14px 0 0; }
+  .archive-note a { color: var(--music-text); }
+
+  .releases { display: flex; flex-direction: column; gap: 28px; }
+  .release {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 32px 28px;
+    scroll-margin-top: 20px;
+  }
+  .release-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .version-badge, .latest-badge {
+    font-size: 10.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(242, 147, 47, 0.15);
+    color: var(--music-text);
+  }
+  .latest-badge { background: var(--music-text); color: var(--bg); }
+  .date { font-size: 12.5px; color: var(--text-4); }
+  .release h2 { font-size: 21px; line-height: 1.35; margin: 0 0 16px; }
+  .notice {
+    background: var(--surface-2);
+    border-left: 3px solid var(--music-text);
+    border-radius: 4px;
+    padding: 12px 14px;
+    font-size: 13.5px;
+    color: var(--text-2);
+    margin: 0 0 20px;
+  }
+  .release section[hidden] { display: none; }
+  .release h3 {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin: 20px 0 10px;
+  }
+  .release ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
+  .release li {
+    font-size: 14px;
+    color: var(--text-2);
+    position: relative;
+    padding-left: 20px;
+  }
+  .release li::before {
+    content: '•';
+    position: absolute;
+    left: 4px;
+    color: var(--music-text);
+    font-size: 18px;
+    line-height: 1.2;
+  }
+  .release-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin: 24px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+  }
+  .release-links a { color: var(--music-text); font-weight: 700; }
+  .release-links a:hover { text-decoration: underline; }
+  .platforms { color: var(--text-4); }
+
+  @media (max-width: 860px) {
+    .timeline-layout { grid-template-columns: 1fr; }
+    .archive { position: static; }
+  }
+</style>

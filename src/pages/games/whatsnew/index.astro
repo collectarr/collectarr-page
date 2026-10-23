@@ -1,15 +1,8 @@
 ---
 import ThemeHead from '../../../components/ThemeHead.astro';
 import Header from '../../../components/Header.astro';
-import ReleaseArchive from '../../../components/ReleaseArchive.astro';
 import Footer from '../../../components/Footer.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
-const entries = [
-  { id: 'update-1', title: "Dedicated Hardware & Toys-to-Life Architecture", category: "Feature Release", date: "October 2026" },
-  { id: 'update-2', title: "Completeness Tiers & Packaging Value Recalculation", category: "Valuation", date: "October 2026" },
-  { id: 'update-3', title: "YouTube Trailer Links & Extended Cover Gallery", category: "Media", date: "October 2026" },
-  { id: 'update-4', title: "Lossless Native CSV & CLZ Games Import", category: "Import / Export", date: "October 2026" },
-];
 ---
 
 <!doctype html>
@@ -39,11 +32,9 @@ const entries = [
         </p>
       </section>
 
-      <div class="whatsnew-layout">
-      <ReleaseArchive entries={entries} />
       <div class="updates-container">
         <!-- Update 1: Hardware & Toys -->
-        <article class="update-card" id="update-1" data-category="Feature Release">
+        <article class="update-card">
           <div class="update-meta">
             <span class="version-badge">Feature Release</span>
             <span class="date">October 2026</span>
@@ -61,7 +52,7 @@ const entries = [
         </article>
 
         <!-- Update 2: Value & Completeness -->
-        <article class="update-card" id="update-2" data-category="Valuation">
+        <article class="update-card">
           <div class="update-meta">
             <span class="version-badge">Valuation</span>
             <span class="date">October 2026</span>
@@ -78,7 +69,7 @@ const entries = [
         </article>
 
         <!-- Update 3: YouTube Trailers & Media -->
-        <article class="update-card" id="update-3" data-category="Media">
+        <article class="update-card">
           <div class="update-meta">
             <span class="version-badge">Media</span>
             <span class="date">October 2026</span>
@@ -95,7 +86,7 @@ const entries = [
         </article>
 
         <!-- Update 4: Imports & Exports -->
-        <article class="update-card" id="update-4" data-category="Import / Export">
+        <article class="update-card">
           <div class="update-meta">
             <span class="version-badge">Import / Export</span>
             <span class="date">October 2026</span>
@@ -110,7 +101,6 @@ const entries = [
             <li><strong>CLZ Web XML Import:</strong> Guided XML import with separate mappings for Games, Hardware, and Toys.</li>
           </ul>
         </article>
-      </div>
       </div>
 
       <section class="updates-cta">
@@ -151,7 +141,7 @@ const entries = [
   .skip:focus { top: 15px; }
 
   main {
-    max-width: 1180px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 24px;
   }
@@ -181,16 +171,6 @@ const entries = [
     margin: 0 auto;
   }
 
-  .whatsnew-layout {
-    display: grid;
-    grid-template-columns: 280px minmax(0, 1fr);
-    gap: 32px;
-    align-items: start;
-  }
-  @media (max-width: 860px) {
-    .whatsnew-layout { grid-template-columns: 1fr; }
-  }
-  .update-card[hidden] { display: none; }
   .updates-container {
     display: flex;
     flex-direction: column;
