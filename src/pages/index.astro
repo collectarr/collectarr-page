@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import ThemeHead from '../components/ThemeHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import workspace from '../assets/screenshots/library.png';
@@ -16,6 +17,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
       content="Collectarr is a local-first collection database and catalog manager for music albums, video games, hardware, and media collections."
     />
     <title>Collectarr — A home for your collections</title>
+    <ThemeHead />
     <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
   </head>
   <body class="home-page">
@@ -253,10 +255,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
 <style>
   :global(*){box-sizing:border-box}
   :global(html){scroll-behavior:smooth}
-  :global(body){margin:0;background:#151618;color:#f6f3ed;font-family:"Segoe UI",system-ui,sans-serif;line-height:1.6}
+  :global(body){margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,sans-serif;line-height:1.6}
   :global(a){color:inherit;text-decoration:none}
   :global(a:focus-visible){outline:3px solid #f3a457;outline-offset:4px}
-  :global(::selection){background:#f3a457;color:#151618}
+  :global(::selection){background:#f3a457;color:var(--on-accent)}
 
   .skip {
     position: fixed;
@@ -264,7 +266,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     left: 20px;
     padding: 10px 16px;
     background: #f3a457;
-    color: #151618;
+    color: var(--on-accent);
     font-weight: 700;
     z-index: 1000;
   }
@@ -287,7 +289,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     font-size: 12px;
     letter-spacing: 0.14em;
     font-weight: 800;
-    color: #f3a457;
+    color: var(--accent-text);
     text-transform: uppercase;
     margin-bottom: 12px;
   }
@@ -298,13 +300,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     margin: 16px 0 24px;
   }
   .hero h1 span {
-    color: #f3a457;
+    color: var(--accent-text);
   }
   .intro {
     max-width: 700px;
     margin: 0 auto 30px;
     font-size: 19px;
-    color: #c4c7cc;
+    color: var(--text-2);
     line-height: 1.55;
   }
   .actions {
@@ -327,19 +329,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   }
   .primary {
     background: #f3a457;
-    color: #151618;
+    color: var(--on-accent);
   }
   .primary:hover {
     background: #ffd2a2;
     transform: translateY(-2px);
   }
   .secondary {
-    border: 1px solid #4a4d52;
-    background: #1e2023;
+    border: 1px solid var(--line-2);
+    background: var(--surface);
   }
   .secondary:hover {
-    background: #2b2e33;
-    border-color: #727780;
+    background: var(--surface-2);
+    border-color: var(--line-2);
     transform: translateY(-2px);
   }
   .btn-kind-music {
@@ -361,13 +363,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     transform: translateY(-2px);
   }
   .forum-link {
-    border: 1px solid #3c4046;
-    background: #191c1f;
-    color: #a8acb2;
+    border: 1px solid var(--line-2);
+    background: var(--surface);
+    color: var(--text-3);
   }
   .forum-link:hover {
-    background: #24282d;
-    color: #f6f3ed;
+    background: var(--surface-2);
+    color: var(--text);
     transform: translateY(-2px);
   }
 
@@ -385,13 +387,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     letter-spacing: 0.06em;
     padding: 4px 10px;
     border-radius: 4px;
-    background: #1f2227;
-    color: #9ea3a8;
-    border: 1px solid #2d3138;
+    background: var(--surface);
+    color: var(--text-4);
+    border: 1px solid var(--line);
   }
   .availability-badges .badge.highlight {
     background: rgba(243, 164, 87, 0.15);
-    color: #f3a457;
+    color: var(--accent-text);
     border-color: rgba(243, 164, 87, 0.3);
   }
 
@@ -402,20 +404,20 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     display: block;
     width: 100%;
     height: auto;
-    border: 1px solid #443c34;
+    border: 1px solid var(--line-2);
     border-radius: 10px;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
   }
   .workspace figcaption {
     font-size: 12px;
-    color: #8c9096;
+    color: var(--text-4);
     margin-top: 14px;
   }
 
   /* Spotlight Grid */
   .spotlight-section {
     padding: 64px 0 40px;
-    border-top: 1px solid #282a2e;
+    border-top: 1px solid var(--line);
   }
   .spotlight-header {
     text-align: center;
@@ -429,7 +431,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     margin: 12px 0 16px;
   }
   .spotlight-header p {
-    color: #a8acb2;
+    color: var(--text-3);
     font-size: 16px;
   }
   .spotlight-grid {
@@ -438,8 +440,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     gap: 32px;
   }
   .spotlight-card {
-    background: #1a1c1f;
-    border: 2px solid #282b30;
+    background: var(--surface);
+    border: 2px solid var(--line);
     border-radius: 12px;
     padding: 36px 32px;
     display: flex;
@@ -473,11 +475,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   }
   .music-card .card-icon {
     background: rgba(242, 147, 47, 0.14);
-    color: #f2932f;
+    color: var(--music-text);
   }
   .games-card .card-icon {
     background: rgba(226, 49, 73, 0.14);
-    color: #e23149;
+    color: var(--games-text);
   }
   .card-icon svg {
     width: 28px;
@@ -490,16 +492,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     letter-spacing: 0.08em;
     padding: 4px 10px;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.08);
-    color: #c4c7cc;
+    background: var(--overlay);
+    color: var(--text-2);
   }
   .spotlight-card h3 {
     font-size: 24px;
     margin: 0 0 12px;
-    color: #f6f3ed;
+    color: var(--text);
   }
   .spotlight-card p {
-    color: #a8acb2;
+    color: var(--text-3);
     font-size: 15px;
     line-height: 1.55;
     margin: 0 0 20px;
@@ -515,7 +517,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   }
   .card-features li {
     font-size: 13.5px;
-    color: #c4c7cc;
+    color: var(--text-2);
     position: relative;
     padding-left: 20px;
   }
@@ -523,7 +525,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     content: '•';
     position: absolute;
     left: 2px;
-    color: #f2932f;
+    color: var(--music-text);
     font-size: 18px;
     line-height: 1.2;
   }
@@ -531,7 +533,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     content: '•';
     position: absolute;
     left: 2px;
-    color: #e23149;
+    color: var(--games-text);
     font-size: 18px;
     line-height: 1.2;
   }
@@ -552,14 +554,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   }
   .primary-music {
     background: #f2932f;
-    color: #151618;
+    color: var(--on-accent);
   }
   .primary-music:hover {
     background: #ffac33;
     transform: translateY(-2px);
   }
   .text-music {
-    color: #f2932f;
+    color: var(--music-text);
     font-weight: 650;
   }
   .text-music:hover {
@@ -574,7 +576,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     transform: translateY(-2px);
   }
   .text-games {
-    color: #e23149;
+    color: var(--games-text);
     font-weight: 650;
   }
   .text-games:hover {
@@ -587,14 +589,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     grid-template-columns: repeat(3, 1fr);
     gap: 36px;
     padding: 56px 0 72px;
-    border-top: 1px solid #282a2e;
+    border-top: 1px solid var(--line);
   }
   .features article {
     padding-top: 24px;
-    border-top: 1px solid #36393f;
+    border-top: 1px solid var(--line-2);
   }
   .number {
-    color: #f3a457;
+    color: var(--accent-text);
     font-size: 13px;
     font-weight: 800;
   }
@@ -604,13 +606,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     margin: 12px 0 10px;
   }
   .features p {
-    color: #a8acb2;
+    color: var(--text-3);
     font-size: 14.5px;
     line-height: 1.55;
     margin: 0 0 16px;
   }
   .features a {
-    color: #f3a457;
+    color: var(--accent-text);
     font-size: 14px;
     font-weight: 700;
   }
@@ -621,10 +623,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   /* Companions Section */
   .companions-section {
     padding: 56px 0;
-    border-top: 1px solid #282a2e;
+    border-top: 1px solid var(--line);
   }
   .companions-inner {
-    background: linear-gradient(180deg, #1c1d20 0%, #151618 100%);
+    background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
     border: 1px solid rgba(243, 164, 87, 0.2);
     border-radius: 12px;
     padding: 52px 36px;
@@ -634,7 +636,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     max-width: 680px;
     margin: 12px auto 36px;
     font-size: 16px;
-    color: #c4c7cc;
+    color: var(--text-2);
   }
   .companions-grid {
     display: grid;
@@ -643,8 +645,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     text-align: left;
   }
   .companion-box {
-    background: #17181a;
-    border: 1px solid #282a2e;
+    background: var(--surface);
+    border: 1px solid var(--line);
     border-radius: 8px;
     padding: 28px 24px;
   }
@@ -653,33 +655,33 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #f3a457;
+    color: var(--accent-text);
     margin-bottom: 6px;
   }
   .companion-box h3 {
     font-size: 20px;
     margin: 0 0 12px;
-    color: #f6f3ed;
+    color: var(--text);
   }
   .companion-box p {
-    color: #a8acb2;
+    color: var(--text-3);
     font-size: 14px;
     line-height: 1.55;
     margin: 0;
   }
   kbd {
-    background: #282b30;
-    border: 1px solid #3c4046;
+    background: var(--line);
+    border: 1px solid var(--line-2);
     border-radius: 4px;
     padding: 2px 6px;
     font-size: 12px;
-    color: #f6f3ed;
+    color: var(--text);
   }
 
   /* Roadmap Section */
   .roadmap-section {
     padding: 56px 0 64px;
-    border-top: 1px solid #282a2e;
+    border-top: 1px solid var(--line);
   }
   .roadmap-header {
     text-align: center;
@@ -692,7 +694,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     letter-spacing: -0.03em;
   }
   .roadmap-header p {
-    color: #a8acb2;
+    color: var(--text-3);
     font-size: 15.5px;
   }
   .roadmap-grid {
@@ -701,8 +703,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     gap: 24px;
   }
   .roadmap-card {
-    background: #17191c;
-    border: 1px solid #282b30;
+    background: var(--surface);
+    border: 1px solid var(--line);
     border-radius: 8px;
     padding: 24px 22px;
     position: relative;
@@ -714,19 +716,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     letter-spacing: 0.08em;
     padding: 2px 7px;
     border-radius: 4px;
-    background: rgba(255, 255, 255, 0.08);
-    color: #9ea3a8;
+    background: var(--overlay);
+    color: var(--text-4);
     display: inline-block;
     margin-bottom: 12px;
   }
   .roadmap-card h3 {
     font-size: 18px;
     margin: 0 0 8px;
-    color: #f6f3ed;
+    color: var(--text);
   }
   .roadmap-card p {
     font-size: 13.5px;
-    color: #8c9096;
+    color: var(--text-4);
     line-height: 1.5;
     margin: 0;
   }
@@ -736,8 +738,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     padding: 20px 0 80px;
   }
   .help-cta-inner {
-    background: #191b1e;
-    border: 1px solid #2a2d33;
+    background: var(--surface);
+    border: 1px solid var(--line);
     border-radius: 12px;
     padding: 56px 32px;
     text-align: center;
@@ -750,7 +752,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     letter-spacing: -0.03em;
   }
   .help-cta-inner p {
-    color: #c4c7cc;
+    color: var(--text-2);
     max-width: 600px;
     margin: 0 auto 30px;
     font-size: 16px;

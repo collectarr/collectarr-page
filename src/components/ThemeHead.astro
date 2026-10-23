@@ -1,0 +1,59 @@
+---
+// Shared theme tokens and the pre-paint script. Uses Starlight's storage key so the
+// choice carries over to the manual.
+---
+
+<script is:inline>
+  (function () {
+    var theme = 'dark';
+    try {
+      var stored = localStorage.getItem('starlight-theme');
+      theme = stored === 'light' || stored === 'dark'
+        ? stored
+        : matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    } catch (e) {}
+    document.documentElement.dataset.theme = theme;
+  })();
+</script>
+
+<style is:global>
+  :root {
+    color-scheme: dark;
+    --bg: #151618;
+    --bg-deep: #0f1011;
+    --surface: #1a1c1f;
+    --surface-2: #2b2e33;
+    --line: #282b30;
+    --line-2: #4a4d52;
+    --text: #f6f3ed;
+    --text-2: #c4c7cc;
+    --text-3: #a8acb2;
+    --text-4: #8c9096;
+    --text-5: #72767c;
+    --overlay: rgba(255, 255, 255, 0.08);
+    --accent-text: #f3a457;
+    --music-text: #f2932f;
+    --games-text: #e23149;
+    --on-accent: #151618;
+    --shadow: rgba(0, 0, 0, 0.4);
+  }
+  :root[data-theme='light'] {
+    color-scheme: light;
+    --bg: #f7f5f1;
+    --bg-deep: #ece8e1;
+    --surface: #ffffff;
+    --surface-2: #efeae2;
+    --line: #e1dcd3;
+    --line-2: #c6c0b5;
+    --text: #1c1d20;
+    --text-2: #3b3f45;
+    --text-3: #545961;
+    --text-4: #666b73;
+    --text-5: #7a7f87;
+    --overlay: rgba(0, 0, 0, 0.06);
+    --accent-text: #a8500a;
+    --music-text: #b25f0a;
+    --games-text: #c4182f;
+    --shadow: rgba(40, 30, 20, 0.12);
+  }
+</style>

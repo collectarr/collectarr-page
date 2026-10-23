@@ -1,0 +1,83 @@
+---
+interface Props {
+  entries: { id: string; title: string; category: string; date: string }[];
+}
+const { entries } = Astro.props;
+const categories = [...new Set(entries.map((e) => e.category))];
+---
+
+<aside class="archive" aria-label="Release archive">
+  <h2>Release archive</h2>
+  <div class="chips" role="group" aria-label="Filter by category">
+    <button type="button" class="chip active" data-filter="all">All</button>
+    {categories.map((c) => <button type="button" class="chip" data-filter={c}>{c}</button>)}
+  </div>
+  <ol class="archive-list">
+    {entries.map((e) => (
+      <li data-category={e.category}>
+        <a href={`#${e.id}`}>
+          <span class="a-date">{e.date}</span>
+          <span class="a-title">{e.title}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+  <p class="archive-note">
+    Installers for every release are on <a href="https://github.com/collectarr/collectarr-app/releases" target="_blank" rel="noopener">GitHub Releases ↗</a>.
+  </p>
+</aside>
+
+<script>
+  const archive = document.querySelector('.archive');
+  const chips = archive?.querySelectorAll<HTMLButtonElement>('.chip') ?? [];
+  chips.forEach((chip) =>
+    chip.addEventListener('click', () => {
+      const filter = chip.dataset.filter;
+      chips.forEach((c) => c.classList.toggle('active', c === chip));
+      document.querySelectorAll<HTMLElement>('[data-category]').forEach((el) => {
+        el.hidden = filter !== 'all' && el.dataset.category !== filter;
+      });
+    }),
+  );
+</script>
+
+<style>
+  .archive {
+    position: sticky;
+    top: 20px;
+    align-self: start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .archive h2 {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin: 0 0 14px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .chip {
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--line-2);
+    background: transparent;
+    color: var(--text-2);
+    cursor: pointer;
+  }
+  .chip.active { background: var(--accent-text); border-color: var(--accent-text); color: var(--bg); }
+  .archive-list { list-style: none; margin: 0; padding: 0; }
+  .archive-list li[hidden] { display: none; }
+  .archive-list a { display: block; padding: 9px 0; border-top: 1px solid var(--line); }
+  .archive-list a:hover .a-title { color: var(--accent-text); }
+  .a-date { display: block; font-size: 11.5px; color: var(--text-4); }
+  .a-title { display: block; font-size: 14px; font-weight: 650; line-height: 1.35; }
+  .archive-note { font-size: 12.5px; color: var(--text-4); margin: 14px 0 0; }
+  .archive-note a { color: var(--accent-text); }
+  @media (max-width: 860px) { .archive { position: static; } }
+</style>

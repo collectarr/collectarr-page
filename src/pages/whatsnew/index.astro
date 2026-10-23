@@ -1,4 +1,5 @@
 ---
+import ThemeHead from '../../components/ThemeHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
@@ -14,6 +15,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
       content="What's new in Collectarr: global release notes and updates across Music and Games libraries."
     />
     <title>What's New in Collectarr — All Releases & Updates</title>
+    <ThemeHead />
     <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
   </head>
   <body class="whatsnew-page">
@@ -115,10 +117,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
 <style>
   :global(*){box-sizing:border-box}
   :global(html){scroll-behavior:smooth}
-  :global(body){margin:0;background:#141618;color:#f6f3ed;font-family:"Segoe UI",system-ui,sans-serif;line-height:1.6}
+  :global(body){margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,sans-serif;line-height:1.6}
   :global(a){color:inherit;text-decoration:none}
   :global(a:focus-visible){outline:3px solid #f3a457;outline-offset:4px}
-  :global(::selection){background:#f3a457;color:#141618}
+  :global(::selection){background:#f3a457;color:var(--on-accent)}
 
   .skip {
     position: fixed;
@@ -126,7 +128,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     left: 20px;
     padding: 10px 16px;
     background: #f3a457;
-    color: #141618;
+    color: var(--on-accent);
     font-weight: 700;
     z-index: 1000;
   }
@@ -146,7 +148,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     font-size: 12px;
     letter-spacing: 0.14em;
     font-weight: 800;
-    color: #f3a457;
+    color: var(--accent-text);
     text-transform: uppercase;
     margin-bottom: 12px;
   }
@@ -158,7 +160,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   }
   .intro {
     font-size: 18px;
-    color: #c4c7cc;
+    color: var(--text-2);
     max-width: 680px;
     margin: 0 auto;
   }
@@ -170,8 +172,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     padding-bottom: 64px;
   }
   .library-update-block {
-    background: #191b1e;
-    border: 2px solid #282b30;
+    background: var(--surface);
+    border: 2px solid var(--line);
     border-radius: 12px;
     padding: 36px 30px;
     display: flex;
@@ -205,11 +207,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   }
   .games-block .block-icon {
     background: rgba(226, 49, 73, 0.14);
-    color: #e23149;
+    color: var(--games-text);
   }
   .music-block .block-icon {
     background: rgba(242, 147, 47, 0.14);
-    color: #f2932f;
+    color: var(--music-text);
   }
   .block-icon svg {
     width: 26px;
@@ -224,18 +226,18 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     margin-bottom: 4px;
   }
   .games-block .block-tag {
-    color: #e23149;
+    color: var(--games-text);
   }
   .music-block .block-tag {
-    color: #f2932f;
+    color: var(--music-text);
   }
   .block-header h2 {
     font-size: 22px;
     margin: 0;
-    color: #f6f3ed;
+    color: var(--text);
   }
   .block-desc {
-    color: #a8acb2;
+    color: var(--text-3);
     font-size: 14.5px;
     line-height: 1.55;
     margin: 0 0 20px;
@@ -251,7 +253,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   }
   .block-highlights li {
     font-size: 13.5px;
-    color: #c4c7cc;
+    color: var(--text-2);
     position: relative;
     padding-left: 20px;
   }
@@ -259,7 +261,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     content: '•';
     position: absolute;
     left: 2px;
-    color: #e23149;
+    color: var(--games-text);
     font-size: 18px;
     line-height: 1.2;
   }
@@ -267,7 +269,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     content: '•';
     position: absolute;
     left: 2px;
-    color: #f2932f;
+    color: var(--music-text);
     font-size: 18px;
     line-height: 1.2;
   }
@@ -292,7 +294,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   }
   .music-action {
     background: #f2932f;
-    color: #141618;
+    color: var(--on-accent);
   }
   .music-action:hover {
     background: #ffac33;
@@ -300,8 +302,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   }
 
   .github-releases-cta {
-    background: #191b1e;
-    border: 1px solid #282b30;
+    background: var(--surface);
+    border: 1px solid var(--line);
     border-radius: 12px;
     padding: 48px 32px;
     text-align: center;
@@ -312,7 +314,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     margin: 10px 0 12px;
   }
   .github-releases-cta p {
-    color: #a8acb2;
+    color: var(--text-3);
     margin: 0 auto 24px;
     max-width: 500px;
   }
@@ -322,7 +324,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     padding: 12px 24px;
     border-radius: 6px;
     background: #f3a457;
-    color: #141618;
+    color: var(--on-accent);
     font-weight: 750;
     font-size: 14px;
     transition: all 0.15s ease;

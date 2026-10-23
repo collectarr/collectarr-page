@@ -1,7 +1,15 @@
 ---
+import ThemeHead from '../../../components/ThemeHead.astro';
 import Header from '../../../components/Header.astro';
+import ReleaseArchive from '../../../components/ReleaseArchive.astro';
 import Footer from '../../../components/Footer.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
+const entries = [
+  { id: 'update-1', title: "Dedicated Hardware & Toys-to-Life Architecture", category: "Feature Release", date: "October 2026" },
+  { id: 'update-2', title: "Completeness Tiers & Packaging Value Recalculation", category: "Valuation", date: "October 2026" },
+  { id: 'update-3', title: "YouTube Trailer Links & Extended Cover Gallery", category: "Media", date: "October 2026" },
+  { id: 'update-4', title: "Lossless Native CSV & CLZ Games Import", category: "Import / Export", date: "October 2026" },
+];
 ---
 
 <!doctype html>
@@ -14,6 +22,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
       content="What's new in Collectarr Games: latest software updates, hardware archiving, toys-to-life support, and valuation tools."
     />
     <title>What's New in Collectarr Games — Updates & Release Notes</title>
+    <ThemeHead />
     <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
   </head>
   <body class="games-page">
@@ -30,9 +39,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
         </p>
       </section>
 
+      <div class="whatsnew-layout">
+      <ReleaseArchive entries={entries} />
       <div class="updates-container">
         <!-- Update 1: Hardware & Toys -->
-        <article class="update-card">
+        <article class="update-card" id="update-1" data-category="Feature Release">
           <div class="update-meta">
             <span class="version-badge">Feature Release</span>
             <span class="date">October 2026</span>
@@ -50,7 +61,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
         </article>
 
         <!-- Update 2: Value & Completeness -->
-        <article class="update-card">
+        <article class="update-card" id="update-2" data-category="Valuation">
           <div class="update-meta">
             <span class="version-badge">Valuation</span>
             <span class="date">October 2026</span>
@@ -67,7 +78,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
         </article>
 
         <!-- Update 3: YouTube Trailers & Media -->
-        <article class="update-card">
+        <article class="update-card" id="update-3" data-category="Media">
           <div class="update-meta">
             <span class="version-badge">Media</span>
             <span class="date">October 2026</span>
@@ -84,7 +95,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
         </article>
 
         <!-- Update 4: Imports & Exports -->
-        <article class="update-card">
+        <article class="update-card" id="update-4" data-category="Import / Export">
           <div class="update-meta">
             <span class="version-badge">Import / Export</span>
             <span class="date">October 2026</span>
@@ -99,6 +110,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
             <li><strong>CLZ Web XML Import:</strong> Guided XML import with separate mappings for Games, Hardware, and Toys.</li>
           </ul>
         </article>
+      </div>
       </div>
 
       <section class="updates-cta">
@@ -121,7 +133,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
 <style>
   :global(*){box-sizing:border-box}
   :global(html){scroll-behavior:smooth}
-  :global(body){margin:0;background:#141517;color:#f6f3ed;font-family:"Segoe UI",system-ui,sans-serif;line-height:1.6}
+  :global(body){margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,sans-serif;line-height:1.6}
   :global(a){color:inherit;text-decoration:none}
   :global(a:focus-visible){outline:3px solid #e23149;outline-offset:4px}
   :global(::selection){background:#e23149;color:#fff}
@@ -139,7 +151,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   .skip:focus { top: 15px; }
 
   main {
-    max-width: 1000px;
+    max-width: 1180px;
     margin: 0 auto;
     padding: 0 24px;
   }
@@ -152,7 +164,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     font-size: 12px;
     letter-spacing: 0.14em;
     font-weight: 800;
-    color: #e23149;
+    color: var(--games-text);
     text-transform: uppercase;
     margin-bottom: 12px;
   }
@@ -164,11 +176,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   }
   .intro {
     font-size: 18px;
-    color: #c4c7cc;
+    color: var(--text-2);
     max-width: 650px;
     margin: 0 auto;
   }
 
+  .whatsnew-layout {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .whatsnew-layout { grid-template-columns: 1fr; }
+  }
+  .update-card[hidden] { display: none; }
   .updates-container {
     display: flex;
     flex-direction: column;
@@ -176,8 +198,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     padding-bottom: 64px;
   }
   .update-card {
-    background: #1a1c1f;
-    border: 1px solid #282b30;
+    background: var(--surface);
+    border: 1px solid var(--line);
     border-radius: 10px;
     padding: 32px 28px;
     transition: border-color 0.2s ease;
@@ -203,15 +225,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   }
   .date {
     font-size: 12.5px;
-    color: #8c9096;
+    color: var(--text-4);
   }
   .update-card h2 {
     font-size: 22px;
     margin: 0 0 10px;
-    color: #f6f3ed;
+    color: var(--text);
   }
   .summary {
-    color: #a8acb2;
+    color: var(--text-3);
     font-size: 15px;
     margin: 0 0 18px;
   }
@@ -225,7 +247,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   }
   .update-points li {
     font-size: 14px;
-    color: #c4c7cc;
+    color: var(--text-2);
     position: relative;
     padding-left: 20px;
   }
@@ -233,17 +255,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     content: '•';
     position: absolute;
     left: 4px;
-    color: #e23149;
+    color: var(--games-text);
     font-size: 18px;
     line-height: 1.2;
   }
   .update-points strong {
-    color: #f6f3ed;
+    color: var(--text);
   }
 
   .updates-cta {
-    background: #191b1e;
-    border: 1px solid #2a2d33;
+    background: var(--surface);
+    border: 1px solid var(--line);
     border-radius: 12px;
     padding: 48px 32px;
     text-align: center;
@@ -254,7 +276,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     margin: 10px 0 12px;
   }
   .updates-cta p {
-    color: #c4c7cc;
+    color: var(--text-2);
     margin: 0 auto 24px;
     max-width: 500px;
   }
@@ -282,11 +304,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     transform: translateY(-2px);
   }
   .secondary {
-    border: 1px solid #4a4d52;
-    background: #1e2023;
+    border: 1px solid var(--line-2);
+    background: var(--surface);
   }
   .secondary:hover {
-    background: #2b2e33;
+    background: var(--surface-2);
     transform: translateY(-2px);
   }
 </style>
