@@ -3,7 +3,9 @@
 export interface Release {
   version: string;
   date: string;
+  title: string;
   summary: string;
+  tags: string[];
   notice?: string;
   features: string[];
   fixes: string[];
@@ -17,6 +19,8 @@ export const releases: Release[] = [
   {
     version: '1.2.0',
     date: 'October 18, 2026',
+    title: 'Regex search, automatic backups and an in-app updater',
+    tags: ['search', 'backups', 'sort names', 'updates', 'add albums'],
     summary: 'Regular expression search, automatic backups, sort-name ordering, an in-app updater and a long list of Music polish.',
     notice:
       'On Windows the library and its backups now live in %APPDATA%\\Collectarr instead of Collectarr\\Collectarr. Existing data is not moved: close Collectarr and move collectarr-library.sqlite (with any -wal and -shm files) and the backups folder up one level before starting this version.',
@@ -40,6 +44,8 @@ export const releases: Release[] = [
   {
     version: '1.1.0',
     date: 'October 16, 2026',
+    title: 'Reworked search, Add dialog and settings, plus CATraxx import',
+    tags: ['import', 'loans', 'settings', 'sorting', 'add albums'],
     summary: 'Reworked search, Add dialog, settings, loans and statistics, plus CATraxx import.',
     features: [
       'Settings gains Sorting, Auto Capitalization and Localization (currency, number format, date display and entry order).',
@@ -63,6 +69,8 @@ export const releases: Release[] = [
   {
     version: '1.0.0',
     date: 'October 13, 2026',
+    title: 'The first stable Music release',
+    tags: ['music', 'albums', 'credits', 'backups', 'sync'],
     summary: 'The first stable Music release: the album catalog and personal-library model.',
     notice:
       'Windows and macOS downloads are not signed or notarized. Pre-release development databases are not converted automatically; future schema changes use explicit migrations.',
