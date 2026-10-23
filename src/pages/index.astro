@@ -1,50 +1,693 @@
 ---
 import { Image } from 'astro:assets';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import workspace from '../assets/screenshots/library.png';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
-const kinds = ['Music'];
-const kindPaths = ['music'];
 ---
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Collectarr is a local-first collection manager for music albums and editions. Explore the app and its shared user manual." />
+    <meta
+      name="description"
+      content="Collectarr is a local-first collection database and catalog manager for music albums, video games, hardware, and media collections."
+    />
     <title>Collectarr — A home for your collections</title>
     <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
   </head>
-  <body>
+  <body class="home-page">
     <a class="skip" href="#main">Skip to content</a>
-    <header>
-      <a class="brand" href={base}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v4H3zm0 6h8v8H3zm10 0h8v8h-8z" fill="currentColor" /></svg> COLLECTARR</a>
-      <nav aria-label="Main navigation"><a href="#collections">Collections</a><a href={`${base}manual/`}>User manual</a><a href="https://github.com/collectarr/collectarr-app">GitHub ↗</a></nav>
-    </header>
+    <Header currentKind="home" activeSubNav="home" />
+
     <main id="main">
+      <!-- Hero Section -->
       <section class="hero">
         <p class="eyebrow">FOR THE THINGS YOU LOVE TO COLLECT</p>
         <h1>Every collection.<br /><span>One place to call home.</span></h1>
-        <p class="intro">Music albums, discs and tracks. Keep track of what you own, find the details that matter, and make your library yours.</p>
-        <div class="actions"><a class="primary" href="https://github.com/collectarr/collectarr-app/releases">Explore releases ↗</a><a class="secondary" href={`${base}manual/getting-started/`}>Get started with the manual →</a></div>
-        <p class="note">Local-first · Open source · Music v1 baseline</p>
-        <figure class="workspace"><Image src={workspace} alt="The Collectarr Music workspace showing fictional demo albums, collection folders and the details inspector" loading="eager" /><figcaption>The Music workspace. Demonstration data; your library stays yours.</figcaption></figure>
+        <p class="intro">
+          Music albums, vinyl records, video games, gaming hardware, and figures.
+          Keep track of what you own, find the details that matter, and keep your library completely private and local.
+        </p>
+        <div class="actions">
+          <a class="primary" href="https://github.com/collectarr/collectarr-app/releases" target="_blank" rel="noopener">Explore releases ↗</a>
+          <a class="secondary" href={`${base}manual/getting-started/`}>Get started with the manual →</a>
+          <a class="btn-kind-music" href={`${base}music/`}>Explore Music →</a>
+          <a class="btn-kind-games" href={`${base}games/`}>Explore Games →</a>
+        </div>
+        <p class="note">Local-first · Open source · Music & Games active libraries</p>
+
+        <figure class="workspace">
+          <Image
+            src={workspace}
+            alt="The Collectarr workspace showing library items, collection folders, and the details inspector"
+            loading="eager"
+          />
+          <figcaption>The Collectarr workspace. Local-first demonstration data; your collection stays yours.</figcaption>
+        </figure>
       </section>
-      <section class="features" aria-label="What Collectarr does">
-        <article><span class="number">01</span><h2>Your collection, your data</h2><p>Personal entries live locally. Use Core for catalog metadata and configure optional personal sync when you need it.</p><a href={`${base}manual/backup-sync/`}>Data, backup & sync →</a></article>
-        <article><span class="number">02</span><h2>Details worth keeping</h2><p>Track editions, condition, locations and purchases. Add covers, personal images and custom fields for what matters to you.</p><a href={`${base}manual/editing/`}>Editing your entries →</a></article>
-        <article><span class="number">03</span><h2>A library that fits you</h2><p>Choose views, columns and sorting. Organize named collections and browse folders derived from your actual field values.</p><a href={`${base}manual/browsing/`}>Explore your library →</a></article>
+
+      <!-- Active Libraries Spotlight (Music & Games) -->
+      <section id="collections" class="spotlight-section" aria-label="Active collection libraries">
+        <div class="spotlight-header">
+          <p class="eyebrow">DEDICATED WORKSPACES</p>
+          <h2>Tailored for each kind of media.<br />Shared workflows where it counts.</h2>
+          <p>
+            Whether it's vinyl dead-wax runouts or cartridge completeness tiers, Collectarr provides
+            domain-specific fields and editors without bloat.
+          </p>
+        </div>
+
+        <div class="spotlight-grid">
+          <!-- Music Card -->
+          <article class="spotlight-card music-card">
+            <div class="card-top">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9" />
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M12 3v3m0 12v3M3 12h3m12 0h3" />
+                  <circle cx="12" cy="12" r=".75" fill="currentColor" stroke="none" />
+                </svg>
+              </div>
+              <span class="active-badge">Active Library</span>
+            </div>
+            <h3>Collectarr Music</h3>
+            <p>
+              Built for audiophiles, vinyl collectors, and crate diggers. Multi-disc edition containers,
+              vinyl dead-wax matrices, track durations, and rich contributor credits.
+            </p>
+            <ul class="card-features">
+              <li>Vinyl, CD, SACD, Tape & Hi-Res lossless formats</li>
+              <li>Album and disc contributor credits with custom roles</li>
+              <li>Discogs catalog lookups and barcode scanning</li>
+            </ul>
+            <div class="card-actions">
+              <a class="btn-link primary-music" href={`${base}music/`}>Open Music page →</a>
+              <a class="btn-link text-music" href="https://github.com/collectarr/collectarr-app/discussions?discussions_q=music" target="_blank" rel="noopener">
+                Music Forum ↗
+              </a>
+            </div>
+          </article>
+
+          <!-- Games Card -->
+          <article class="spotlight-card games-card">
+            <div class="card-top">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8 7h8c3 0 4.2 2.1 5.2 6.8.8 3.7-1.4 5.3-3.5 3.1L15 14H9l-2.7 2.9c-2.1 2.2-4.3.6-3.5-3.1C3.8 9.1 5 7 8 7Z" />
+                  <path d="M12 7V4h3M6 10v4m-2-2h4" />
+                  <circle cx="16" cy="10.5" r=".75" fill="currentColor" stroke="none" />
+                  <circle cx="18.5" cy="12.5" r=".75" fill="currentColor" stroke="none" />
+                </svg>
+              </div>
+              <span class="active-badge">Active Library</span>
+            </div>
+            <h3>Collectarr Games</h3>
+            <p>
+              Dedicated to video game software, retro cartridges, consoles, and figures.
+              Track Loose/CIB completeness, personal hardware serial numbers, and valuation snapshots.
+            </p>
+            <ul class="card-features">
+              <li>PlayStation, Nintendo, Xbox, Sega, Atari & PC platforms</li>
+              <li>Independent Hardware (consoles/accessories) & Toys-to-Life cataloging</li>
+              <li>Loose, CIB, and New packaging tiers with valuation support</li>
+            </ul>
+            <div class="card-actions">
+              <a class="btn-link primary-games" href={`${base}games/`}>Open Games page →</a>
+              <a class="btn-link text-games" href="https://github.com/collectarr/collectarr-app/discussions?discussions_q=game" target="_blank" rel="noopener">
+                Games Forum ↗
+              </a>
+            </div>
+          </article>
+        </div>
       </section>
-      <section id="collections" class="collections"><div><p class="eyebrow">MUSIC FIRST. YOUR COLLECTION, YOUR WAY.</p><h2>Different collections.<br />The details they deserve.</h2><p>Shared controls where the workflow is the same. Kind-specific fields and editors where it isn't.</p></div><div class="kinds">{kinds.map((kind, i) => <a href={`${base}manual/kinds/${kindPaths[i]}/`}><span>{kind}</span><span aria-hidden="true">↗</span></a>)}</div></section>
-      <section class="guide"><p class="eyebrow">A LITTLE HELP, WHEN YOU NEED IT</p><h2>From your first entry<br />to your next thousand.</h2><p>One searchable manual for your Music library, with common workflows and a dedicated Music chapter. Future kinds will extend this guide.</p><a class="primary" href={`${base}manual/`}>Open the user manual →</a></section>
+
+      <!-- Three Pillars / Core Features -->
+      <section class="features" aria-label="Core Collectarr principles">
+        <article>
+          <span class="number">01</span>
+          <h2>Your collection, your data</h2>
+          <p>
+            Entries live locally in an offline SQLite database. Use Core for catalog metadata
+            and configure optional personal sync when you need cross-device access. No forced cloud subscriptions.
+          </p>
+          <a href={`${base}manual/backup-sync/`}>Data, backup & sync →</a>
+        </article>
+
+        <article>
+          <span class="number">02</span>
+          <h2>Details worth keeping</h2>
+          <p>
+            Track editions, physical condition, storage locations, and purchase facts.
+            Add high-res front/back covers, personal photos, and custom fields for what matters to you.
+          </p>
+          <a href={`${base}manual/editing/`}>Editing your entries →</a>
+        </article>
+
+        <article>
+          <span class="number">03</span>
+          <h2>A library that fits you</h2>
+          <p>
+            Choose between table list, vertical/horizontal cards, cover grid, or shelves.
+            Organize named collections and browse hierarchical folders derived from your actual field values.
+          </p>
+          <a href={`${base}manual/browsing/`}>Explore your library →</a>
+        </article>
+      </section>
+
+      <!-- Upcoming Kinds Roadmap -->
+      <section id="upcoming" class="roadmap-section">
+        <div class="roadmap-header">
+          <p class="eyebrow">THE ROADMAP</p>
+          <h2>Expanding the Collectarr ecosystem</h2>
+          <p>
+            Designed from day one to handle all types of collections.
+            Following Music and Games, subsequent releases will introduce dedicated schemas for:
+          </p>
+        </div>
+
+        <div class="roadmap-grid">
+          <div class="roadmap-card comics">
+            <span class="badge planned">Planned</span>
+            <h3>Collectarr Comics</h3>
+            <p>Single issues, trade paperbacks, story arcs, variant covers, writers, pencilers, and CGC/CBCS grading conditions.</p>
+          </div>
+
+          <div class="roadmap-card movies">
+            <span class="badge planned">Planned</span>
+            <h3>Collectarr Movies</h3>
+            <p>4K Ultra HD, Blu-ray, DVD, aspect ratios, audio tracks, HDR formats, directors, and full cast/crew attribution.</p>
+          </div>
+
+          <div class="roadmap-card books">
+            <span class="badge planned">Planned</span>
+            <h3>Collectarr Books</h3>
+            <p>Hardcover, paperback, and digital editions. ISBN barcode lookup, page counts, publishers, genres, and author lists.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Help & Contact CTA -->
+      <section class="help-cta">
+        <div class="help-cta-inner">
+          <p class="eyebrow">COMMUNITY & SUPPORT</p>
+          <h2>Questions, ideas, or feedback?</h2>
+          <p>
+            Explore our platform-specific troubleshooting guides, view diagnostic log paths for Mobile, Web, or Desktop,
+            or participate in our open GitHub Discussions.
+          </p>
+          <div class="cta-actions">
+            <a class="primary" href={`${base}contact/`}>Open Contact & Help Center →</a>
+            <a class="secondary" href={`${base}manual/`}>User manual</a>
+            <a class="forum-link" href="https://github.com/collectarr/collectarr-app/discussions" target="_blank" rel="noopener">
+              Community Forum ↗
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
-    <footer><a class="brand" href={base}>COLLECTARR</a><p>An open-source collection manager. Independent of CLZ.</p><a href="https://github.com/collectarr/collectarr-app/issues">Feedback & issues ↗</a></footer>
+
+    <Footer />
   </body>
 </html>
+
 <style>
-  :global(*){box-sizing:border-box} :global(html){scroll-behavior:smooth} :global(body){margin:0;background:#17191a;color:#f6f3ed;font-family:"Segoe UI",system-ui,sans-serif;line-height:1.6} :global(a){color:inherit;text-decoration:none} :global(a:focus-visible){outline:3px solid #f3a457;outline-offset:5px} :global(::selection){background:#f3a457;color:#17191a}
-  header,main,footer{max-width:1240px;margin:auto}header{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 32px;border-bottom:1px solid #343637}.brand{font-size:20px;font-weight:850;letter-spacing:.07em;display:flex;gap:10px;align-items:center}.brand svg{width:24px;height:24px;color:#f3a457}nav{display:flex;gap:28px;font-size:14px;font-weight:600}nav a:hover,footer a:hover{color:#f3a457}.skip{position:fixed;top:-100px;left:20px;padding:10px;background:#f3a457;color:#17191a;z-index:100}.skip:focus{top:10px}
-  .hero{text-align:center;padding:72px 32px 36px}.eyebrow{font-size:12px;letter-spacing:.14em;font-weight:750;color:#f3a457}.hero h1{font-size:clamp(38px,5vw,68px);line-height:1.12;letter-spacing:-.045em;margin:24px 0}.hero h1 span{color:#f3a457}.intro{max-width:650px;margin:24px auto 30px;font-size:19px;color:#bbb9b3}.actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}.primary,.secondary{display:inline-flex;align-items:center;justify-content:center;border-radius:7px;padding:12px 20px;font-weight:700;font-size:14px;transition:background .15s,transform .15s}.primary{background:#f3a457;color:#17191a}.primary:hover{background:#ffd2a2;transform:translateY(-2px)}.secondary{border:1px solid #56514a}.secondary:hover{background:#2b2c2d}.note{color:#aaa8a1;font-size:12px;margin:20px 0 36px}.workspace{margin:0}.workspace img{display:block;width:100%;height:auto;border:1px solid #544436;border-radius:10px;box-shadow:0 24px 60px #0005}.workspace figcaption{font-size:12px;color:#aaa8a1;margin-top:14px}
-  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;padding:48px 32px 64px}.features article{padding-top:24px;border-top:1px solid #45433e}.number{color:#f3a457;font-size:13px}.features h2{font-size:22px;line-height:1.3}.features p,.collections p,.guide p:not(.eyebrow){color:#bbb9b3}.features a{color:#f3a457;font-size:14px;font-weight:650}.features a:hover{text-decoration:underline}.collections{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:64px 32px;border-top:1px solid #343637}.collections h2,.guide h2{font-size:clamp(30px,3.5vw,44px);line-height:1.2;letter-spacing:-.03em}.kinds{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kinds a{display:flex;justify-content:space-between;align-items:center;padding:15px 18px;border:1px solid #44443f;border-radius:6px;font-weight:650}.kinds a:hover{background:#352b22;border-color:#f3a457}.kinds a span:last-child{color:#f3a457}.guide{text-align:center;padding:60px 32px 80px;background:#222323;border-radius:12px;margin:24px 32px 64px}.guide p:not(.eyebrow){max-width:580px;margin:20px auto 30px}footer{padding:32px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid #343637;font-size:12px;color:#aaa8a1}footer .brand{font-size:15px;color:#f6f3ed}
-  @media(max-width:700px){header{padding:20px;align-items:flex-start;flex-direction:column;gap:14px}nav{gap:20px;flex-wrap:wrap}.hero{padding:44px 20px 20px}.intro{font-size:17px}.features{grid-template-columns:1fr;gap:18px;padding:30px 20px}.collections{grid-template-columns:1fr;gap:24px;padding:35px 20px}.guide{margin:20px;padding:35px 20px}.actions>a{width:100%}footer{padding:24px 20px;align-items:flex-start;flex-direction:column}}
-  @media(prefers-reduced-motion:reduce){:global(html){scroll-behavior:auto}.primary,.secondary{transition:none}.primary:hover{transform:none}}
+  :global(*){box-sizing:border-box}
+  :global(html){scroll-behavior:smooth}
+  :global(body){margin:0;background:#151618;color:#f6f3ed;font-family:"Segoe UI",system-ui,sans-serif;line-height:1.6}
+  :global(a){color:inherit;text-decoration:none}
+  :global(a:focus-visible){outline:3px solid #f3a457;outline-offset:4px}
+  :global(::selection){background:#f3a457;color:#151618}
+
+  .skip {
+    position: fixed;
+    top: -100px;
+    left: 20px;
+    padding: 10px 16px;
+    background: #f3a457;
+    color: #151618;
+    font-weight: 700;
+    z-index: 1000;
+  }
+  .skip:focus { top: 15px; }
+
+  main {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 68px 16px 48px;
+    max-width: 1020px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    font-weight: 800;
+    color: #f3a457;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 5vw, 68px);
+    line-height: 1.12;
+    letter-spacing: -0.045em;
+    margin: 16px 0 24px;
+  }
+  .hero h1 span {
+    color: #f3a457;
+  }
+  .intro {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    font-size: 19px;
+    color: #c4c7cc;
+    line-height: 1.55;
+  }
+  .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .primary, .secondary, .btn-kind-music, .btn-kind-games, .forum-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-weight: 750;
+    font-size: 14px;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+  .primary {
+    background: #f3a457;
+    color: #151618;
+  }
+  .primary:hover {
+    background: #ffd2a2;
+    transform: translateY(-2px);
+  }
+  .secondary {
+    border: 1px solid #4a4d52;
+    background: #1e2023;
+  }
+  .secondary:hover {
+    background: #2b2e33;
+    border-color: #727780;
+    transform: translateY(-2px);
+  }
+  .btn-kind-music {
+    border: 1px solid rgba(242, 147, 47, 0.4);
+    background: rgba(242, 147, 47, 0.1);
+    color: #ffb15c;
+  }
+  .btn-kind-music:hover {
+    background: rgba(242, 147, 47, 0.2);
+    transform: translateY(-2px);
+  }
+  .btn-kind-games {
+    border: 1px solid rgba(226, 49, 73, 0.4);
+    background: rgba(226, 49, 73, 0.1);
+    color: #ff6075;
+  }
+  .btn-kind-games:hover {
+    background: rgba(226, 49, 73, 0.2);
+    transform: translateY(-2px);
+  }
+  .forum-link {
+    border: 1px solid #3c4046;
+    background: #191c1f;
+    color: #a8acb2;
+  }
+  .forum-link:hover {
+    background: #24282d;
+    color: #f6f3ed;
+    transform: translateY(-2px);
+  }
+  .note {
+    color: #8c9096;
+    font-size: 12px;
+    margin: 18px 0 36px;
+  }
+  .workspace {
+    margin: 0;
+  }
+  .workspace img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid #443c34;
+    border-radius: 10px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  }
+  .workspace figcaption {
+    font-size: 12px;
+    color: #8c9096;
+    margin-top: 14px;
+  }
+
+  /* Spotlight Grid */
+  .spotlight-section {
+    padding: 64px 0 40px;
+    border-top: 1px solid #282a2e;
+  }
+  .spotlight-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 44px;
+  }
+  .spotlight-header h2 {
+    font-size: clamp(28px, 3.5vw, 42px);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    margin: 12px 0 16px;
+  }
+  .spotlight-header p {
+    color: #a8acb2;
+    font-size: 16px;
+  }
+  .spotlight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .spotlight-card {
+    background: #1a1c1f;
+    border: 2px solid #282b30;
+    border-radius: 12px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+  }
+  .spotlight-card:hover {
+    transform: translateY(-3px);
+  }
+  .music-card:hover {
+    border-color: #f2932f;
+    box-shadow: 0 10px 30px rgba(242, 147, 47, 0.1);
+  }
+  .games-card:hover {
+    border-color: #e23149;
+    box-shadow: 0 10px 30px rgba(226, 49, 73, 0.1);
+  }
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .music-card .card-icon {
+    background: rgba(242, 147, 47, 0.14);
+    color: #f2932f;
+  }
+  .games-card .card-icon {
+    background: rgba(226, 49, 73, 0.14);
+    color: #e23149;
+  }
+  .card-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+  .active-badge {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #c4c7cc;
+  }
+  .spotlight-card h3 {
+    font-size: 24px;
+    margin: 0 0 12px;
+    color: #f6f3ed;
+  }
+  .spotlight-card p {
+    color: #a8acb2;
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 0 0 20px;
+    flex-grow: 1;
+  }
+  .card-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .card-features li {
+    font-size: 13.5px;
+    color: #c4c7cc;
+    position: relative;
+    padding-left: 20px;
+  }
+  .music-card .card-features li::before {
+    content: '•';
+    position: absolute;
+    left: 2px;
+    color: #f2932f;
+    font-size: 18px;
+    line-height: 1.2;
+  }
+  .games-card .card-features li::before {
+    content: '•';
+    position: absolute;
+    left: 2px;
+    color: #e23149;
+    font-size: 18px;
+    line-height: 1.2;
+  }
+  .card-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 13.5px;
+    font-weight: 750;
+    transition: all 0.15s ease;
+  }
+  .primary-music {
+    background: #f2932f;
+    color: #151618;
+  }
+  .primary-music:hover {
+    background: #ffac33;
+    transform: translateY(-2px);
+  }
+  .text-music {
+    color: #f2932f;
+    font-weight: 650;
+  }
+  .text-music:hover {
+    text-decoration: underline;
+  }
+  .primary-games {
+    background: #e23149;
+    color: #ffffff;
+  }
+  .primary-games:hover {
+    background: #f93e56;
+    transform: translateY(-2px);
+  }
+  .text-games {
+    color: #e23149;
+    font-weight: 650;
+  }
+  .text-games:hover {
+    text-decoration: underline;
+  }
+
+  /* Core Features */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+    padding: 56px 0 72px;
+    border-top: 1px solid #282a2e;
+  }
+  .features article {
+    padding-top: 24px;
+    border-top: 1px solid #36393f;
+  }
+  .number {
+    color: #f3a457;
+    font-size: 13px;
+    font-weight: 800;
+  }
+  .features h2 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 12px 0 10px;
+  }
+  .features p {
+    color: #a8acb2;
+    font-size: 14.5px;
+    line-height: 1.55;
+    margin: 0 0 16px;
+  }
+  .features a {
+    color: #f3a457;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .features a:hover {
+    text-decoration: underline;
+  }
+
+  /* Roadmap Section */
+  .roadmap-section {
+    padding: 56px 0 64px;
+    border-top: 1px solid #282a2e;
+  }
+  .roadmap-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 36px;
+  }
+  .roadmap-header h2 {
+    font-size: clamp(26px, 3.2vw, 38px);
+    margin: 12px 0 14px;
+    letter-spacing: -0.03em;
+  }
+  .roadmap-header p {
+    color: #a8acb2;
+    font-size: 15.5px;
+  }
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .roadmap-card {
+    background: #17191c;
+    border: 1px solid #282b30;
+    border-radius: 8px;
+    padding: 24px 22px;
+    position: relative;
+  }
+  .badge.planned {
+    font-size: 9.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #9ea3a8;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  .roadmap-card h3 {
+    font-size: 18px;
+    margin: 0 0 8px;
+    color: #f6f3ed;
+  }
+  .roadmap-card p {
+    font-size: 13.5px;
+    color: #8c9096;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Help & Contact CTA */
+  .help-cta {
+    padding: 20px 0 80px;
+  }
+  .help-cta-inner {
+    background: #191b1e;
+    border: 1px solid #2a2d33;
+    border-radius: 12px;
+    padding: 56px 32px;
+    text-align: center;
+    max-width: 840px;
+    margin: 0 auto;
+  }
+  .help-cta-inner h2 {
+    font-size: clamp(26px, 3vw, 38px);
+    margin: 12px 0 16px;
+    letter-spacing: -0.03em;
+  }
+  .help-cta-inner p {
+    color: #c4c7cc;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-size: 16px;
+  }
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 900px) {
+    .spotlight-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .features {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .roadmap-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero {
+      padding: 44px 12px 28px;
+    }
+    .intro {
+      font-size: 16.5px;
+    }
+    .actions {
+      flex-direction: column;
+    }
+    .actions > a {
+      width: 100%;
+    }
+    .cta-actions {
+      flex-direction: column;
+    }
+    .cta-actions > a {
+      width: 100%;
+    }
+    .spotlight-card {
+      padding: 24px 20px;
+    }
+    .help-cta-inner {
+      padding: 36px 20px;
+    }
+  }
 </style>

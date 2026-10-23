@@ -1,0 +1,856 @@
+---
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Get help and contact support for Collectarr on Mobile, Web, or Desktop. Community forums, diagnostic guides, and issue trackers."
+    />
+    <title>Contact & Support Hub — Collectarr</title>
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+  </head>
+  <body class="contact-page">
+    <a class="skip" href="#main">Skip to content</a>
+    <Header currentKind="contact" activeSubNav="contact" />
+
+    <main id="main">
+      <section class="support-hero">
+        <p class="eyebrow">HELP & COMMUNITY SUPPORT</p>
+        <h1>Which product or platform<br /><span>do you need assistance with?</span></h1>
+        <p class="intro">
+          Select your platform below to view diagnostic paths, common troubleshooting steps,
+          and direct links to our community forums and GitHub issue trackers.
+        </p>
+      </section>
+
+      <!-- Platform Selector Cards / Tabs -->
+      <section id="platforms" class="platform-selection" aria-label="Platform selection">
+        <div class="platform-grid" role="tablist" aria-label="Platform tabs">
+          <button
+            id="tab-mobile"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-mobile"
+            class="platform-card"
+            data-platform="mobile"
+          >
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" />
+                <path d="M12 18h.01" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <h2>Collectarr Mobile</h2>
+              <p>iOS & Android applications</p>
+              <span class="badge">Mobile App</span>
+            </div>
+          </button>
+
+          <button
+            id="tab-web"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-web"
+            class="platform-card"
+            data-platform="web"
+          >
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <path d="M2 7h20M6 5h.01M9 5h.01M12 5h.01M8 21h8M12 17v4" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <h2>Collectarr Web</h2>
+              <p>Browser & self-hosted Docker</p>
+              <span class="badge">Online & Web</span>
+            </div>
+          </button>
+
+          <button
+            id="tab-desktop"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-desktop"
+            class="platform-card active"
+            data-platform="desktop"
+          >
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <path d="M8 21h8M12 17v4" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <h2>Collectarr Desktop</h2>
+              <p>Windows, macOS & Linux</p>
+              <span class="badge">Desktop App</span>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- Platform Details Panels -->
+      <section id="diagnostics" class="platform-panels">
+        <!-- Desktop Panel -->
+        <div id="panel-desktop" role="tabpanel" aria-labelledby="tab-desktop" class="panel active">
+          <div class="panel-header">
+            <span class="panel-tag">Desktop Support</span>
+            <h2>Troubleshooting & Support for Desktop (Windows, macOS, Linux)</h2>
+            <p>Native Flutter desktop client with local SQLite storage, full multi-column customization, and offline independence.</p>
+          </div>
+
+          <div class="panel-content-grid">
+            <div class="content-box">
+              <h3>Database & Diagnostic Log Paths</h3>
+              <p>If you encounter an issue, locating your logs and database folder is the quickest way to get help:</p>
+              <ul class="path-list">
+                <li>
+                  <strong>Windows:</strong><br />
+                  <code>%APPDATA%\Collectarr\logs\</code><br />
+                  <code>%APPDATA%\Collectarr\database\</code>
+                </li>
+                <li>
+                  <strong>macOS:</strong><br />
+                  <code>~/Library/Application Support/Collectarr/logs/</code>
+                </li>
+                <li>
+                  <strong>Linux:</strong><br />
+                  <code>~/.local/share/collectarr/logs/</code>
+                </li>
+              </ul>
+              <p class="tip-text">
+                💡 You can also view live logs inside the application under <strong>Settings → Logs</strong>.
+              </p>
+            </div>
+
+            <div class="content-box">
+              <h3>Common Desktop Solutions</h3>
+              <ul class="checklist">
+                <li><strong>Backups before changes:</strong> Collectarr automatically creates daily database copies. Restore or verify them in <strong>Settings → Data</strong>.</li>
+                <li><strong>Imports & Exports:</strong> CLZ Web XML files and CSV/TXT files can be imported directly via <strong>Main Menu → Import Data</strong>.</li>
+                <li><strong>Keyboard shortcuts:</strong> Press <kbd>Ctrl+K</kbd> (or <kbd>Cmd+K</kbd>) for instant search; <kbd>F1</kbd> opens the User Manual.</li>
+                <li><strong>Display & Theme:</strong> Switch between Dark and Default theme in <strong>Settings → Appearance</strong>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel-actions">
+            <a class="btn primary" href="https://github.com/collectarr/collectarr-app/discussions?discussions_q=desktop" target="_blank" rel="noopener">
+              Ask in Desktop Discussions ↗
+            </a>
+            <a class="btn secondary" href="https://github.com/collectarr/collectarr-app/issues/new?title=%5BDesktop%5D%20&labels=desktop,bug" target="_blank" rel="noopener">
+              Report Desktop Bug on GitHub ↗
+            </a>
+            <a class="btn tertiary" href="https://github.com/collectarr/collectarr-app/releases" target="_blank" rel="noopener">
+              Download Latest Release ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile Panel -->
+        <div id="panel-mobile" role="tabpanel" aria-labelledby="tab-mobile" class="panel">
+          <div class="panel-header">
+            <span class="panel-tag">Mobile Support</span>
+            <h2>Troubleshooting & Support for Mobile (iOS & Android)</h2>
+            <p>Designed for browsing in the record store or game shop, scanning barcodes, and on-the-go collection updates.</p>
+          </div>
+
+          <div class="panel-content-grid">
+            <div class="content-box">
+              <h3>Diagnostic Information</h3>
+              <p>To inspect your build version or retrieve diagnostics on your mobile device:</p>
+              <ul class="checklist">
+                <li><strong>App Version:</strong> Open <strong>Settings → About</strong> to find the full version string and build commit.</li>
+                <li><strong>Logs:</strong> View current session logs under <strong>Settings → Logs</strong>. Tap "Copy to clipboard" to share in a discussion.</li>
+                <li><strong>Barcode scanner:</strong> Ensure camera permissions are enabled in your phone's system Settings under Collectarr.</li>
+              </ul>
+            </div>
+
+            <div class="content-box">
+              <h3>Common Mobile Solutions</h3>
+              <ul class="checklist">
+                <li><strong>Barcode scanning focus:</strong> Keep barcodes flat and well-lit. Collectarr supports both 1D UPC/EAN barcodes and 2D codes.</li>
+                <li><strong>Syncing with self-hosted Core:</strong> Ensure your mobile device is on the same local Wi-Fi network, or use a secure HTTPS reverse proxy.</li>
+                <li><strong>Offline mode:</strong> All cached items, custom fields, and local photos remain accessible without an active internet connection.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel-actions">
+            <a class="btn primary" href="https://github.com/collectarr/collectarr-app/discussions?discussions_q=mobile" target="_blank" rel="noopener">
+              Ask in Mobile Discussions ↗
+            </a>
+            <a class="btn secondary" href="https://github.com/collectarr/collectarr-app/issues/new?title=%5BMobile%5D%20&labels=mobile,bug" target="_blank" rel="noopener">
+              Report Mobile Bug on GitHub ↗
+            </a>
+            <a class="btn tertiary" href="https://github.com/collectarr/collectarr-app/releases" target="_blank" rel="noopener">
+              Mobile Releases ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Web Panel -->
+        <div id="panel-web" role="tabpanel" aria-labelledby="tab-web" class="panel">
+          <div class="panel-header">
+            <span class="panel-tag">Web Support</span>
+            <h2>Troubleshooting & Support for Collectarr Web (Browser & Docker)</h2>
+            <p>Accessible in any modern desktop or tablet browser. Self-hostable with the official Docker container.</p>
+          </div>
+
+          <div class="panel-content-grid">
+            <div class="content-box">
+              <h3>Browser Diagnostics</h3>
+              <p>For web browser issues, the browser developer tools reveal network and runtime errors:</p>
+              <ul class="checklist">
+                <li><strong>Browser Console:</strong> Press <kbd>F12</kbd> (or right click → <em>Inspect</em>) and open the <strong>Console</strong> tab to view JavaScript warnings or errors.</li>
+                <li><strong>Network tab:</strong> Check whether API calls to your Core catalog or Sync server report 403, 404, or CORS headers.</li>
+                <li><strong>Browser Storage:</strong> Stored locally using IndexedDB. Check <strong>Application → IndexedDB</strong> in developer tools.</li>
+              </ul>
+            </div>
+
+            <div class="content-box">
+              <h3>Self-Hosting & Docker Tips</h3>
+              <ul class="checklist">
+                <li><strong>Container health:</strong> Check container logs with <code>docker logs collectarr-web</code>.</li>
+                <li><strong>CORS origin:</strong> When connecting the web UI to <code>collectarr-core</code>, ensure the Core server's allowed origins include your web origin.</li>
+                <li><strong>Hard refresh:</strong> If a new release has been deployed, force refresh the browser with <kbd>Ctrl+F5</kbd> (or <kbd>Cmd+Shift+R</kbd>).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel-actions">
+            <a class="btn primary" href="https://github.com/collectarr/collectarr-app/discussions?discussions_q=web" target="_blank" rel="noopener">
+              Ask in Web Discussions ↗
+            </a>
+            <a class="btn secondary" href="https://github.com/collectarr/collectarr-app/issues/new?title=%5BWeb%5D%20&labels=web,bug" target="_blank" rel="noopener">
+              Report Web Bug on GitHub ↗
+            </a>
+            <a class="btn tertiary" href="https://github.com/collectarr/collectarr-app" target="_blank" rel="noopener">
+              Docker Repository ↗
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kind-Specific Forum Routing Section -->
+      <section class="kind-forums-section">
+        <div class="kind-forums-inner">
+          <div class="section-title">
+            <p class="eyebrow">BY COLLECTION KIND</p>
+            <h2>Kind-Specific Support Forums</h2>
+            <p>Have questions about a specific media format, fields, or catalog metadata? Join the right discussion board:</p>
+          </div>
+
+          <div class="kinds-cards-grid">
+            <div class="kind-forum-card music">
+              <div class="kind-forum-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9" />
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M12 3v3m0 12v3M3 12h3m12 0h3" />
+                </svg>
+              </div>
+              <div class="kind-forum-content">
+                <h3>Collectarr Music Forum</h3>
+                <p>Vinyl dead-wax matrices, optical audio discs, Discogs imports, contributor credits, and track metadata.</p>
+                <div class="card-links">
+                  <a class="link-btn" href="https://github.com/collectarr/collectarr-app/discussions?discussions_q=music" target="_blank" rel="noopener">
+                    Music Forum on GitHub ↗
+                  </a>
+                  <a class="sub-link" href={`${base}manual/kinds/music/`}>Music manual →</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="kind-forum-card games">
+              <div class="kind-forum-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8 7h8c3 0 4.2 2.1 5.2 6.8.8 3.7-1.4 5.3-3.5 3.1L15 14H9l-2.7 2.9c-2.1 2.2-4.3.6-3.5-3.1C3.8 9.1 5 7 8 7Z" />
+                  <path d="M12 7V4h3M6 10v4m-2-2h4" />
+                  <circle cx="16" cy="10.5" r=".75" fill="currentColor" stroke="none" />
+                  <circle cx="18.5" cy="12.5" r=".75" fill="currentColor" stroke="none" />
+                </svg>
+              </div>
+              <div class="kind-forum-content">
+                <h3>Collectarr Games Forum</h3>
+                <p>Video game platforms, Loose/CIB completeness tiers, console hardware serials, and toys-to-life figures.</p>
+                <div class="card-links">
+                  <a class="link-btn" href="https://github.com/collectarr/collectarr-app/discussions?discussions_q=game" target="_blank" rel="noopener">
+                    Games Forum on GitHub ↗
+                  </a>
+                  <a class="sub-link" href={`${base}manual/kinds/games/`}>Games manual →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Privacy & Guidelines Callout -->
+      <section class="privacy-notice">
+        <div class="privacy-inner">
+          <div class="privacy-badge">🔒 PRIVACY & SECURITY FIRST</div>
+          <h3>Before posting logs or screenshots</h3>
+          <p>
+            Collectarr support discussions and GitHub issue trackers are public.
+            Never post passwords, API tokens, live production database files, or personal private details.
+            Sanitize screenshots and remove personal identifiers before submitting.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+
+    <script>
+      // Client-side interactive platform tab switching
+      function setupPlatformTabs() {
+        const tabs = document.querySelectorAll<HTMLButtonElement>('.platform-card');
+        const panels = document.querySelectorAll<HTMLElement>('.panel');
+
+        function selectPlatform(platform: string) {
+          tabs.forEach((tab) => {
+            const isMatch = tab.dataset.platform === platform;
+            tab.classList.toggle('active', isMatch);
+            tab.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+          });
+
+          panels.forEach((panel) => {
+            const isMatch = panel.id === `panel-${platform}`;
+            panel.classList.toggle('active', isMatch);
+          });
+        }
+
+        tabs.forEach((tab) => {
+          tab.addEventListener('click', () => {
+            const platform = tab.dataset.platform;
+            if (platform) {
+              selectPlatform(platform);
+              const url = new URL(window.location.href);
+              url.searchParams.set('platform', platform);
+              window.history.replaceState({}, '', url.toString());
+            }
+          });
+        });
+
+        // Check query param on initial load
+        const params = new URLSearchParams(window.location.search);
+        const requestedPlatform = params.get('platform');
+        if (requestedPlatform && ['mobile', 'web', 'desktop'].includes(requestedPlatform)) {
+          selectPlatform(requestedPlatform);
+        }
+      }
+
+      setupPlatformTabs();
+    </script>
+  </body>
+</html>
+
+<style>
+  :global(*){box-sizing:border-box}
+  :global(html){scroll-behavior:smooth}
+  :global(body){margin:0;background:#141618;color:#f6f3ed;font-family:"Segoe UI",system-ui,sans-serif;line-height:1.6}
+  :global(a){color:inherit;text-decoration:none}
+  :global(a:focus-visible){outline:3px solid #f3a457;outline-offset:4px}
+  :global(::selection){background:#f3a457;color:#141618}
+
+  .skip {
+    position: fixed;
+    top: -100px;
+    left: 20px;
+    padding: 10px 16px;
+    background: #f3a457;
+    color: #141618;
+    font-weight: 700;
+    z-index: 1000;
+  }
+  .skip:focus { top: 15px; }
+
+  main {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Support Hero */
+  .support-hero {
+    text-align: center;
+    padding: 64px 16px 40px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    font-weight: 800;
+    color: #f3a457;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .support-hero h1 {
+    font-size: clamp(32px, 4.2vw, 56px);
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+    margin: 16px 0 20px;
+  }
+  .support-hero h1 span {
+    color: #f3a457;
+  }
+  .intro {
+    font-size: 18px;
+    color: #c4c7cc;
+    line-height: 1.55;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* Platform Selection Cards */
+  .platform-selection {
+    padding: 24px 0 44px;
+  }
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .platform-card {
+    background: #1b1d20;
+    border: 2px solid #292d33;
+    border-radius: 10px;
+    padding: 24px 20px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    cursor: pointer;
+    text-align: left;
+    color: inherit;
+    font-family: inherit;
+    transition: all 0.2s ease;
+  }
+  .platform-card:hover {
+    border-color: #4f555e;
+    transform: translateY(-2px);
+    background: #202327;
+  }
+  .platform-card.active {
+    border-color: #f3a457;
+    background: #23221f;
+    box-shadow: 0 0 20px rgba(243, 164, 87, 0.12);
+  }
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: #282c32;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #a8acb2;
+    transition: all 0.2s ease;
+  }
+  .platform-card.active .card-icon {
+    background: rgba(243, 164, 87, 0.15);
+    color: #f3a457;
+  }
+  .card-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+  .card-body h2 {
+    font-size: 17px;
+    margin: 0 0 4px;
+    color: #f6f3ed;
+  }
+  .card-body p {
+    font-size: 13px;
+    margin: 0 0 8px;
+    color: #9ea3a8;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: #2c3036;
+    color: #b5b9bf;
+  }
+  .platform-card.active .badge {
+    background: rgba(243, 164, 87, 0.2);
+    color: #f3a457;
+  }
+
+  /* Platform Details Panels */
+  .platform-panels {
+    padding-bottom: 64px;
+  }
+  .panel {
+    display: none;
+    background: #191b1e;
+    border: 1px solid #2a2d33;
+    border-radius: 12px;
+    padding: 40px 32px;
+    animation: fadeIn 0.25s ease;
+  }
+  .panel.active {
+    display: block;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .panel-header {
+    border-bottom: 1px solid #282b30;
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+  .panel-tag {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: #f3a457;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .panel-header h2 {
+    font-size: clamp(22px, 2.5vw, 30px);
+    margin: 0 0 10px;
+    color: #f6f3ed;
+  }
+  .panel-header p {
+    color: #a8acb2;
+    font-size: 15px;
+    margin: 0;
+  }
+  .panel-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 36px;
+  }
+  .content-box {
+    background: #141618;
+    border: 1px solid #24272c;
+    border-radius: 8px;
+    padding: 24px 22px;
+  }
+  .content-box h3 {
+    font-size: 16.5px;
+    margin: 0 0 14px;
+    color: #f6f3ed;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .content-box p {
+    font-size: 13.5px;
+    color: #a8acb2;
+    margin: 0 0 14px;
+  }
+  .path-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .path-list li {
+    font-size: 13px;
+    color: #c4c7cc;
+  }
+  .path-list code {
+    display: inline-block;
+    background: #1d2024;
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: #f3a457;
+    font-family: Consolas, monospace;
+    font-size: 12px;
+    margin-top: 4px;
+    border: 1px solid #2d3138;
+    word-break: break-all;
+  }
+  .tip-text {
+    font-size: 12.5px;
+    color: #9ea3a8;
+    background: rgba(243, 164, 87, 0.08);
+    border-left: 3px solid #f3a457;
+    padding: 8px 12px;
+    border-radius: 0 4px 4px 0;
+    margin: 0;
+  }
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .checklist li {
+    font-size: 13.5px;
+    color: #a8acb2;
+    position: relative;
+    padding-left: 20px;
+    line-height: 1.5;
+  }
+  .checklist li::before {
+    content: '✓';
+    position: absolute;
+    left: 2px;
+    color: #f3a457;
+    font-weight: 800;
+  }
+  .checklist strong {
+    color: #f6f3ed;
+  }
+  kbd {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 11px;
+    line-height: 1.2;
+    background: #25282d;
+    border: 1px solid #3c4047;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.4);
+    color: #f6f3ed;
+    font-family: inherit;
+  }
+
+  .panel-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    padding-top: 10px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    font-size: 13.5px;
+    font-weight: 750;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+  }
+  .btn.primary {
+    background: #f3a457;
+    color: #141618;
+  }
+  .btn.primary:hover {
+    background: #ffc286;
+    transform: translateY(-2px);
+  }
+  .btn.secondary {
+    background: #22252a;
+    border: 1px solid #3a3f47;
+    color: #f6f3ed;
+  }
+  .btn.secondary:hover {
+    background: #2d3138;
+    border-color: #555c66;
+    transform: translateY(-2px);
+  }
+  .btn.tertiary {
+    background: transparent;
+    border: 1px solid #34373d;
+    color: #9ea3a8;
+  }
+  .btn.tertiary:hover {
+    background: #1c1e22;
+    color: #f6f3ed;
+  }
+
+  /* Kind Forums Section */
+  .kind-forums-section {
+    padding: 20px 0 64px;
+    border-top: 1px solid #24272c;
+  }
+  .section-title {
+    text-align: center;
+    max-width: 680px;
+    margin: 40px auto 36px;
+  }
+  .section-title h2 {
+    font-size: clamp(24px, 3vw, 36px);
+    margin: 10px 0 12px;
+    letter-spacing: -0.03em;
+  }
+  .section-title p {
+    color: #a8acb2;
+    font-size: 15px;
+  }
+  .kinds-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .kind-forum-card {
+    background: #191b1e;
+    border: 1px solid #282b30;
+    border-radius: 10px;
+    padding: 32px 28px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .kind-forum-card:hover {
+    transform: translateY(-2px);
+  }
+  .kind-forum-card.music:hover {
+    border-color: #f2932f;
+  }
+  .kind-forum-card.games:hover {
+    border-color: #e23149;
+  }
+  .kind-forum-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .kind-forum-card.music .kind-forum-icon {
+    background: rgba(242, 147, 47, 0.12);
+    color: #f2932f;
+  }
+  .kind-forum-card.games .kind-forum-icon {
+    background: rgba(226, 49, 73, 0.12);
+    color: #e23149;
+  }
+  .kind-forum-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+  .kind-forum-content h3 {
+    font-size: 18px;
+    margin: 0 0 8px;
+    color: #f6f3ed;
+  }
+  .kind-forum-content p {
+    font-size: 13.5px;
+    color: #a8acb2;
+    line-height: 1.55;
+    margin: 0 0 18px;
+  }
+  .card-links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 750;
+    border-radius: 5px;
+    transition: background 0.15s ease;
+  }
+  .kind-forum-card.music .link-btn {
+    background: #f2932f;
+    color: #141618;
+  }
+  .kind-forum-card.music .link-btn:hover {
+    background: #ffac33;
+  }
+  .kind-forum-card.games .link-btn {
+    background: #e23149;
+    color: #ffffff;
+  }
+  .kind-forum-card.games .link-btn:hover {
+    background: #f93e56;
+  }
+  .sub-link {
+    font-size: 13px;
+    font-weight: 650;
+    color: #8c9096;
+    transition: color 0.15s ease;
+  }
+  .sub-link:hover {
+    color: #f6f3ed;
+    text-decoration: underline;
+  }
+
+  /* Privacy Notice */
+  .privacy-notice {
+    padding: 0 0 80px;
+  }
+  .privacy-inner {
+    background: #18191b;
+    border: 1px dashed #34373d;
+    border-radius: 8px;
+    padding: 28px 24px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .privacy-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: #f3a457;
+    margin-bottom: 8px;
+  }
+  .privacy-inner h3 {
+    font-size: 17px;
+    margin: 0 0 8px;
+    color: #f6f3ed;
+  }
+  .privacy-inner p {
+    font-size: 13px;
+    color: #9ea3a8;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 860px) {
+    .platform-grid {
+      grid-template-columns: 1fr;
+    }
+    .panel-content-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .kinds-cards-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .panel {
+      padding: 24px 18px;
+    }
+    .panel-actions {
+      flex-direction: column;
+    }
+    .btn {
+      width: 100%;
+    }
+    .kind-forum-card {
+      flex-direction: column;
+      padding: 24px 20px;
+    }
+  }
+</style>

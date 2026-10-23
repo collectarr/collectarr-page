@@ -15,20 +15,29 @@ try {
     if (response.status() >= 400) errors.push(`${response.status()} ${response.url()}`);
   });
   await page.goto(base);
-  await page.getByRole('link', { name: 'User manual', exact: true }).click();
+  await page.getByRole('link', { name: 'User manual', exact: true }).first().click();
   assert.equal(await page.getByRole('heading', { level: 1 }).innerText(), 'Collectarr user manual');
   await page.getByRole('button', { name: /Search/ }).first().click();
   await page.getByRole('textbox').fill('Credits');
   await page.locator('.pagefind-ui__result-link').first().waitFor();
   assert.match(await page.locator('dialog').innerText(), /Music/);
   await page.keyboard.press('Escape');
-  for (const kind of ['music']) {
+
+  for (const kind of ['music', 'games']) {
     await page.goto(`${base}manual/kinds/${kind}/`);
     assert.equal(await page.getByRole('heading', { level: 1 }).count(), 1);
   }
+
+  // Verify dedicated landing pages
+  for (const landing of ['music/', 'games/', 'contact/']) {
+    await page.goto(base + landing);
+    assert.equal(await page.getByRole('heading', { level: 1 }).count(), 1);
+  }
+
+  // Verify responsive layout without horizontal overflow
   for (const width of [1440, 768, 390]) {
     await page.setViewportSize({ width, height: 844 });
-    for (const path of ['', 'manual/custom-fields/']) {
+    for (const path of ['', 'music/', 'games/', 'contact/', 'manual/custom-fields/']) {
       await page.goto(base + path);
       const size = await page.evaluate(() => ({
         available: document.documentElement.clientWidth,
@@ -37,8 +46,9 @@ try {
       assert.ok(size.content <= size.available, `Horizontal overflow at ${width}px: ${path}`);
     }
   }
+
   assert.deepEqual(errors, []);
-  console.log('Manual navigation, search, the released Music chapter and responsive layouts passed.');
+  console.log('Manual navigation, search, Music & Games chapters, and responsive layouts passed.');
 } finally {
   await browser.close();
 }

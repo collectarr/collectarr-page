@@ -1,0 +1,463 @@
+---
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Collectarr Games is a dedicated video game library manager. Organize games, hardware, and toys-to-life figures with completeness tracking and valuation."
+    />
+    <title>Collectarr Games — Video Game & Hardware Collection Database</title>
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+  </head>
+  <body class="games-page">
+    <a class="skip" href="#main">Skip to content</a>
+    <Header currentKind="games" activeSubNav="overview" />
+
+    <main id="main">
+      <section class="hero">
+        <p class="eyebrow">FOR VIDEO GAME & RETRO MEDIA COLLECTORS</p>
+        <h1>Every game, console & figure.<br /><span>Cataloged with complete precision.</span></h1>
+        <p class="intro">
+          From classic cartridges to modern digital libraries. Track completeness (Loose, CIB, New),
+          consoles, controllers, serial numbers, toys-to-life figures, and valuation snapshots.
+        </p>
+        <div class="actions">
+          <a class="primary" href="https://github.com/collectarr/collectarr-app/releases" target="_blank" rel="noopener">Explore Games releases ↗</a>
+          <a class="secondary" href={`${base}manual/kinds/games/`}>Read Games user manual →</a>
+          <a class="forum-btn" href="https://github.com/collectarr/collectarr-app/discussions?discussions_q=game" target="_blank" rel="noopener">Games Support Forum ↗</a>
+        </div>
+        <p class="note">Local-first · Zero proprietary lock-in · Games, Hardware & Toys-to-Life</p>
+      </section>
+
+      <section class="features" aria-label="Collectarr Games features">
+        <article class="feature-card">
+          <span class="number">01</span>
+          <h2>Multi-Platform Cataloging</h2>
+          <p>
+            Organize titles across PlayStation, Nintendo, Xbox, Sega, Atari, PC, and vintage microcomputers.
+            Filter by platform folders, release years, developers, publishers, genres, and region codes.
+          </p>
+          <a href={`${base}manual/kinds/games/#platforms`}>Platform details →</a>
+        </article>
+
+        <article class="feature-card">
+          <span class="number">02</span>
+          <h2>Completeness & Condition</h2>
+          <p>
+            Track the exact physical reality of your copies: <strong>Loose</strong>, <strong>Complete in Box (CIB)</strong>,
+            <strong>New / Sealed</strong>, <strong>Box only</strong>, or <strong>Manual only</strong>. Store packaging conditions and personal grades.
+          </p>
+          <a href={`${base}manual/kinds/games/#completeness`}>Completeness tiers →</a>
+        </article>
+
+        <article class="feature-card">
+          <span class="number">03</span>
+          <h2>Hardware & Accessories</h2>
+          <p>
+            Independent cataloging for game consoles, handhelds, controllers, memory cards, and special accessories.
+            Record hardware models, personal serial numbers, and storage locations.
+          </p>
+          <a href={`${base}manual/kinds/games/#hardware`}>Hardware tracking →</a>
+        </article>
+
+        <article class="feature-card">
+          <span class="number">04</span>
+          <h2>Toys-to-Life Figures</h2>
+          <p>
+            Dedicated collections for Amiibo, Skylanders, Disney Infinity, and interactive figures.
+            Keep track of series, figure variants, packaging status, and custom figure/box photography.
+          </p>
+          <a href={`${base}manual/kinds/games/#toys`}>Toys-to-life guide →</a>
+        </article>
+
+        <article class="feature-card">
+          <span class="number">05</span>
+          <h2>Valuation & Snapshots</h2>
+          <p>
+            Log purchase dates, purchase stores, and historical prices in your local currency.
+            Record valuation snapshots without depending on proprietary cloud subscriptions.
+          </p>
+          <a href={`${base}manual/kinds/games/#valuation`}>Valuation workflows →</a>
+        </article>
+
+        <article class="feature-card">
+          <span class="number">06</span>
+          <h2>Trailers, Media & Covers</h2>
+          <p>
+            Save YouTube trailer links, developer links, high-res front/back cover art, and up to five
+            additional photos per item for cartridges, circuit boards, and manual pages.
+          </p>
+          <a href={`${base}manual/images/`}>Images & media →</a>
+        </article>
+      </section>
+
+      <section id="hardware-toys" class="deep-dive">
+        <div class="deep-dive-header">
+          <p class="eyebrow">HARDWARE & TOYS INTEGRATION</p>
+          <h2>More than just software discs.<br />The full gaming setup.</h2>
+          <p>
+            Video game collecting encompasses consoles, controllers, and figures. Collectarr handles
+            hardware and toys as first-class domain models with dedicated schemas.
+          </p>
+        </div>
+
+        <div class="grid-two">
+          <div class="info-box">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 15.5 6 12h12l3 3.5V20H3Zm0 0h18M9 12V7m0 8.5V12" />
+                <circle cx="9" cy="4.5" r="2.5" />
+                <path d="M15 14h2m-9 4h4" />
+              </svg>
+            </div>
+            <h3>Gaming Hardware</h3>
+            <ul>
+              <li><strong>Consoles & Handhelds:</strong> Track model numbers, firmware versions, and regional specifications.</li>
+              <li><strong>Serial Number Privacy:</strong> Serial numbers live purely in your local database, never uploaded to public servers.</li>
+              <li><strong>Controllers & Peripherals:</strong> Document controllers, racing wheels, VR headsets, and cables.</li>
+              <li><strong>Dedicated Hardware List:</strong> Leads with platform icon and platform name before title.</li>
+            </ul>
+          </div>
+
+          <div class="info-box">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="4" r="2.2" />
+                <path d="m9 8-3 5 2 1 2-3v4l-1 4m6-11 3 5-2 1-2-3v4l1 4M9 8h6M6 19h12l2 3H4Z" />
+              </svg>
+            </div>
+            <h3>Toys-to-Life</h3>
+            <ul>
+              <li><strong>Figure & Base Series:</strong> Group by game series (e.g. Smash Bros., Zelda, Splatoon, Skylanders Trap Team).</li>
+              <li><strong>Loose vs. Boxed:</strong> Track loose figures vs. mint in original packaging.</li>
+              <li><strong>Dedicated Photography:</strong> Dual image slots for Figure Image and Box Image.</li>
+              <li><strong>Custom Folders:</strong> Browse your collection organized naturally by figure series.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="completeness-value" class="callout-section">
+        <div class="callout-inner">
+          <p class="eyebrow">COMMUNITY & SUPPORT</p>
+          <h2>Join the Collectarr Games discussions</h2>
+          <p>
+            Have ideas for gaming platform fields, PriceCharting integrations, or hardware tracking?
+            Discuss with other collectors in the dedicated GitHub Discussions forum.
+          </p>
+          <div class="actions">
+            <a class="primary" href="https://github.com/collectarr/collectarr-app/discussions?discussions_q=game" target="_blank" rel="noopener">
+              Open Games Support Forum ↗
+            </a>
+            <a class="secondary" href={`${base}contact/?kind=games`}>
+              Contact & Diagnostics Hub →
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  :global(*){box-sizing:border-box}
+  :global(html){scroll-behavior:smooth}
+  :global(body){margin:0;background:#141517;color:#f6f3ed;font-family:"Segoe UI",system-ui,sans-serif;line-height:1.6}
+  :global(a){color:inherit;text-decoration:none}
+  :global(a:focus-visible){outline:3px solid #e23149;outline-offset:4px}
+  :global(::selection){background:#e23149;color:#fff}
+
+  .skip {
+    position: fixed;
+    top: -100px;
+    left: 20px;
+    padding: 10px 16px;
+    background: #e23149;
+    color: #fff;
+    font-weight: 700;
+    z-index: 1000;
+  }
+  .skip:focus { top: 15px; }
+
+  main {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 68px 16px 48px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    font-weight: 800;
+    color: #e23149;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-size: clamp(34px, 4.8vw, 64px);
+    line-height: 1.12;
+    letter-spacing: -0.04em;
+    margin: 16px 0 24px;
+  }
+  .hero h1 span {
+    color: #e23149;
+  }
+  .intro {
+    font-size: 18.5px;
+    line-height: 1.55;
+    color: #c4c7cc;
+    max-width: 720px;
+    margin: 0 auto 32px;
+  }
+  .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .primary, .secondary, .forum-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    padding: 12px 22px;
+    font-weight: 750;
+    font-size: 14px;
+    transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  }
+  .primary {
+    background: #e23149;
+    color: #ffffff;
+  }
+  .primary:hover {
+    background: #f93e56;
+    transform: translateY(-2px);
+  }
+  .secondary {
+    border: 1px solid #4a4d52;
+    background: #1e2023;
+    color: #f6f3ed;
+  }
+  .secondary:hover {
+    background: #2b2e33;
+    border-color: #727780;
+    transform: translateY(-2px);
+  }
+  .forum-btn {
+    border: 1px solid rgba(226, 49, 73, 0.4);
+    background: rgba(226, 49, 73, 0.08);
+    color: #f95a6f;
+  }
+  .forum-btn:hover {
+    background: rgba(226, 49, 73, 0.18);
+    transform: translateY(-2px);
+  }
+  .note {
+    color: #8c9096;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+  }
+
+  /* Features Grid */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    padding: 40px 0 64px;
+  }
+  .feature-card {
+    background: #1a1c1f;
+    border: 1px solid #282b30;
+    border-radius: 8px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .feature-card:hover {
+    border-color: #e23149;
+    transform: translateY(-3px);
+  }
+  .number {
+    font-size: 13px;
+    font-weight: 800;
+    color: #e23149;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  .feature-card h2 {
+    font-size: 20px;
+    line-height: 1.3;
+    margin: 0 0 12px;
+    color: #f6f3ed;
+  }
+  .feature-card p {
+    color: #a8acb2;
+    font-size: 14.5px;
+    line-height: 1.55;
+    flex-grow: 1;
+    margin: 0 0 20px;
+  }
+  .feature-card a {
+    color: #e23149;
+    font-weight: 700;
+    font-size: 13.5px;
+  }
+  .feature-card a:hover {
+    text-decoration: underline;
+  }
+
+  /* Deep Dive Section */
+  .deep-dive {
+    padding: 64px 0;
+    border-top: 1px solid #25282c;
+  }
+  .deep-dive-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+  }
+  .deep-dive-header h2 {
+    font-size: clamp(28px, 3.5vw, 42px);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    margin: 12px 0 16px;
+  }
+  .deep-dive-header p {
+    color: #a8acb2;
+    font-size: 16px;
+  }
+  .grid-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .info-box {
+    background: #1a1c1f;
+    border: 1px solid #282b30;
+    border-radius: 8px;
+    padding: 32px 28px;
+  }
+  .info-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: rgba(226, 49, 73, 0.12);
+    color: #e23149;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .info-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+  .info-box h3 {
+    font-size: 20px;
+    margin: 0 0 16px;
+    color: #f6f3ed;
+  }
+  .info-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .info-box li {
+    font-size: 14px;
+    color: #a8acb2;
+    line-height: 1.55;
+    position: relative;
+    padding-left: 20px;
+  }
+  .info-box li::before {
+    content: '•';
+    position: absolute;
+    left: 4px;
+    color: #e23149;
+    font-size: 18px;
+    line-height: 1.2;
+  }
+  .info-box strong {
+    color: #f6f3ed;
+  }
+
+  /* Callout section */
+  .callout-section {
+    padding: 48px 0 80px;
+  }
+  .callout-inner {
+    background: linear-gradient(180deg, #20181a 0%, #171517 100%);
+    border: 1px solid rgba(226, 49, 73, 0.25);
+    border-radius: 12px;
+    padding: 56px 32px;
+    text-align: center;
+    max-width: 840px;
+    margin: 0 auto;
+  }
+  .callout-inner h2 {
+    font-size: clamp(26px, 3vw, 38px);
+    margin: 12px 0 16px;
+    letter-spacing: -0.03em;
+  }
+  .callout-inner p {
+    color: #c4c7cc;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 900px) {
+    .features {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .grid-two {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero {
+      padding: 44px 12px 32px;
+    }
+    .intro {
+      font-size: 16px;
+    }
+    .features {
+      grid-template-columns: 1fr;
+    }
+    .actions {
+      flex-direction: column;
+      width: 100%;
+    }
+    .actions > a {
+      width: 100%;
+    }
+    .callout-inner {
+      padding: 40px 20px;
+    }
+  }
+</style>

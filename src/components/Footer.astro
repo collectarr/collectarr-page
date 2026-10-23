@@ -1,0 +1,192 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href={base}>
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="brand-icon">
+            <path d="M3 5h18v4H3zm0 6h8v8H3zm10 0h8v8h-8z" fill="currentColor" />
+          </svg>
+          COLLECTARR
+        </a>
+        <p class="brand-desc">
+          An open-source, local-first collection manager for physical and digital media.
+          Familiar workflows, strict data modeling, and complete privacy.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h3>Collections</h3>
+          <ul>
+            <li><a href={`${base}music/`}>Collectarr Music</a></li>
+            <li><a href={`${base}games/`}>Collectarr Games</a></li>
+            <li><a href={`${base}#upcoming`}>Roadmap & Upcoming</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Documentation</h3>
+          <ul>
+            <li><a href={`${base}manual/`}>User manual</a></li>
+            <li><a href={`${base}manual/getting-started/`}>Getting started</a></li>
+            <li><a href={`${base}manual/kinds/music/`}>Music guide</a></li>
+            <li><a href={`${base}manual/kinds/games/`}>Games guide</a></li>
+            <li><a href={`${base}manual/backup-sync/`}>Backup & sync</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Support & Community</h3>
+          <ul>
+            <li><a href={`${base}contact/`}>Contact & Help Center</a></li>
+            <li><a href="https://github.com/collectarr/collectarr-app/discussions?discussions_q=music" target="_blank" rel="noopener">Music forum ↗</a></li>
+            <li><a href="https://github.com/collectarr/collectarr-app/discussions?discussions_q=game" target="_blank" rel="noopener">Games forum ↗</a></li>
+            <li><a href="https://github.com/collectarr/collectarr-app/issues" target="_blank" rel="noopener">Feedback & issues ↗</a></li>
+            <li><a href="https://github.com/collectarr/collectarr-app/releases" target="_blank" rel="noopener">App releases ↗</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">Collectarr is free and open-source software. Independent of CLZ.</p>
+      <div class="social-links">
+        <a href="https://github.com/collectarr/collectarr-app" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://github.com/collectarr/collectarr-app/discussions" target="_blank" rel="noopener">Community Discussions ↗</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: #0f1011;
+    border-top: 1px solid #282a2d;
+    color: #9ea3a8;
+    padding: 60px 24px 36px;
+    font-size: 13.5px;
+  }
+
+  .footer-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.4fr 2fr;
+    gap: 48px;
+    padding-bottom: 44px;
+    border-bottom: 1px solid #232528;
+  }
+
+  .footer-brand .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #f6f3ed;
+    font-size: 18px;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    margin-bottom: 14px;
+  }
+
+  .brand-icon {
+    width: 22px;
+    height: 22px;
+    color: #f3a457;
+  }
+
+  .brand-desc {
+    max-width: 380px;
+    line-height: 1.6;
+    color: #8c9096;
+    font-size: 13px;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .footer-col h3 {
+    color: #f6f3ed;
+    font-size: 13.5px;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 14px;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .footer-col a {
+    color: #9ea3a8;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .footer-col a:hover {
+    color: #f3a457;
+  }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 24px;
+    font-size: 12.5px;
+    color: #72767c;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  .social-links a {
+    color: #9ea3a8;
+    text-decoration: none;
+  }
+
+  .social-links a:hover {
+    color: #f3a457;
+  }
+
+  @media (max-width: 800px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    .footer-links {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 520px) {
+    .footer-links {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+  }
+</style>
