@@ -37,7 +37,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
           <a class="btn-kind-music" href={`${base}music/`}>Explore Music →</a>
           <a class="btn-kind-games" href={`${base}games/`}>Explore Games →</a>
         </div>
-        <p class="note">Local-first · Open source · Music & Games active libraries</p>
+        <div class="availability-badges">
+          <span class="badge">iOS & Android</span>
+          <span class="badge">Windows, macOS & Linux</span>
+          <span class="badge">Web & Docker</span>
+          <span class="badge highlight">100% Free & Open-Source</span>
+        </div>
 
         <figure class="workspace">
           <Image
@@ -156,6 +161,37 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
           </p>
           <a href={`${base}manual/browsing/`}>Explore your library →</a>
         </article>
+      </section>
+
+      <!-- Companions Section -->
+      <section class="companions-section">
+        <div class="companions-inner">
+          <p class="eyebrow">PERFECT COMPANIONS</p>
+          <h2>Mobile, Web & Desktop — wherever you need them</h2>
+          <p class="companions-intro">
+            Collectarr works across all your devices with complete offline capability.
+          </p>
+
+          <div class="companions-grid">
+            <div class="companion-box">
+              <div class="companion-tag">On the go</div>
+              <h3>Collectarr Mobile (iOS & Android)</h3>
+              <p>
+                Take your library with you. Scan barcodes at record stores or retro gaming conventions,
+                check what editions you already own to prevent duplicates, and view your wish lists.
+              </p>
+            </div>
+
+            <div class="companion-box">
+              <div class="companion-tag">At your computer</div>
+              <h3>Collectarr Desktop & Web</h3>
+              <p>
+                Full keyboard productivity with <kbd>Ctrl+K</kbd> search, automated daily backups,
+                multi-column sorting, bulk tagging, and deep editing of contributor credits and dead-wax matrices.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Upcoming Kinds Roadmap -->
@@ -334,11 +370,31 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     color: #f6f3ed;
     transform: translateY(-2px);
   }
-  .note {
-    color: #8c9096;
-    font-size: 12px;
-    margin: 18px 0 36px;
+
+  .availability-badges {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
   }
+  .availability-badges .badge {
+    font-size: 11px;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: #1f2227;
+    color: #9ea3a8;
+    border: 1px solid #2d3138;
+  }
+  .availability-badges .badge.highlight {
+    background: rgba(243, 164, 87, 0.15);
+    color: #f3a457;
+    border-color: rgba(243, 164, 87, 0.3);
+  }
+
   .workspace {
     margin: 0;
   }
@@ -562,6 +618,64 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     text-decoration: underline;
   }
 
+  /* Companions Section */
+  .companions-section {
+    padding: 56px 0;
+    border-top: 1px solid #282a2e;
+  }
+  .companions-inner {
+    background: linear-gradient(180deg, #1c1d20 0%, #151618 100%);
+    border: 1px solid rgba(243, 164, 87, 0.2);
+    border-radius: 12px;
+    padding: 52px 36px;
+    text-align: center;
+  }
+  .companions-intro {
+    max-width: 680px;
+    margin: 12px auto 36px;
+    font-size: 16px;
+    color: #c4c7cc;
+  }
+  .companions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    text-align: left;
+  }
+  .companion-box {
+    background: #17181a;
+    border: 1px solid #282a2e;
+    border-radius: 8px;
+    padding: 28px 24px;
+  }
+  .companion-tag {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #f3a457;
+    margin-bottom: 6px;
+  }
+  .companion-box h3 {
+    font-size: 20px;
+    margin: 0 0 12px;
+    color: #f6f3ed;
+  }
+  .companion-box p {
+    color: #a8acb2;
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0;
+  }
+  kbd {
+    background: #282b30;
+    border: 1px solid #3c4046;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 12px;
+    color: #f6f3ed;
+  }
+
   /* Roadmap Section */
   .roadmap-section {
     padding: 56px 0 64px;
@@ -657,6 +771,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     .features {
       grid-template-columns: 1fr;
       gap: 24px;
+    }
+    .companions-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
     }
     .roadmap-grid {
       grid-template-columns: 1fr;

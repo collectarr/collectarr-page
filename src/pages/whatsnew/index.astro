@@ -1,0 +1,340 @@
+---
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="What's new in Collectarr: global release notes and updates across Music and Games libraries."
+    />
+    <title>What's New in Collectarr — All Releases & Updates</title>
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+  </head>
+  <body class="whatsnew-page">
+    <a class="skip" href="#main">Skip to content</a>
+    <Header currentKind="whatsnew" activeSubNav="whatsnew" />
+
+    <main id="main">
+      <section class="whatsnew-hero">
+        <p class="eyebrow">LATEST RELEASES & UPDATES</p>
+        <h1>What's new across Collectarr?</h1>
+        <p class="intro">
+          Stay informed about new capabilities, schema improvements, and platform support
+          shipped across our Music, Games, and Core ecosystems.
+        </p>
+      </section>
+
+      <section class="split-updates">
+        <!-- Games Updates Block -->
+        <div class="library-update-block games-block">
+          <div class="block-header">
+            <div class="block-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 7h8c3 0 4.2 2.1 5.2 6.8.8 3.7-1.4 5.3-3.5 3.1L15 14H9l-2.7 2.9c-2.1 2.2-4.3.6-3.5-3.1C3.8 9.1 5 7 8 7Z" />
+                <path d="M12 7V4h3M6 10v4m-2-2h4" />
+                <circle cx="16" cy="10.5" r=".75" fill="currentColor" stroke="none" />
+                <circle cx="18.5" cy="12.5" r=".75" fill="currentColor" stroke="none" />
+              </svg>
+            </div>
+            <div>
+              <span class="block-tag">Games, Hardware & Toys</span>
+              <h2>Collectarr Games Updates</h2>
+            </div>
+          </div>
+          <p class="block-desc">
+            The Games milestone introduces first-class support for video game software, retro cartridges,
+            consoles, controllers, Amiibo figures, and PriceCharting snapshot valuations.
+          </p>
+          <ul class="block-highlights">
+            <li>Dedicated Hardware tracking with local serial number privacy</li>
+            <li>Toys-to-Life figures with dual photography slots</li>
+            <li>Loose, CIB, and New packaging tiers with valuation recalculations</li>
+            <li>YouTube video trailer links in the inspector</li>
+            <li>CLZ Games CSV / TXT and XML guided imports</li>
+          </ul>
+          <a class="block-action games-action" href={`${base}games/whatsnew/`}>
+            Read all Games updates →
+          </a>
+        </div>
+
+        <!-- Music Updates Block -->
+        <div class="library-update-block music-block">
+          <div class="block-header">
+            <div class="block-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <circle cx="12" cy="12" r="3" />
+                <path d="M12 3v3m0 12v3M3 12h3m12 0h3" />
+                <circle cx="12" cy="12" r=".75" fill="currentColor" stroke="none" />
+              </svg>
+            </div>
+            <div>
+              <span class="block-tag">Version 1.2.0</span>
+              <h2>Collectarr Music Updates</h2>
+            </div>
+          </div>
+          <p class="block-desc">
+            Version 1.2.0 delivered major quality-of-life enhancements for large audiophile and vinyl
+            collections, including automated backups and regex search.
+          </p>
+          <ul class="block-highlights">
+            <li>Regular expression local search with live error validation</li>
+            <li>Automated daily database backups with safe rollback protections</li>
+            <li>Intelligent article sorting for pick lists and folder trees</li>
+            <li>Direct label catalog number search in Add Albums</li>
+            <li>Granular Update from Core field controls</li>
+          </ul>
+          <a class="block-action music-action" href={`${base}music/whatsnew/`}>
+            Read all Music updates →
+          </a>
+        </div>
+      </section>
+
+      <section class="github-releases-cta">
+        <p class="eyebrow">VERSION ARCHIVE</p>
+        <h2>GitHub Release Artifacts</h2>
+        <p>Every release includes standalone binaries for Windows, macOS, Linux, and Android APKs.</p>
+        <div class="actions">
+          <a class="primary" href="https://github.com/collectarr/collectarr-app/releases" target="_blank" rel="noopener">
+            Browse All Releases on GitHub ↗
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  :global(*){box-sizing:border-box}
+  :global(html){scroll-behavior:smooth}
+  :global(body){margin:0;background:#141618;color:#f6f3ed;font-family:"Segoe UI",system-ui,sans-serif;line-height:1.6}
+  :global(a){color:inherit;text-decoration:none}
+  :global(a:focus-visible){outline:3px solid #f3a457;outline-offset:4px}
+  :global(::selection){background:#f3a457;color:#141618}
+
+  .skip {
+    position: fixed;
+    top: -100px;
+    left: 20px;
+    padding: 10px 16px;
+    background: #f3a457;
+    color: #141618;
+    font-weight: 700;
+    z-index: 1000;
+  }
+  .skip:focus { top: 15px; }
+
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .whatsnew-hero {
+    text-align: center;
+    padding: 64px 16px 44px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    font-weight: 800;
+    color: #f3a457;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .whatsnew-hero h1 {
+    font-size: clamp(32px, 4vw, 54px);
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+    margin: 12px 0 16px;
+  }
+  .intro {
+    font-size: 18px;
+    color: #c4c7cc;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .split-updates {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding-bottom: 64px;
+  }
+  .library-update-block {
+    background: #191b1e;
+    border: 2px solid #282b30;
+    border-radius: 12px;
+    padding: 36px 30px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+  }
+  .library-update-block:hover {
+    transform: translateY(-2px);
+  }
+  .games-block:hover {
+    border-color: #e23149;
+  }
+  .music-block:hover {
+    border-color: #f2932f;
+  }
+
+  .block-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .block-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .games-block .block-icon {
+    background: rgba(226, 49, 73, 0.14);
+    color: #e23149;
+  }
+  .music-block .block-icon {
+    background: rgba(242, 147, 47, 0.14);
+    color: #f2932f;
+  }
+  .block-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+  .block-tag {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .games-block .block-tag {
+    color: #e23149;
+  }
+  .music-block .block-tag {
+    color: #f2932f;
+  }
+  .block-header h2 {
+    font-size: 22px;
+    margin: 0;
+    color: #f6f3ed;
+  }
+  .block-desc {
+    color: #a8acb2;
+    font-size: 14.5px;
+    line-height: 1.55;
+    margin: 0 0 20px;
+    flex-grow: 1;
+  }
+  .block-highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .block-highlights li {
+    font-size: 13.5px;
+    color: #c4c7cc;
+    position: relative;
+    padding-left: 20px;
+  }
+  .games-block .block-highlights li::before {
+    content: '•';
+    position: absolute;
+    left: 2px;
+    color: #e23149;
+    font-size: 18px;
+    line-height: 1.2;
+  }
+  .music-block .block-highlights li::before {
+    content: '•';
+    position: absolute;
+    left: 2px;
+    color: #f2932f;
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+  .block-action {
+    display: inline-flex;
+    align-items: center;
+    padding: 11px 20px;
+    border-radius: 6px;
+    font-size: 13.5px;
+    font-weight: 750;
+    width: fit-content;
+    transition: all 0.15s ease;
+  }
+  .games-action {
+    background: #e23149;
+    color: #ffffff;
+  }
+  .games-action:hover {
+    background: #f93e56;
+    transform: translateY(-2px);
+  }
+  .music-action {
+    background: #f2932f;
+    color: #141618;
+  }
+  .music-action:hover {
+    background: #ffac33;
+    transform: translateY(-2px);
+  }
+
+  .github-releases-cta {
+    background: #191b1e;
+    border: 1px solid #282b30;
+    border-radius: 12px;
+    padding: 48px 32px;
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .github-releases-cta h2 {
+    font-size: 26px;
+    margin: 10px 0 12px;
+  }
+  .github-releases-cta p {
+    color: #a8acb2;
+    margin: 0 auto 24px;
+    max-width: 500px;
+  }
+  .primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 24px;
+    border-radius: 6px;
+    background: #f3a457;
+    color: #141618;
+    font-weight: 750;
+    font-size: 14px;
+    transition: all 0.15s ease;
+  }
+  .primary:hover {
+    background: #ffc286;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 860px) {
+    .split-updates {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

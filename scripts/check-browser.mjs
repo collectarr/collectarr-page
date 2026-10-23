@@ -28,8 +28,16 @@ try {
     assert.equal(await page.getByRole('heading', { level: 1 }).count(), 1);
   }
 
-  // Verify dedicated landing pages
-  for (const landing of ['music/', 'games/', 'contact/']) {
+  // Verify dedicated landing and What's New pages
+  const landingPages = [
+    'music/',
+    'music/whatsnew/',
+    'games/',
+    'games/whatsnew/',
+    'whatsnew/',
+    'contact/',
+  ];
+  for (const landing of landingPages) {
     await page.goto(base + landing);
     assert.equal(await page.getByRole('heading', { level: 1 }).count(), 1);
   }
@@ -37,7 +45,16 @@ try {
   // Verify responsive layout without horizontal overflow
   for (const width of [1440, 768, 390]) {
     await page.setViewportSize({ width, height: 844 });
-    for (const path of ['', 'music/', 'games/', 'contact/', 'manual/custom-fields/']) {
+    for (const path of [
+      '',
+      'music/',
+      'music/whatsnew/',
+      'games/',
+      'games/whatsnew/',
+      'whatsnew/',
+      'contact/',
+      'manual/custom-fields/',
+    ]) {
       await page.goto(base + path);
       const size = await page.evaluate(() => ({
         available: document.documentElement.clientWidth,
@@ -48,7 +65,7 @@ try {
   }
 
   assert.deepEqual(errors, []);
-  console.log('Manual navigation, search, Music & Games chapters, and responsive layouts passed.');
+  console.log('Manual navigation, search, Music & Games chapters, and What\'s New pages passed.');
 } finally {
   await browser.close();
 }

@@ -1,6 +1,6 @@
 ---
 interface Props {
-  currentKind?: 'home' | 'music' | 'games' | 'comics' | 'movies' | 'books' | 'contact';
+  currentKind?: 'home' | 'music' | 'games' | 'comics' | 'movies' | 'books' | 'contact' | 'whatsnew';
   activeSubNav?: string;
 }
 
@@ -70,7 +70,7 @@ const kinds: KindDef[] = [
 ];
 
 const activeKindObj = kinds.find((k) => k.id === currentKind);
-const themeColor = activeKindObj ? activeKindObj.color : currentKind === 'contact' ? '#2c3035' : '#1f2327';
+const themeColor = activeKindObj ? activeKindObj.color : currentKind === 'contact' ? '#2c3035' : currentKind === 'whatsnew' ? '#232a32' : '#1f2327';
 const supportForumUrl = activeKindObj ? activeKindObj.discussionsUrl : 'https://github.com/collectarr/collectarr-app/discussions';
 const contactUrl = activeKindObj ? `${base}contact/?kind=${activeKindObj.id}` : `${base}contact/`;
 ---
@@ -154,17 +154,27 @@ const contactUrl = activeKindObj ? `${base}contact/?kind=${activeKindObj.id}` : 
         {currentKind === 'games' && (
           <>
             <a href={`${base}games/`} class={activeSubNav === 'overview' ? 'active' : ''}>Overview</a>
+            <a href={`${base}games/whatsnew/`} class={activeSubNav === 'whatsnew' ? 'active' : ''}>What's New?</a>
             <a href={`${base}games/#hardware-toys`} class={activeSubNav === 'hardware' ? 'active' : ''}>Hardware & Toys</a>
-            <a href={`${base}games/#completeness-value`} class={activeSubNav === 'value' ? 'active' : ''}>Completeness & Value</a>
+            <a href={`${base}games/#how-to-add`} class={activeSubNav === 'how-to-add' ? 'active' : ''}>How to Add</a>
             <a href={`${base}manual/kinds/games/`} class={activeSubNav === 'manual' ? 'active' : ''}>Manual</a>
           </>
         )}
         {currentKind === 'music' && (
           <>
             <a href={`${base}music/`} class={activeSubNav === 'overview' ? 'active' : ''}>Overview</a>
+            <a href={`${base}music/whatsnew/`} class={activeSubNav === 'whatsnew' ? 'active' : ''}>What's New?</a>
             <a href={`${base}music/#formats`} class={activeSubNav === 'formats' ? 'active' : ''}>Formats & Discs</a>
-            <a href={`${base}music/#tracks-credits`} class={activeSubNav === 'credits' ? 'active' : ''}>Tracks & Credits</a>
+            <a href={`${base}music/#how-to-add`} class={activeSubNav === 'how-to-add' ? 'active' : ''}>How to Add</a>
             <a href={`${base}manual/kinds/music/`} class={activeSubNav === 'manual' ? 'active' : ''}>Manual</a>
+          </>
+        )}
+        {currentKind === 'whatsnew' && (
+          <>
+            <a href={base}>Home</a>
+            <a href={`${base}whatsnew/`} class="active">All Releases</a>
+            <a href={`${base}games/whatsnew/`}>Games Updates</a>
+            <a href={`${base}music/whatsnew/`}>Music Updates</a>
           </>
         )}
         {currentKind === 'contact' && (
@@ -176,7 +186,8 @@ const contactUrl = activeKindObj ? `${base}contact/?kind=${activeKindObj.id}` : 
         )}
         {currentKind === 'home' && (
           <>
-            <a href={base} class="active">Home</a>
+            <a href={base} class={activeSubNav === 'home' ? 'active' : ''}>Home</a>
+            <a href={`${base}whatsnew/`} class={activeSubNav === 'whatsnew' ? 'active' : ''}>What's New?</a>
             <a href={`${base}#collections`}>Collections</a>
             <a href={`${base}manual/`}>User manual</a>
             <a href="https://github.com/collectarr/collectarr-app" target="_blank" rel="noopener">GitHub ↗</a>
@@ -334,7 +345,7 @@ const contactUrl = activeKindObj ? `${base}contact/?kind=${activeKindObj.id}` : 
     color: var(--kind-light);
   }
 
-  /* Selected state with angled CLZ-inspired gradient slash */
+  /* Selected state with accent color */
   .app-item.app-item-selected {
     color: #ffffff;
     background-color: var(--kind-color);

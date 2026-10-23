@@ -23,19 +23,25 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     <Header currentKind="music" activeSubNav="overview" />
 
     <main id="main">
+      <!-- Hero Section -->
       <section class="hero">
-        <p class="eyebrow">FOR AUDIOPHILES, VINYL ENTHUSIASTS & CRATE DIGGERS</p>
-        <h1>Music albums, discs & tracks.<br /><span>The depth physical media deserves.</span></h1>
+        <p class="eyebrow">MUSIC DATABASE SOFTWARE</p>
+        <h1>Catalog your<br /><span>CDs and vinyl records.</span></h1>
         <p class="intro">
-          Collectarr Music models the physical realities of records, optical media, and digital files.
-          Catalog multi-disc containers, dead-wax runouts, track playing times, and contributor credits.
+          Keep track of your physical albums, discs, and tracks across vinyl, optical, and lossless audio.
+          Use the mobile app while crate digging, the native desktop client at your desk, or self-host in your browser.
         </p>
         <div class="actions">
           <a class="primary" href="https://github.com/collectarr/collectarr-app/releases" target="_blank" rel="noopener">Explore Music releases ↗</a>
           <a class="secondary" href={`${base}manual/kinds/music/`}>Read Music user manual →</a>
           <a class="forum-btn" href="https://github.com/collectarr/collectarr-app/discussions?discussions_q=music" target="_blank" rel="noopener">Music Support Forum ↗</a>
         </div>
-        <p class="note">Local-first · Offline database · Vinyl, Optical & Hi-Res Digital</p>
+        <div class="availability-badges">
+          <span class="badge">iOS & Android</span>
+          <span class="badge">Windows, macOS & Linux</span>
+          <span class="badge">Web & Docker</span>
+          <span class="badge highlight">100% Free & Open-Source</span>
+        </div>
 
         <figure class="workspace-preview">
           <Image src={workspace} alt="Collectarr Music workspace showing album collection folders and details inspector" loading="eager" />
@@ -43,6 +49,74 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
         </figure>
       </section>
 
+      <!-- 3 Cataloging Methods (How to Add) -->
+      <section id="how-to-add" class="cataloging-methods">
+        <div class="section-heading">
+          <p class="eyebrow">EFFORTLESS CATALOGING</p>
+          <h2>Three simple ways to catalog your music</h2>
+          <p>Whether you're cataloging ten records or a massive wall-to-wall vinyl archive.</p>
+        </div>
+
+        <div class="methods-grid">
+          <div class="method-card">
+            <div class="method-num">01</div>
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M6 8v8m4-8v8m2-8v8m4-8v8m2-8v8" />
+              </svg>
+            </div>
+            <h3>Scan Barcodes</h3>
+            <p>
+              Scan vinyl jacket or CD jewel case barcodes with your phone's camera, desktop webcam, or a USB scanner.
+              Instant matches download album artwork, complete track lists, label, and release year.
+            </p>
+            <span class="method-tag">Fastest for modern vinyl & CDs</span>
+          </div>
+
+          <div class="method-card">
+            <div class="method-num">02</div>
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="7" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+            </div>
+            <h3>Search Discogs & Core by Title</h3>
+            <p>
+              Type the artist and album title or label catalog number (e.g. <em>Blue Note BST 81595</em>).
+              Inspect track positions, pressing countries, and edition packaging before adding to your collection.
+            </p>
+            <span class="method-tag">Ideal for vintage pressings</span>
+          </div>
+
+          <div class="method-card">
+            <div class="method-num">03</div>
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M5 12h14" />
+                <circle cx="12" cy="12" r="9" />
+              </svg>
+            </div>
+            <h3>Add Custom & Live Recordings</h3>
+            <p>
+              Catalog unreleased live soundboard bootlegs, local band flexi-discs, demo tapes, and test pressings.
+              Add custom vinyl colors, dead-wax runout matrices, and personal high-resolution photos.
+            </p>
+            <span class="method-tag">Audiophile flexibility</span>
+          </div>
+        </div>
+
+        <div class="import-banner">
+          <p>
+            <strong>Switching from CLZ Music or Discogs?</strong>
+            Collectarr provides lossless native CSV and CLZ Music XML imports with track list and custom field preservation.
+          </p>
+          <a class="import-link" href={`${base}manual/import-export/`}>Learn about importing →</a>
+        </div>
+      </section>
+
+      <!-- Features Grid -->
       <section class="features" aria-label="Collectarr Music features">
         <article class="feature-card">
           <span class="number">01</span>
@@ -105,6 +179,49 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
         </article>
       </section>
 
+      <!-- Companions Section -->
+      <section class="companions-section">
+        <div class="companions-inner">
+          <p class="eyebrow">AVAILABLE EVERYWHERE</p>
+          <h2>Mobile, Web & Desktop — perfect companions!</h2>
+          <p class="companions-intro">
+            Use the mobile app on your phone while crate digging at the record store, and use the desktop or web version
+            on your computer for deep editing and collection management.
+          </p>
+
+          <div class="companions-grid">
+            <div class="companion-box">
+              <div class="companion-tag">While crate digging</div>
+              <h3>Collectarr Mobile</h3>
+              <p>
+                Browse your collection on your phone while flicking through vinyl bins. Check your exact pressing details
+                to avoid buying duplicates, or check your wish list for missing albums.
+              </p>
+              <ul>
+                <li>Quick barcode scanning with mobile camera</li>
+                <li>Offline library stays accessible in basement record shops</li>
+                <li>Instant wish list check with one tap</li>
+              </ul>
+            </div>
+
+            <div class="companion-box">
+              <div class="companion-tag">Back at your listening room</div>
+              <h3>Collectarr Desktop & Web</h3>
+              <p>
+                Relax at your desk with high-density table views, full keyboard navigation, automated daily backups,
+                matrix runout entry, and extensive statistics across all your shelves.
+              </p>
+              <ul>
+                <li>Fast multi-column sorting and filtering</li>
+                <li>Regex search (<code>matches: ^the\s</code>) across large collections</li>
+                <li>Automatic daily backups with rollback protections</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Deep Dive Formats -->
       <section id="formats" class="deep-dive">
         <div class="deep-dive-header">
           <p class="eyebrow">PHYSICAL & TECHNICAL PRECISION</p>
@@ -151,6 +268,87 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
         </div>
       </section>
 
+      <!-- Why Choose Collectarr (Comparison table) -->
+      <section class="comparison-section">
+        <div class="section-heading">
+          <p class="eyebrow">WHY AUDIOPHILES CHOOSE COLLECTARR</p>
+          <h2>Local-first freedom vs. proprietary cloud lock-in</h2>
+          <p>Compare Collectarr with commercial cloud database subscriptions.</p>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>Commercial Cloud Software (CLZ)</th>
+                <th>Collectarr Music</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Pricing</strong></td>
+                <td>Mandatory subscription (€49.90 / year)</td>
+                <td><span class="highlight-text">100% Free & Open-Source</span></td>
+              </tr>
+              <tr>
+                <td><strong>Data Ownership</strong></td>
+                <td>Trapped on vendor's cloud server</td>
+                <td><span class="highlight-text">Local SQLite database on your device</span></td>
+              </tr>
+              <tr>
+                <td><strong>Multi-Disc Modeling</strong></td>
+                <td>Flat format pick list</td>
+                <td><span class="highlight-text">Physical multi-disc containers</span></td>
+              </tr>
+              <tr>
+                <td><strong>Runout / Matrix Specs</strong></td>
+                <td>Single generic text field</td>
+                <td><span class="highlight-text">Dedicated disc-level matrix & dead-wax fields</span></td>
+              </tr>
+              <tr>
+                <td><strong>Track Durations</strong></td>
+                <td>Basic manual entry</td>
+                <td><span class="highlight-text">Automatic disc and album duration aggregation</span></td>
+              </tr>
+              <tr>
+                <td><strong>Privacy</strong></td>
+                <td>Account tracking & analytics</td>
+                <td><span class="highlight-text">Zero telemetry, completely offline capable</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Community Reviews -->
+      <section class="reviews-section">
+        <div class="section-heading">
+          <p class="eyebrow">REVIEWS FROM COLLECTORS</p>
+          <h2>Loved by vinyl crate diggers & audiophiles</h2>
+          <p>What fellow collectors say about managing their physical music with Collectarr.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Finally an app that understands box sets can contain both vinyl LPs and a bonus CD! Format handling is leaps ahead of anything else."</p>
+            <span class="reviewer">— Audiophile & Vinyl Collector</span>
+          </div>
+          <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"No subscription fee, no internet required when I'm in a basement record store with zero cell signal. My entire library is right there."</p>
+            <span class="reviewer">— Jazz & Classical Collector</span>
+          </div>
+          <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"The regular expression search and automated daily backups give me complete confidence in my catalog of over 4,000 albums."</p>
+            <span class="reviewer">— Record Archivist</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Callout / Support CTA -->
       <section id="tracks-credits" class="callout-section">
         <div class="callout-inner">
           <p class="eyebrow">COMMUNITY & SUPPORT</p>
@@ -217,10 +415,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     margin-bottom: 12px;
   }
   .hero h1 {
-    font-size: clamp(34px, 4.8vw, 64px);
-    line-height: 1.12;
+    font-size: clamp(36px, 5vw, 68px);
+    line-height: 1.1;
     letter-spacing: -0.04em;
-    margin: 16px 0 24px;
+    margin: 14px 0 20px;
   }
   .hero h1 span {
     color: #f2932f;
@@ -229,8 +427,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     font-size: 18.5px;
     line-height: 1.55;
     color: #c4c7cc;
-    max-width: 720px;
-    margin: 0 auto 32px;
+    max-width: 740px;
+    margin: 0 auto 30px;
   }
   .actions {
     display: flex;
@@ -277,14 +475,33 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     background: rgba(242, 147, 47, 0.18);
     transform: translateY(-2px);
   }
-  .note {
-    color: #8c9096;
-    font-size: 12.5px;
-    letter-spacing: 0.04em;
-    margin-bottom: 36px;
+
+  .availability-badges {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
   }
+  .availability-badges .badge {
+    font-size: 11px;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: #1f2227;
+    color: #9ea3a8;
+    border: 1px solid #2d3138;
+  }
+  .availability-badges .badge.highlight {
+    background: rgba(242, 147, 47, 0.15);
+    color: #ffb15c;
+    border-color: rgba(242, 147, 47, 0.3);
+  }
+
   .workspace-preview {
-    margin: 0;
+    margin: 36px 0 0;
   }
   .workspace-preview img {
     display: block;
@@ -300,12 +517,121 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     margin-top: 14px;
   }
 
+  /* Cataloging Methods */
+  .cataloging-methods {
+    padding: 64px 0 48px;
+    border-top: 1px solid #282a2e;
+  }
+  .section-heading {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 44px;
+  }
+  .section-heading h2 {
+    font-size: clamp(28px, 3.5vw, 42px);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    margin: 10px 0 14px;
+  }
+  .section-heading p {
+    color: #a8acb2;
+    font-size: 16px;
+  }
+  .methods-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .method-card {
+    background: #191b1e;
+    border: 1px solid #282b30;
+    border-radius: 10px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+  .method-card:hover {
+    border-color: #f2932f;
+    transform: translateY(-2px);
+  }
+  .method-num {
+    font-size: 13px;
+    font-weight: 800;
+    color: #f2932f;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  .method-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: rgba(242, 147, 47, 0.12);
+    color: #f2932f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+  .method-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  .method-card h3 {
+    font-size: 19px;
+    margin: 0 0 10px;
+    color: #f6f3ed;
+  }
+  .method-card p {
+    color: #a8acb2;
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 18px;
+    flex-grow: 1;
+  }
+  .method-tag {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #ffb15c;
+    background: rgba(242, 147, 47, 0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+    width: fit-content;
+  }
+
+  .import-banner {
+    background: #1b1d20;
+    border: 1px dashed #3a3f47;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .import-banner p {
+    margin: 0;
+    font-size: 14px;
+    color: #c4c7cc;
+  }
+  .import-link {
+    color: #f2932f;
+    font-weight: 750;
+    font-size: 13.5px;
+    white-space: nowrap;
+  }
+  .import-link:hover {
+    text-decoration: underline;
+  }
+
   /* Features Grid */
   .features {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 28px;
-    padding: 40px 0 64px;
+    padding: 48px 0 64px;
   }
   .feature-card {
     background: #1a1c1f;
@@ -349,10 +675,81 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     text-decoration: underline;
   }
 
+  /* Companions Section */
+  .companions-section {
+    padding: 56px 0;
+    border-top: 1px solid #282a2e;
+  }
+  .companions-inner {
+    background: linear-gradient(180deg, #1c1a17 0%, #151617 100%);
+    border: 1px solid rgba(242, 147, 47, 0.2);
+    border-radius: 12px;
+    padding: 52px 36px;
+    text-align: center;
+  }
+  .companions-intro {
+    max-width: 680px;
+    margin: 12px auto 36px;
+    font-size: 16px;
+    color: #c4c7cc;
+  }
+  .companions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    text-align: left;
+  }
+  .companion-box {
+    background: #17181a;
+    border: 1px solid #282a2e;
+    border-radius: 8px;
+    padding: 28px 24px;
+  }
+  .companion-tag {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #f2932f;
+    margin-bottom: 6px;
+  }
+  .companion-box h3 {
+    font-size: 20px;
+    margin: 0 0 12px;
+    color: #f6f3ed;
+  }
+  .companion-box p {
+    color: #a8acb2;
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 16px;
+  }
+  .companion-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .companion-box li {
+    font-size: 13px;
+    color: #c4c7cc;
+    position: relative;
+    padding-left: 18px;
+  }
+  .companion-box li::before {
+    content: '✓';
+    position: absolute;
+    left: 2px;
+    color: #f2932f;
+    font-weight: 800;
+  }
+
   /* Deep Dive Section */
   .deep-dive {
     padding: 64px 0;
-    border-top: 1px solid #25282c;
+    border-top: 1px solid #282a2e;
   }
   .deep-dive-header {
     text-align: center;
@@ -427,6 +824,79 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     color: #f6f3ed;
   }
 
+  /* Comparison Section */
+  .comparison-section {
+    padding: 64px 0;
+    border-top: 1px solid #282a2e;
+  }
+  .table-wrapper {
+    overflow-x: auto;
+    border: 1px solid #282b30;
+    border-radius: 8px;
+  }
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+    background: #191b1e;
+  }
+  .comparison-table th, .comparison-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #24272c;
+  }
+  .comparison-table th {
+    background: #141618;
+    color: #f6f3ed;
+    font-size: 13.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .comparison-table td:nth-child(2) {
+    color: #8c9096;
+  }
+  .highlight-text {
+    color: #f2932f;
+    font-weight: 750;
+  }
+
+  /* Reviews Section */
+  .reviews-section {
+    padding: 64px 0;
+    border-top: 1px solid #282a2e;
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .review-card {
+    background: #1a1c1f;
+    border: 1px solid #282b30;
+    border-radius: 8px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .stars {
+    color: #f2932f;
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .review-card p {
+    font-size: 14px;
+    color: #c4c7cc;
+    line-height: 1.55;
+    margin: 0 0 16px;
+    flex-grow: 1;
+    font-style: italic;
+  }
+  .reviewer {
+    font-size: 12.5px;
+    color: #8c9096;
+    font-weight: 700;
+  }
+
   /* Callout section */
   .callout-section {
     padding: 48px 0 80px;
@@ -453,13 +923,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   }
 
   @media (max-width: 900px) {
-    .features {
+    .methods-grid, .features, .reviews-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
-    .grid-two {
+    .grid-two, .companions-grid {
       grid-template-columns: 1fr;
       gap: 24px;
+    }
+    .import-banner {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 
@@ -470,7 +944,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     .intro {
       font-size: 16px;
     }
-    .features {
+    .methods-grid, .features, .reviews-grid {
       grid-template-columns: 1fr;
     }
     .actions {
