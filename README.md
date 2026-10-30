@@ -7,6 +7,11 @@ local-first collection manager. Music is the only library kind released so far
 
 Live site: <https://collectarr.github.io/collectarr-page/>
 
+**License:** [GNU AGPLv3 only](LICENSE) (`AGPL-3.0-only`), like the rest of
+Collectarr. Earlier versions were MIT-licensed; that notice is kept in
+[LICENSES/MIT-legacy.txt](LICENSES/MIT-legacy.txt). Screenshots, fonts and other
+third-party assets keep their own licenses.
+
 ## ✨ What is on the site
 
 - **Landing page** with a kind switcher in the header, in the style of
