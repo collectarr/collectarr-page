@@ -22,12 +22,11 @@ const kinds: KindDef[] = [
   {
     id: 'comics',
     label: 'Comics',
-    href: `${base}#upcoming`,
+    href: `${base}comics/`,
     color: '#00AEE6',
     lightColor: '#3BC0EA',
-    isAvailable: false,
-    statusBadge: 'Planned',
-    discussionsUrl: 'https://github.com/collectarr/collectarr-app/discussions',
+    isAvailable: true,
+    discussionsUrl: 'https://github.com/collectarr/collectarr-app/discussions?discussions_q=comics',
   },
   {
     id: 'movies',
@@ -151,6 +150,16 @@ const contactUrl = activeKindObj ? `${base}contact/?kind=${activeKindObj.id}` : 
   <nav id="sub-nav" aria-label="Sub navigation">
     <div class="sub-nav-inner">
       <div class="nav-group nav-group-left">
+        {currentKind === 'comics' && (
+          <>
+            <a href={`${base}comics/`} class={activeSubNav === 'overview' ? 'active' : ''}>Overview</a>
+            <a href={`${base}comics/whatsnew/`} class={activeSubNav === 'whatsnew' ? 'active' : ''}>What's New?</a>
+            <a href={`${base}comics/#grading-slabs`} class={activeSubNav === 'grading' ? 'active' : ''}>Grading & Slabs</a>
+            <a href={`${base}comics/#how-to-add`} class={activeSubNav === 'how-to-add' ? 'active' : ''}>How to Add</a>
+            <a href={`${base}comics/#faq`} class={activeSubNav === 'faq' ? 'active' : ''}>FAQ</a>
+            <a href={`${base}manual/kinds/comics/`} class={activeSubNav === 'manual' ? 'active' : ''}>Manual</a>
+          </>
+        )}
         {currentKind === 'games' && (
           <>
             <a href={`${base}games/`} class={activeSubNav === 'overview' ? 'active' : ''}>Overview</a>
@@ -175,6 +184,7 @@ const contactUrl = activeKindObj ? `${base}contact/?kind=${activeKindObj.id}` : 
           <>
             <a href={base}>Home</a>
             <a href={`${base}whatsnew/`} class="active">All Releases</a>
+            <a href={`${base}comics/whatsnew/`}>Comics Updates</a>
             <a href={`${base}games/whatsnew/`}>Games Updates</a>
             <a href={`${base}music/whatsnew/`}>Music Updates</a>
           </>

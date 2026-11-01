@@ -1,0 +1,883 @@
+---
+import ThemeHead from '../../components/ThemeHead.astro';
+import Header from '../../components/Header.astro';
+import Faq from '../../components/Faq.astro';
+import Footer from '../../components/Footer.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
+
+const faqItems = [
+  {
+    q: "Is Collectarr Comics really free?",
+    a: "Yes. Collectarr is 100% free and open-source software under the AGPL-3.0 license. There is no subscription, no tier restrictions, and no account required to keep your personal comic library."
+  },
+  {
+    q: "Where is my comic collection stored?",
+    a: "In a local SQLite database on your own device. Your collection data, notes, and valuation records stay strictly private, offline, and completely under your control."
+  },
+  {
+    q: "Can I import from CLZ Comics or Comic Collector?",
+    a: "Yes. Collectarr provides built-in, lossless importers for CLZ Comics Web XML, Comic Collector desktop XML, and standard CSV / TXT files, importing your series, issues, grades, and custom fields instantly."
+  },
+  {
+    q: "How does Collectarr handle CGC, CBCS, and PGX slabbed comics?",
+    a: "Slabs are rendered with realistic visual cases in cards, covers, shelves, and the details panel. Record grading company, numeric grade, slab certification number, grade ribbons, and even your own Custom Label artwork."
+  },
+  {
+    q: "Does Collectarr show publisher logos?",
+    a: "Yes. The details panel automatically displays publisher logos for Marvel, DC, Image, Dark Horse, IDW, Viz Media, Kodansha, Shueisha, Tokyopop, Archie, Dynamite, Valiant, Vertigo, Fantagraphics, Panini, and more."
+  },
+  {
+    q: "What is the Missing Comics tool?",
+    a: "Accessible via Tools in the main menu, the Missing Comics tool analyzes your collection to identify missing issues in series runs, filters variants or unreleased issues, and exports clean PDF checklists for conventions and comic shops."
+  },
+  {
+    q: "Will my comic cover images work offline?",
+    a: "Yes. External cover links from CLZ and web imports are downloaded directly to your local library storage. You can also trigger Maintenance > Download Covers at any time to preserve artwork offline."
+  }
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Collectarr Comics is a dedicated comic book collection manager. Track single issues, series runs, variant covers, CGC/CBCS slabbed grading, and missing issues."
+    />
+    <title>Collectarr Comics — Comic Book Database & Collection Manager</title>
+    <ThemeHead />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+  </head>
+  <body class="comics-page">
+    <a class="skip" href="#main">Skip to content</a>
+    <Header currentKind="comics" activeSubNav="overview" />
+
+    <main id="main">
+      <!-- Hero Section -->
+      <section class="hero">
+        <p class="eyebrow">COMIC BOOK DATABASE SOFTWARE</p>
+        <h1>Catalog your<br /><span>comic collection.</span></h1>
+        <p class="intro">
+          Keep track of your single issues, series runs, trade paperbacks, and slabbed grails.
+          Use the native mobile app when hunting back issues, the high-density desktop app for deep cataloging, or self-host in your browser.
+        </p>
+        <div class="actions">
+          <a class="primary" href="https://github.com/collectarr/collectarr-app/releases" target="_blank" rel="noopener">Explore Comics releases ↗</a>
+          <a class="secondary" href={`${base}manual/kinds/comics/`}>Read Comics user manual →</a>
+          <a class="forum-btn" href="https://github.com/collectarr/collectarr-app/discussions?discussions_q=comics" target="_blank" rel="noopener">Comics Support Forum ↗</a>
+        </div>
+        <div class="availability-badges">
+          <span class="badge">iOS & Android</span>
+          <span class="badge">Windows, macOS & Linux</span>
+          <span class="badge">Web & Docker</span>
+          <span class="badge highlight">100% Free & Open-Source</span>
+        </div>
+      </section>
+
+      <!-- 3 Cataloging Methods (How to Add) -->
+      <section id="how-to-add" class="cataloging-methods">
+        <div class="section-heading">
+          <p class="eyebrow">EFFORTLESS CATALOGING</p>
+          <h2>Three simple ways to build your comic database</h2>
+          <p>Whether you're cataloging ten issues or complete ten-thousand book runs, Collectarr makes adding fast and accurate.</p>
+        </div>
+
+        <div class="methods-grid">
+          <div class="method-card">
+            <div class="method-num">01</div>
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+                <path d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+              </svg>
+            </div>
+            <h3>Search Series & Issue Runs</h3>
+            <p>
+              Type the series name to view full runs with issue counts. Browse issues beside the series list
+              as a cover grid or list, select all or issue ranges with a single click, and view variant covers.
+            </p>
+            <span class="method-tag">Fastest for run completionists</span>
+          </div>
+
+          <div class="method-card">
+            <div class="method-num">02</div>
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M6 8v8m4-8v8m2-8v8m4-8v8m2-8v8" />
+              </svg>
+            </div>
+            <h3>Scan Comic Barcodes</h3>
+            <p>
+              Scan direct-market UPC and ISBN barcodes with your phone camera, desktop webcam, or a USB scanner.
+              Collectarr detects the issue number and variant extension code automatically.
+            </p>
+            <span class="method-tag">Great for modern floppies</span>
+          </div>
+
+          <div class="method-card">
+            <div class="method-num">03</div>
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M5 12h14" />
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+              </svg>
+            </div>
+            <h3>Add Custom & Slabbed Comics</h3>
+            <p>
+              Catalog indie ashcans, convention exclusives, signed copies, and graded slabs.
+              Set custom publisher names, upload private cover photography, and configure custom fields.
+            </p>
+            <span class="method-tag">Infinite customization</span>
+          </div>
+        </div>
+
+        <div class="import-banner">
+          <p>
+            <strong>Switching from CLZ Comics or Comic Collector?</strong>
+            Collectarr includes lossless importers for CLZ Comics Web XML, Comic Collector desktop XML, and CSV spreadsheets with automatic field mapping.
+          </p>
+          <a class="import-link" href={`${base}manual/import-export/`}>Learn about importing →</a>
+        </div>
+      </section>
+
+      <!-- Features Grid -->
+      <section class="features" aria-label="Collectarr Comics features">
+        <article class="feature-card">
+          <span class="number">01</span>
+          <h2>Series & Issue Architecture</h2>
+          <p>
+            Group issues by series folders with first-cover display. Track issue numbers with variants
+            (e.g. <em>#1A</em>, <em>#1B Foil</em>), publication ages (Golden, Silver, Bronze, Copper, Modern), and partial release dates.
+          </p>
+          <a href={`${base}manual/kinds/comics/#series-issues`}>Series & issues details →</a>
+        </article>
+
+        <article class="feature-card">
+          <span class="number">02</span>
+          <h2>Certified Grading & Slabs</h2>
+          <p>
+            Track CGC, CBCS, and PGX slabs with realistic case artwork in all views. Record numeric grades,
+            slab certification numbers, grade ribbons, and load custom label artwork from your own files.
+          </p>
+          <a href={`${base}manual/kinds/comics/#slabs`}>Slabs & grading →</a>
+        </article>
+
+        <article class="feature-card">
+          <span class="number">03</span>
+          <h2>Creators & Characters</h2>
+          <p>
+            Document writer, penciler, inker, colorist, letterer, and cover artist credits.
+            Catalog character appearances and storyline crossovers per issue.
+          </p>
+          <a href={`${base}manual/kinds/comics/#creators`}>Creators & appearances →</a>
+        </article>
+
+        <article class="feature-card">
+          <span class="number">04</span>
+          <h2>Publisher Visual Logos</h2>
+          <p>
+            The inspector panel automatically shows publisher logos for Marvel, DC, Image, Dark Horse,
+            IDW, Viz Media, Kodansha, Shueisha, Tokyopop, Archie, Dynamite, Vertigo, and more.
+          </p>
+          <a href={`${base}manual/kinds/comics/#publishers`}>Publisher branding →</a>
+        </article>
+
+        <article class="feature-card">
+          <span class="number">05</span>
+          <h2>Missing Comics Finder</h2>
+          <p>
+            Detect gaps in your runs with the Missing Comics tool. Filter by variant preference,
+            on-order or unreleased issues, review compact issue runs, and export clean PDF want lists.
+          </p>
+          <a href={`${base}manual/kinds/comics/#missing-comics`}>Missing comics tool →</a>
+        </article>
+
+        <article class="feature-card">
+          <span class="number">06</span>
+          <h2>Offline Cover Preservation</h2>
+          <p>
+            External cover URLs from CLZ and web imports are automatically downloaded and stored locally.
+            Browse your full cover gallery offline anytime, anywhere.
+          </p>
+          <a href={`${base}manual/images/`}>Offline covers guide →</a>
+        </article>
+      </section>
+
+      <!-- Companions Section (Mobile, Desktop & Web) -->
+      <section class="companions-section">
+        <div class="companions-inner">
+          <p class="eyebrow">AVAILABLE EVERYWHERE</p>
+          <h2>Mobile, Web & Desktop — built for comic hunters</h2>
+          <p class="companions-intro">
+            Both Collectarr Mobile and Collectarr Desktop are fully functional standalone apps,
+            offering seamless offline storage and optional peer-to-peer sync.
+          </p>
+
+          <div class="companions-grid">
+            <div class="companion-box">
+              <div class="companion-tag">Back-issue bin diving</div>
+              <h3>Collectarr Mobile</h3>
+              <p>
+                Browse your collection on your phone while flipping through longboxes at comic shops and conventions.
+                Never buy an accidental duplicate issue again. Scan barcodes and use touch-friendly full-screen Add workflows.
+              </p>
+              <ul>
+                <li>Native touch-sized Add page with series issue grids</li>
+                <li>Offline database in your pocket, zero cell service required</li>
+                <li>Wish list tracking to spot missing keys in a run</li>
+              </ul>
+            </div>
+
+            <div class="companion-box">
+              <div class="companion-tag">At your desk</div>
+              <h3>Collectarr Desktop & Web</h3>
+              <p>
+                Use the full-featured desktop client for bulk cataloging, 11-tab issue editing,
+                custom field configuration, and generating comprehensive collection PDF checklists.
+              </p>
+              <ul>
+                <li>Customizable list, vertical cards, covers, and shelves views</li>
+                <li>Automated daily database backups with one-click restore</li>
+                <li>Keyboard shortcuts (<kbd>Ctrl+K</kbd>, <kbd>Enter</kbd> multi-value) for rapid entry</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Deep Dive Grading & Slabs -->
+      <section id="grading-slabs" class="deep-dive">
+        <div class="deep-dive-header">
+          <p class="eyebrow">PRESERVATION & VALUATION</p>
+          <h2>Slabbed grails and raw reading copies.<br />Treated with precision.</h2>
+          <p>
+            Comic collecting balances raw reading copies with encapsulated third-party graded slabs.
+            Collectarr models both with fidelity.
+          </p>
+        </div>
+
+        <div class="grid-two">
+          <div class="info-box">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M3 8h18M8 3v5m8-5v5" />
+              </svg>
+            </div>
+            <h3>Grading & Slab Framing</h3>
+            <ul>
+              <li><strong>Certified Grading Services:</strong> CGC, CBCS, PGX, and custom grading services.</li>
+              <li><strong>Realistic Slabs:</strong> Covers display inside authentic slab frames with company header, grade ribbon, and certification numbers.</li>
+              <li><strong>Page Quality:</strong> White, Off-White/White, Cream, or Tan page designations.</li>
+              <li><strong>Raw Grading:</strong> Standard 10-point numeric grades (e.g. 9.8, 9.6, 9.4) or descriptive grades (NM, VF, FN).</li>
+            </ul>
+          </div>
+
+          <div class="info-box">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
+            </div>
+            <h3>Values & Custom Labels</h3>
+            <ul>
+              <li><strong>Custom Label Artwork:</strong> Load your own label image files to display on slabs and in details.</li>
+              <li><strong>Purchase & Sale History:</strong> Record purchase dates, stores, prices, and sold information on single clean lines.</li>
+              <li><strong>Key Issue Categories:</strong> Flag 1st appearances, deaths, iconic covers, and origin issues.</li>
+              <li><strong>Valuation Recalculation:</strong> Personal market value snapshots honored across all views in your chosen currency.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose Collectarr (Comparison table) -->
+      <section class="comparison-section">
+        <div class="section-heading">
+          <p class="eyebrow">WHY COLLECTORS CHOOSE COLLECTARR</p>
+          <h2>Local-first ownership vs. subscription cloud lock-in</h2>
+          <p>Built for collectors who demand privacy, speed, and lifetime ownership over their comic collection database.</p>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>Cloud Database Apps (CLZ)</th>
+                <th>Collectarr Comics</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Pricing</strong></td>
+                <td>Paid subscription (€49.90 / year)</td>
+                <td><span class="highlight-text">100% Free & Open-Source</span></td>
+              </tr>
+              <tr>
+                <td><strong>Data Storage</strong></td>
+                <td>Locked in vendor's proprietary cloud</td>
+                <td><span class="highlight-text">Local SQLite database on your machine</span></td>
+              </tr>
+              <tr>
+                <td><strong>Offline Cover Access</strong></td>
+                <td>Requires internet or paid subscription</td>
+                <td><span class="highlight-text">Automatic local cover downloads</span></td>
+              </tr>
+              <tr>
+                <td><strong>Missing Comics Tool</strong></td>
+                <td>Basic web list</td>
+                <td><span class="highlight-text">Run gap analysis with PDF checklist export</span></td>
+              </tr>
+              <tr>
+                <td><strong>Slabbed Artwork</strong></td>
+                <td>Proprietary closed labels</td>
+                <td><span class="highlight-text">Authentic slab styling with user custom labels</span></td>
+              </tr>
+              <tr>
+                <td><strong>Custom Fields & Export</strong></td>
+                <td>Restricted by tier</td>
+                <td><span class="highlight-text">Unlimited custom fields, XML, CSV & PDF export</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <Faq title="Questions about Collectarr Comics" items={faqItems} />
+
+      <!-- Support CTA -->
+      <section id="community-support" class="callout-section">
+        <div class="callout-inner">
+          <p class="eyebrow">COMMUNITY & SUPPORT</p>
+          <h2>Join the Collectarr Comics discussions</h2>
+          <p>
+            Have ideas for new comic publisher logos, variant tracking, or run workflows?
+            Connect with fellow comic collectors in the dedicated GitHub Discussions community.
+          </p>
+          <div class="actions">
+            <a class="primary" href="https://github.com/collectarr/collectarr-app/discussions?discussions_q=comics" target="_blank" rel="noopener">
+              Open Comics Support Forum ↗
+            </a>
+            <a class="secondary" href={`${base}contact/?kind=comics`}>
+              Contact & Diagnostics Hub →
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  :global(*){box-sizing:border-box}
+  :global(html){scroll-behavior:smooth}
+  :global(body){margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,sans-serif;line-height:1.6}
+  :global(a){color:inherit;text-decoration:none}
+  :global(a:focus-visible){outline:3px solid #00aee6;outline-offset:4px}
+  :global(::selection){background:#00aee6;color:#fff}
+
+  .skip {
+    position: fixed;
+    top: -100px;
+    left: 20px;
+    padding: 10px 16px;
+    background: #00aee6;
+    color: #fff;
+    font-weight: 700;
+    z-index: 1000;
+  }
+  .skip:focus { top: 15px; }
+
+  main {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    font-weight: 800;
+    color: var(--comics-text);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 72px 16px 48px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hero h1 {
+    font-size: clamp(38px, 5.5vw, 68px);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    margin: 12px 0 20px;
+  }
+  .hero h1 span {
+    color: var(--comics-text);
+  }
+  .intro {
+    font-size: 19px;
+    color: var(--text-2);
+    line-height: 1.6;
+    max-width: 720px;
+    margin: 0 auto 32px;
+  }
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .actions a {
+    display: inline-flex;
+    align-items: center;
+    padding: 13px 26px;
+    font-size: 14.5px;
+    font-weight: 750;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+  }
+  .actions .primary {
+    background: #00aee6;
+    color: #ffffff;
+  }
+  .actions .primary:hover {
+    background: #3bc0ea;
+    transform: translateY(-2px);
+  }
+  .actions .secondary {
+    border: 1px solid var(--line-2);
+    background: var(--surface);
+    color: var(--text);
+  }
+  .actions .secondary:hover {
+    background: var(--surface-2);
+    transform: translateY(-2px);
+  }
+  .actions .forum-btn {
+    border: 1px solid rgba(0, 174, 230, 0.4);
+    background: rgba(0, 174, 230, 0.1);
+    color: #3bc0ea;
+  }
+  .actions .forum-btn:hover {
+    background: rgba(0, 174, 230, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .availability-badges {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .availability-badges .badge {
+    font-size: 11px;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--text-4);
+    border: 1px solid var(--line);
+  }
+  .availability-badges .badge.highlight {
+    background: rgba(0, 174, 230, 0.15);
+    color: var(--comics-text);
+    border-color: rgba(0, 174, 230, 0.3);
+  }
+
+  /* Cataloging Methods (How to Add) */
+  .cataloging-methods {
+    padding: 64px 0 56px;
+    border-top: 1px solid var(--line);
+  }
+  .section-heading {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 44px;
+  }
+  .section-heading h2 {
+    font-size: clamp(28px, 3.5vw, 42px);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    margin: 12px 0 16px;
+  }
+  .section-heading p {
+    color: var(--text-3);
+    font-size: 16px;
+  }
+
+  .methods-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 36px;
+  }
+  .method-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 32px 28px 24px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .method-num {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--line-2);
+    line-height: 1;
+  }
+  .method-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: rgba(0, 174, 230, 0.12);
+    color: var(--comics-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .method-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+  .method-card h3 {
+    font-size: 19px;
+    margin: 0 0 12px;
+    color: var(--text);
+  }
+  .method-card p {
+    font-size: 14px;
+    color: var(--text-3);
+    line-height: 1.6;
+    margin: 0 0 20px;
+    flex-grow: 1;
+  }
+  .method-tag {
+    font-size: 11.5px;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--comics-text);
+    display: inline-block;
+  }
+
+  .import-banner {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--comics-text);
+    border-radius: 8px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .import-banner p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-2);
+    max-width: 820px;
+  }
+  .import-banner strong {
+    color: var(--text);
+  }
+  .import-link {
+    font-size: 13.5px;
+    font-weight: 750;
+    color: var(--comics-text);
+    white-space: nowrap;
+  }
+  .import-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Features Grid */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    padding: 56px 0 72px;
+    border-top: 1px solid var(--line);
+  }
+  .feature-card {
+    padding-top: 24px;
+    border-top: 1px solid var(--line-2);
+  }
+  .number {
+    color: var(--comics-text);
+    font-size: 13px;
+    font-weight: 850;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .feature-card h2 {
+    font-size: 21px;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  .feature-card p {
+    font-size: 14px;
+    color: var(--text-3);
+    line-height: 1.6;
+    margin: 0 0 16px;
+  }
+  .feature-card a {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--comics-text);
+  }
+  .feature-card a:hover {
+    text-decoration: underline;
+  }
+
+  /* Companions Section */
+  .companions-section {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 56px 44px;
+    margin: 40px 0 72px;
+  }
+  .companions-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  .companions-section h2 {
+    font-size: clamp(26px, 3.2vw, 38px);
+    letter-spacing: -0.03em;
+    margin: 10px 0 14px;
+  }
+  .companions-intro {
+    font-size: 16px;
+    color: var(--text-3);
+    max-width: 720px;
+    margin: 0 0 40px;
+  }
+  .companions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .companion-box {
+    background: var(--surface-2);
+    border: 1px solid var(--line-2);
+    border-radius: 10px;
+    padding: 32px 28px;
+  }
+  .companion-tag {
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--comics-text);
+    margin-bottom: 8px;
+  }
+  .companion-box h3 {
+    font-size: 20px;
+    margin: 0 0 12px;
+    color: var(--text);
+  }
+  .companion-box p {
+    font-size: 14px;
+    color: var(--text-3);
+    line-height: 1.6;
+    margin: 0 0 20px;
+  }
+  .companion-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .companion-box li {
+    font-size: 13.5px;
+    color: var(--text-2);
+    position: relative;
+    padding-left: 20px;
+  }
+  .companion-box li::before {
+    content: '✓';
+    position: absolute;
+    left: 2px;
+    color: var(--comics-text);
+    font-weight: 800;
+  }
+
+  /* Deep Dive Section */
+  .deep-dive {
+    padding: 64px 0 72px;
+    border-top: 1px solid var(--line);
+  }
+  .deep-dive-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 44px;
+  }
+  .deep-dive-header h2 {
+    font-size: clamp(28px, 3.5vw, 42px);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    margin: 12px 0 16px;
+  }
+  .deep-dive-header p {
+    color: var(--text-3);
+    font-size: 16px;
+  }
+  .grid-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .info-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 36px 32px;
+  }
+  .info-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: rgba(0, 174, 230, 0.12);
+    color: var(--comics-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .info-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+  .info-box h3 {
+    font-size: 20px;
+    margin: 0 0 18px;
+    color: var(--text);
+  }
+  .info-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .info-box li {
+    font-size: 14px;
+    color: var(--text-3);
+    line-height: 1.55;
+    position: relative;
+    padding-left: 20px;
+  }
+  .info-box li::before {
+    content: '•';
+    position: absolute;
+    left: 2px;
+    color: var(--comics-text);
+    font-size: 18px;
+    line-height: 1.2;
+  }
+  .info-box strong {
+    color: var(--text);
+  }
+
+  /* Comparison Section */
+  .comparison-section {
+    padding: 64px 0 72px;
+    border-top: 1px solid var(--line);
+  }
+  .table-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface);
+  }
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .comparison-table th,
+  .comparison-table td {
+    padding: 16px 24px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+  }
+  .comparison-table th {
+    background: var(--surface-2);
+    font-size: 13px;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-2);
+  }
+  .comparison-table tr:last-child td {
+    border-bottom: none;
+  }
+  .highlight-text {
+    color: var(--comics-text);
+    font-weight: 750;
+  }
+
+  /* Callout / Support CTA */
+  .callout-section {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 56px 40px;
+    text-align: center;
+    margin: 40px 0 64px;
+  }
+  .callout-inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .callout-section h2 {
+    font-size: clamp(26px, 3.2vw, 38px);
+    letter-spacing: -0.03em;
+    margin: 12px 0 16px;
+  }
+  .callout-section p {
+    font-size: 16px;
+    color: var(--text-3);
+    margin: 0 0 28px;
+  }
+
+  @media (max-width: 900px) {
+    .methods-grid,
+    .features {
+      grid-template-columns: 1fr;
+    }
+    .companions-grid,
+    .grid-two {
+      grid-template-columns: 1fr;
+    }
+    .companions-section {
+      padding: 36px 24px;
+    }
+  }
+</style>

@@ -293,6 +293,25 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
                 </div>
               </div>
             </div>
+
+            <div class="kind-forum-card comics">
+              <div class="kind-forum-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22.5Z" />
+                  <path d="M4 5.5V22.5M8 7h8M8 11h8M8 15h5" />
+                </svg>
+              </div>
+              <div class="kind-forum-content">
+                <h3>Collectarr Comics Forum</h3>
+                <p>Comic books, series & issues, variant covers, CGC/CBCS slab grading, creators, and characters.</p>
+                <div class="card-links">
+                  <a class="link-btn" href="https://github.com/collectarr/collectarr-app/discussions?discussions_q=comics" target="_blank" rel="noopener">
+                    Comics Forum on GitHub ↗
+                  </a>
+                  <a class="sub-link" href={`${base}manual/kinds/comics/`}>Comics manual →</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -698,7 +717,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   }
   .kinds-cards-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 28px;
   }
   .kind-forum-card {
@@ -720,6 +739,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   .kind-forum-card.games:hover {
     border-color: #e23149;
   }
+  .kind-forum-card.comics:hover {
+    border-color: #00aee6;
+  }
   .kind-forum-icon {
     width: 48px;
     height: 48px;
@@ -736,6 +758,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   .kind-forum-card.games .kind-forum-icon {
     background: rgba(226, 49, 73, 0.12);
     color: var(--games-text);
+  }
+  .kind-forum-card.comics .kind-forum-icon {
+    background: rgba(0, 174, 230, 0.12);
+    color: var(--comics-text);
   }
   .kind-forum-icon svg {
     width: 28px;

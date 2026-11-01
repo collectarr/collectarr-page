@@ -14,7 +14,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Collectarr is a local-first collection database and catalog manager for music albums, video games, hardware, and media collections."
+      content="Collectarr is a local-first collection database and catalog manager for music albums, video games, hardware, and comic books."
     />
     <title>Collectarr — A home for your collections</title>
     <ThemeHead />
@@ -30,7 +30,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
         <p class="eyebrow">FOR THE THINGS YOU LOVE TO COLLECT</p>
         <h1>Every collection.<br /><span>One place to call home.</span></h1>
         <p class="intro">
-          Music albums, vinyl records, video games, gaming hardware, and figures.
+          Music albums, vinyl records, video games, gaming hardware, figures, and comic books.
           Keep track of what you own, find the details that matter, and keep your library completely private and local.
         </p>
         <div class="actions">
@@ -38,6 +38,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
           <a class="secondary" href={`${base}manual/getting-started/`}>Get started with the manual →</a>
           <a class="btn-kind-music" href={`${base}music/`}>Explore Music →</a>
           <a class="btn-kind-games" href={`${base}games/`}>Explore Games →</a>
+          <a class="btn-kind-comics" href={`${base}comics/`}>Explore Comics →</a>
         </div>
         <div class="availability-badges">
           <span class="badge">iOS & Android</span>
@@ -129,6 +130,35 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
               </a>
             </div>
           </article>
+
+          <!-- Comics Card -->
+          <article class="spotlight-card comics-card">
+            <div class="card-top">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22.5Z" />
+                  <path d="M4 5.5V22.5M8 7h8M8 11h8M8 15h5" />
+                </svg>
+              </div>
+              <span class="active-badge">Active Library</span>
+            </div>
+            <h3>Collectarr Comics</h3>
+            <p>
+              Engineered for comic book collectors and run completionists. Series folders, issue runs,
+              variants, CGC/CBCS slabbed grading, creator credits, and publisher logos.
+            </p>
+            <ul class="card-features">
+              <li>Series & issue runs with variants (e.g. #1A, #1B) and publication ages</li>
+              <li>CGC, CBCS, and PGX slabbed grading, certification numbers & grade ribbons</li>
+              <li>Missing Comics finder, CLZ Comics XML/CSV imports, and publisher logos</li>
+            </ul>
+            <div class="card-actions">
+              <a class="btn-link primary-comics" href={`${base}comics/`}>Open Comics page →</a>
+              <a class="btn-link text-comics" href="https://github.com/collectarr/collectarr-app/discussions?discussions_q=comics" target="_blank" rel="noopener">
+                Comics Forum ↗
+              </a>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -208,12 +238,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
         </div>
 
         <div class="roadmap-grid">
-          <div class="roadmap-card comics">
-            <span class="badge planned">Planned</span>
-            <h3>Collectarr Comics</h3>
-            <p>Single issues, trade paperbacks, story arcs, variant covers, writers, pencilers, and CGC/CBCS grading conditions.</p>
-          </div>
-
           <div class="roadmap-card movies">
             <span class="badge planned">Planned</span>
             <h3>Collectarr Movies</h3>
@@ -362,6 +386,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     background: rgba(226, 49, 73, 0.2);
     transform: translateY(-2px);
   }
+  .btn-kind-comics {
+    border: 1px solid rgba(0, 174, 230, 0.4);
+    background: rgba(0, 174, 230, 0.1);
+    color: #3bc0ea;
+  }
+  .btn-kind-comics:hover {
+    background: rgba(0, 174, 230, 0.2);
+    transform: translateY(-2px);
+  }
   .forum-link {
     border: 1px solid var(--line-2);
     background: var(--surface);
@@ -436,7 +469,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
   }
   .spotlight-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 32px;
   }
   .spotlight-card {
@@ -536,6 +569,37 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
     color: var(--games-text);
     font-size: 18px;
     line-height: 1.2;
+  }
+  .comics-card .card-features li::before {
+    content: '•';
+    position: absolute;
+    left: 2px;
+    color: var(--comics-text);
+    font-size: 18px;
+    line-height: 1.2;
+  }
+  .comics-card .card-icon {
+    color: var(--comics-text);
+    background: rgba(0, 174, 230, 0.1);
+  }
+  .comics-card .active-badge {
+    background: rgba(0, 174, 230, 0.15);
+    color: var(--comics-text);
+  }
+  .primary-comics {
+    background: #00aee6;
+    color: #ffffff;
+  }
+  .primary-comics:hover {
+    background: #3bc0ea;
+    transform: translateY(-2px);
+  }
+  .text-comics {
+    color: var(--comics-text);
+    font-weight: 650;
+  }
+  .text-comics:hover {
+    text-decoration: underline;
   }
   .card-actions {
     display: flex;

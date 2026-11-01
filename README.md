@@ -2,8 +2,7 @@
 
 The public website and searchable user manual for
 [Collectarr](https://github.com/collectarr/collectarr-app), a free, open-source,
-local-first collection manager. Music is the only library kind released so far
-(v1.0.0 and later); the shared guides are written to grow when other kinds ship.
+local-first collection manager for **Music**, **Games**, and **Comics** (v1.0.0 and later).
 
 Live site: <https://collectarr.github.io/collectarr-page/>
 
@@ -14,23 +13,14 @@ third-party assets keep their own licenses.
 
 ## ✨ What is on the site
 
-- **Landing page** with a kind switcher in the header, in the style of
-  established collection-database sites.
-- **Music page** with cataloging methods, features, formats and discs, a
-  comparison, an FAQ and community links.
-- **What's New** for Music and for all releases: a version archive with a
-  Features/Fixes filter, built from the published GitHub release notes
-  (stable v1.0.0 and later; earlier 0.x builds were prototypes).
-- **Contact & Help Center** with diagnostics guidance and community links.
-- **User manual** (Starlight) covering library views, the album editor, discs and
-  tracks, scoped credits, custom fields, images, import/export, loans,
-  statistics, backups, optional sync and sharing. Search works on desktop and
-  mobile.
-- **Dark and light theme** with a toggle in the header. The choice is shared with
-  the manual.
+- **Landing page** with a kind switcher in the header, showcasing active collection libraries (Music, Games, Comics) and ecosystem roadmap.
+- **Dedicated kind pages** for **Music**, **Games**, and **Comics** with cataloging methods, features, deep dives (discs, hardware & toys, grading & slabs), comparisons, FAQs and community links.
+- **What's New feeds** for all releases and dedicated feeds for Comics, Games, and Music: a version archive with a Features/Fixes filter, built from the published GitHub release notes (v1.0.0 through v1.5.0).
+- **Contact & Help Center** with diagnostics guidance, log file paths across desktop/mobile/web, and kind-specific discussion links.
+- **User manual** (Starlight) covering library views, domain editors, multi-disc tracks, completeness tiers, slabbed grading, scoped credits, custom fields, offline covers, import/export, loans, statistics, backups, and sync. Search works on desktop and mobile.
+- **Dark and light theme** with a toggle in the header. The choice is shared with the manual.
 
-Only Music is released. Other kinds must not be presented as available; see
-[AGENTS.md](AGENTS.md) for the content rules.
+Music, Games, and Comics are released and supported. Unreleased kinds (Movies, Books) remain planned on the roadmap; see [AGENTS.md](AGENTS.md) for content rules.
 
 ## 📸 Screenshots
 
@@ -68,7 +58,7 @@ npm run check:browser   # needs `npm run preview` running
 
 Where things live:
 
-- `src/pages/` landing, kind, What's New and contact pages.
+- `src/pages/` landing, kind (music, games, comics), What's New and contact pages.
 - `src/components/` shared header, footer, FAQ, release timeline and theme tokens.
 - `src/data/releases.ts` release notes shown on What's New. Add a new entry at the
   top of the list for each stable release.

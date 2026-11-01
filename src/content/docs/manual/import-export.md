@@ -3,82 +3,55 @@ title: Import, export and print
 description: "Import, export and print — Collectarr user manual"
 ---
 
-Collectarr supports robust data exchange, enabling you to bring your existing collections from spreadsheets or other catalog software, export custom reports, and generate printable PDF documents.
+Collectarr supports comprehensive data exchange, enabling you to bring your existing collections from spreadsheets or other catalog software, export custom reports, and generate printable PDF documents.
 
 ## Importing Data into Collectarr
 
-Open the main drawer menu and navigate to **Maintenance** → **Import Data** (or choose **Import** from the library toolbar **Tools** menu).
-
-![Collectarr Import Field Mapping](../../../assets/screenshots/import-mapping.png)
+Open the main drawer menu and navigate to **Main Menu → Import Data** (or choose **Import** from the library toolbar **Tools** menu).
 
 ### 1. Supported Import Formats
 
-- **CSV / TSV / Delimited Text**: Import tabular files from spreadsheets (Excel, Google Sheets, LibreOffice Calc) or other collection apps.
-- **CLZ XML**: Collectarr includes native parsing for CLZ Music XML export files, preserving titles, artists, labels, catalog numbers, multi-disc track lists, and personal notes.
-- **JSON / Database Archives**: For complete backups and restoring Collectarr data, see [Backup and sync](../backup-sync/).
+- **CLZ Web & Desktop XML**: Native importers for CLZ Comics Web XML, Comic Collector desktop XML, CLZ Games XML, and CLZ Music XML. Preserves full hierarchies (series, issues, variants, discs, tracks, hardware serials, loan histories, and custom fields).
+- **CATraxx XML**: Full migration from CATraxx music collections including tracks, credits, and ratings.
+- **CSV / TSV / Delimited Text**: Automatic header mapping for spreadsheets from Excel, Google Sheets, or custom exports.
+- **JSON / Database Archives**: For complete, restorable snapshots, see [Backup and sync](../backup-sync/).
 
-### 2. Step-by-Step Import Workflow
+### 2. Streamlined Import Workflow
 
 1. **Select File and Format**:
-   - Choose your file (`.csv`, `.tsv`, `.txt`, or `.xml`).
-   - If importing text, select the appropriate delimiter (Comma `,`, Tab `\t`, or Semicolon `;`) and verify text encoding (UTF-8 recommended).
-2. **Column / Field Mapping**:
-   - Collectarr displays each column found in your file alongside a target field selector.
-   - Map each source column to the corresponding Collectarr field (e.g. `Album` → **Title**, `Band` → **Artist**, `Cat#` → **Catalog Number**).
-   - Any column left set to *(Ignore)* will be safely skipped.
-3. **Inspect the Preview Table**:
-   - Review the first several rows parsed from your file to ensure accented characters, dates, and numbers align correctly.
-4. **Choose Destination Collection**:
-   - Select the target collection (e.g. *Main Collection*) and default collection status (*In Collection* or *Wish List*).
-5. **Execute Import**:
-   - Click **Start Import**. Collectarr creates records and automatically populates manageable pick lists (Artists, Labels, Genres) with new entries found in the file.
+   - Choose your file (`.xml`, `.csv`, `.tsv`, or `.txt`).
+   - For text files, select the field delimiter (Comma `,`, Tab `\t`, or Semicolon `;`).
+2. **Execute Import**:
+   - Click **Import**. The import executes immediately with a dedicated visual progress bar.
+   - For CSV files, review column mappings if prompted.
+3. **Automatic Offline Cover Download**:
+   - For entries with external cover art links (such as those from CLZ Web exports), Collectarr automatically downloads high-resolution covers and saves them locally with your collection so they remain accessible offline.
+4. **Summary & Linking**:
+   - Upon completion, the *Import Successful* screen reports the number of imported records and provides an instant **Link** button for unlinked entries without catalog matches.
 
 > [!TIP]
-> Before importing an entire library of thousands of rows, test with a sample file containing 2–5 rows. This confirms date formats (e.g. `YYYY-MM-DD` vs `MM/DD/YYYY`) and multi-value delimiters parse as intended.
+> If you already imported a collection earlier without offline covers, select **Maintenance → Download Covers** at any time to download and cache artwork for all entries in your collection.
 
 ---
 
 ## Exporting to CSV / TXT
 
-You can export flat text files for external data analysis, sharing with friends, or custom spreadsheet tracking.
+Export flat files for external data analysis, sharing, or spreadsheet manipulation:
 
-1. In the library toolbar, click **Tools** → **Export to CSV / TXT** (or select specific albums and click **Export to CSV / TXT** in the selection actions band).
+1. Click **Tools → Export to CSV / TXT** in the main toolbar, or select specific items to export a selection.
 2. **Configure Scope**:
    - **All items**: Exports the entire active library.
-   - **Filtered view**: Exports only items currently displayed by active searches or folders.
+   - **Filtered view**: Exports only items matching active folder and search filters.
    - **Selected items**: Exports only explicitly checked records.
 3. **Choose Export Columns**:
-   - Select the fields to include in the output.
-   - *Music Format Note*: Choose **Disc Formats** for individual media types (e.g., `Vinyl`, `CD`) or **Format Summary** for combined physical packaging (e.g., `2xVinyl + CD`).
-4. **Delimiter and Encoding**:
-   - Select **Comma (CSV)**, **Tab (TSV)**, or **Semicolon**.
-   - Check **Include header row** to keep column names as the first line.
-5. Click **Export** and save the file to your local computer.
-
-> [!NOTE]
-> CSV and text files are flat representations. They do not store cached binary artwork, custom field schema definitions, or relational track linkages. For complete, restorable snapshots, use **Backup Database**.
+   - Select which attributes to export.
+4. **Export Progress**:
+   - Click **Download**; a real-time progress bar shows generation progress.
 
 ---
 
-## XML Integration Export
+## Printing and PDF Reports
 
-For developers and advanced catalogers, Collectarr provides hierarchical **Export to XML**:
-- Open **Tools** → **Export to XML** (or via the batch selection menu).
-- Produces a structured XML document containing full album hierarchies, disc structures, track timings, and contributor credits.
-
----
-
-## Print to PDF
-
-Collectarr features a built-in PDF generator for printing physical catalog binders, insurance records, or inventory checklists:
-
-1. Click **Tools** → **Print to PDF** (or select records and choose **Print to PDF** from the batch menu).
-2. **Select Layout Style**:
-   - **List Report**: Compact, dense rows with customizable columns, optimal for high-density physical inventory binders.
-   - **Cards Report**: Visual blocks featuring front cover thumbnails alongside essential catalog details.
-3. **Page Configuration**:
-   - Choose paper size (**A4** or **US Letter**), page orientation (Portrait or Landscape), and margin widths.
-4. **Preview and Save**:
-   - Inspect the real-time PDF print preview directly in the application window.
-   - Click **Save PDF** to write the document or **Print** to send directly to your connected printer.
-
+Generate clean, formatted PDF reports and printable want lists:
+- **Print / PDF Report**: Located in **Tools → Print / PDF Report**.
+- **Missing Comics Checklist**: In Collectarr Comics, the **Tools → Missing Comics** tool lets you filter run gaps and export a compact, printer-friendly PDF want list to take to conventions or comic stores.

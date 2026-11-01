@@ -3,86 +3,98 @@ title: Adding items
 description: "Adding items — Collectarr user manual"
 ---
 
-Collectarr provides several ways to catalog your music, whether searching the online **Core** database, scanning physical barcodes, looking up catalog numbers, using camera cover recognition, or typing details manually.
+Collectarr provides intuitive, domain-specific ways to catalog your media—whether searching the online **Core** database, scanning barcodes, selecting issue runs, using camera recognition, or typing details manually.
 
-## 1. Adding by Artist and Title (Core Search)
+## 1. Adding by Title & Catalog Search
 
-The fastest way to add released albums is through online search:
+The primary way to add released items is through online search:
 
-1. Click the **+ Add Albums** button in the main toolbar (or press `Ctrl+N` / `Cmd+N`).
-2. Ensure the **Search** tab is selected.
-3. Type the **Artist** name, the **Album Title**, or both into the search box.
-   - As you type, matching suggestions appear in the dropdown. You can click a suggestion to jump directly to its results.
-4. Press **Enter** or click the search icon. Matching candidate releases appear in the results list.
-5. Click an album candidate to inspect it in the **Preview Pane** on the right:
-   - Check the track list, disc count, format (e.g. CD vs 12" Vinyl), record label, catalog number, and release year to confirm the exact edition.
-6. Select your target **Collection** tab and **Collection Status** (*In Collection* for owned items, *Wish List* for wanted items).
-7. Click the **Add to Collection** (or **Add to Wish List**) button at the bottom right.
+1. Click the **+ Add** button in the main toolbar (or press `Ctrl+N` / `Cmd+N`). On mobile devices, tap the round floating **+** button to open the full-screen touch workflow.
+2. Ensure the search tab is active (**Artist & Title** for Music, **Title & Platform** for Games, **Series** for Comics).
+3. Type the search query:
+   - **Music**: Type artist name, album title, or both.
+   - **Games**: Select your gaming platform from the integrated platform picker (grouped by console generation with starred favorites), then type the game title. Each game is suggested once per system.
+   - **Comics**: Type the series title. Collectarr lists matching series with issue counts and lets you browse all issues as an adaptive cover grid or list.
+4. Preview candidates in the preview pane or confirmation sheet:
+   - **Music**: Inspect disc count, format (Vinyl LP, CD, Cassette), tracklist, record label, and release year.
+   - **Games**: Inspect platform, release year, edition, and region in the compact *Confirm your selection* sheet.
+   - **Comics**: Inspect issue runs, variant covers (#1A, #1B Foil), publication age, cover dates, and creators. You can tick individual issues or use the check all toggle to add complete runs in one action.
+5. Choose your target **Collection** tab and **Collection Status** (*In Collection* for owned items, *Wish List* for wanted items).
+6. Click **Add to Collection** (or **Add to Wish List**).
 
-The album is saved to your local database immediately. You can remain in the Add dialog to add more albums or close it to return to your library.
+The entry is saved directly to your local database.
 
-![Add Albums dialog with Core search results and preview pane](../../../assets/screenshots/add-search-preview.png)
+---
 
 ## 2. Adding by Barcode
 
-Adding by barcode guarantees matching the exact physical packaging and release edition:
+Adding by barcode guarantees an exact match for retail physical packaging:
 
-1. Open **+ Add Albums** and switch to the **Barcode** tab.
-2. Enter or paste the 12-digit (UPC) or 13-digit (EAN) barcode into the input field, then press **Enter**.
-3. **Camera Scanning**: Click the **Scan Barcode** icon to open the camera scanner sheet. Point your webcam or mobile camera at the barcode on the back cover or obi strip; Collectarr reads the code instantly upon focus.
-4. **Single Match**: If exactly one release matches the barcode, its full details and track list load in the preview pane. Click **Add to Collection**.
-5. **Multiple Editions**: If several pressings share the same barcode (for example, a standard edition and a digipak release), the list displays all matching variants. Select your specific edition and add it.
-6. **Barcode Not in Core**: If the barcode is unrecognized, Collectarr displays an informational notice and offers to open **Add Manually**, automatically prefilling the scanned barcode so you don't need to retype it.
+1. Open the Add dialog and switch to the **Barcode** tab.
+2. Enter or paste the 12-digit (UPC) or 13-digit (EAN/ISBN) code.
+3. **Camera Scanning**: Click the **Scan Barcode** icon to open the camera scanner sheet. Point your webcam or mobile camera at the barcode.
+   - **Comic Barcodes**: Scans 5-digit comic add-on codes to identify the specific issue number and variant printing.
+4. **Instant Match**: If a single edition matches, its full metadata and cover load automatically. Click **Add to Collection**.
+5. **Multiple Editions**: If several pressings or regional variants share a barcode, choose your specific edition from the list.
+6. **Unrecognized Barcodes**: If a barcode is not yet in Core, Collectarr offers to open **Add Manually** with the barcode prefilled.
 
-![Barcode scanner sheet in Collectarr](../../../assets/screenshots/add-barcode-scanner.png)
+---
 
-## 3. Adding by Catalog Number
+## 3. Adding Comics Series & Issue Runs
 
-Many older vinyl pressings, classical records, and promotional releases lack barcodes but feature a clearly printed catalog number on the spine or label:
+The Comics Add workflow is purpose-built for floppy collectors:
+1. Open **+ Add Comics**; the dialog opens directly on the **Series** tab.
+2. Start typing a series name (e.g. *Batman*, *Saga*, *Ultimate Spider-Man*). As you type, matching series suggestions appear with blue badges showing issues already in your library.
+3. Select a series to view its complete issue checklist beside the series list.
+4. Toggle between **Cover Grid** or **Issue List** view, and use **Sort Issues** to view chronological or reverse order.
+5. Check individual issues, select an issue range, or tick all issues.
+6. Review the variant, cover date, price, and creators in the preview before saving.
 
-1. Open **+ Add Albums** and select the **Catalog Nr** tab.
-2. Enter the catalog number (e.g. `DEMO-001`, `BST 81535`) and optionally the label or artist.
-3. Select the matching entry from the results list and add it to your collection.
+---
 
-## 4. Cover Scan (Photo Recognition)
+## 4. Native Mobile Add Workflow
 
-If you have a record sleeve without visible barcodes or catalog numbers:
+On iOS and Android, Collectarr features a dedicated native mobile Add experience:
+- **Full-Screen Canvas**: The Add dialog gives way to a full-screen workflow tailored for single-handed mobile use.
+- **Touch-Sized Tabs**: Large touch targets for search, barcode scanning, and platform filters.
+- **Floating Action Button**: A round, elevated floating plus button provides quick access from anywhere in your library.
+- **System Inset Awareness**: Collection tabs and buttons float safely above system navigation bars and gesture insets.
 
-1. In the Add dialog, click the **Cover Scan** camera button.
-2. Capture a clear photo of the album front cover or upload an existing image.
-3. The local cover recognition service extracts artist and title hints and displays a confirmation banner.
-4. Review the detected query and click **Search Core** to locate matching editions.
+---
 
-## 5. Adding Albums Manually
+## 5. Adding by Catalog Number
 
-For unreleased recordings, independent local releases, bootlegs, or private pressings not found in Core:
+For vinyl records, classical recordings, and promotional releases lacking retail barcodes:
+1. Open **+ Add** and select the **Catalog Nr** tab.
+2. Enter the matrix or catalog identifier (e.g. `BST 81535`, `COL-45012`).
+3. Select the matching entry from the catalog results list and add it to your collection.
 
-1. In the Add dialog toolbar, click **Add Manually**.
-2. Work through the tabbed editor:
-   - **Main**: Enter the Artist, Title, Sort Title, Release Date (supports year, year-month, or full date), Record Label, Format, Barcode, Catalog Number, and Genres.
-   - **Tracks & Discs**: Add one or more discs (CD, Vinyl, Cassette, SACD), set recording date/locations, and add track titles with durations.
-   - **Credits**: Add individual musician, songwriter, and producer credits with album- or disc-level scope.
-   - **Personal**: Set your purchase date, store, purchase price, condition (e.g. Near Mint, Very Good Plus), storage location, rating, and private notes.
-   - **Covers**: Upload front and back artwork from local image files.
-   - **Custom Fields**: Populate any user-defined fields you have configured.
+---
+
+## 6. Adding Manually
+
+For unreleased prototypes, indie comics, private vinyl pressings, or custom hardware:
+1. Click **Add Manually** in the Add dialog toolbar.
+2. Complete the tabbed editor:
+   - **Main**: Title, sort title, dates, publisher/label/developer, format, barcode, and catalog numbers.
+   - **Domain Tabs**: Discs and tracks (Music), completeness and platform (Games), or creators, characters, and ages (Comics).
+   - **Personal**: Condition, purchase date, purchase price, store, storage box/location, rating, and private notes.
+   - **Covers**: Upload custom front and back photography or find covers online.
+   - **Custom Fields**: Populate user-defined custom fields.
 3. Click **Save** to create the entry.
 
-![Manual album add form in Collectarr](../../../assets/screenshots/add-manual-form.png)
+---
 
-## 6. Pre-fill Settings and Defaults
+## 7. Pre-fill Settings and Defaults
 
-To avoid repetitive data entry when cataloging large batches, configure your defaults:
+To speed up batch cataloging:
+- Open **Settings → Pre-fill Settings**.
+- Configure defaults such as **Collection Status** (*In Collection*), **Purchase Date** (*Today*), **Store**, and **Storage Location** / **Storage Box**.
+- Newly added items automatically inherit these presets.
 
-* Open the gear icon on the Add tab row or navigate to **Settings → Pre-fill Settings**.
-* Set default values for new additions, such as **Collection Status** (*In Collection*), **Purchase Date** (*Today*), **Store**, and **Storage Location**.
-* Every newly added album automatically inherits these presets.
+---
 
-## 7. Multiple Copies and Duplicates
+## 8. Linking and Proposing to Core
 
-* **Quantity**: If you own two identical copies in the same condition and location, adjust the **Quantity** field on the album.
-* **Independent Entries**: If copies differ in condition, storage location, purchase history, or signatures, add them as separate records. You can also duplicate an existing entry from the library and adjust its personal details.
-
-## 8. Linking and Metadata Proposals
-
-* **Link to Core**: If you created an album manually or imported it from a text file, you can link it later to the online catalog using the **Link** action in the inspector. Linking downloads official track lists, high-resolution artwork, and Core IDs while preserving your personal purchase and condition notes.
-* **Proposals**: If you find an error or missing track in a Core entry, submit a catalog proposal. Only public catalog fields are submitted; private notes and personal purchase data remain strictly local. See [Editing](../editing/).
+- **Link to Core**: Manually added entries or spreadsheet imports can be linked to the online Core catalog later using **Link** in the inspector.
+- **Compare & Propose to Core**: If you notice an error or have additional metadata (such as unlisted variants or credits), select **Propose to Core** in the editor. Collectarr shows a side-by-side comparison of your values versus Core's, submitting only your edited fields for community review while keeping private data local.
